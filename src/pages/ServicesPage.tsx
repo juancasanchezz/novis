@@ -13,6 +13,7 @@ import {
   X,
 } from 'lucide-react'
 import { Link } from 'react-router-dom'
+import { Helmet } from 'react-helmet-async'
 
 // Los textos y servicios se mantienen intactos
 const fullServices = [
@@ -137,212 +138,223 @@ export function ServicesPage() {
   }, [selectedService])
 
   return (
-    <div className='bg-white flex flex-col w-full min-h-screen'>
-      {/* 1. HERO LUMINOSO Y DIRECTO */}
-      <section className='pt-24 pb-16 bg-white border-b border-gray-100 text-center px-4 relative overflow-hidden'>
-        <div className='absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-green-500/10 rounded-full blur-[100px] pointer-events-none'></div>
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className='max-w-4xl mx-auto relative z-10'
-        >
-          <span className='inline-block py-1.5 px-4 rounded-full bg-gray-100 text-gray-600 text-xs font-bold tracking-widest uppercase mb-6'>
-            Nuestras Especialidades
-          </span>
-          <h1 className='text-4xl md:text-5xl lg:text-6xl font-extrabold text-gray-900 mb-6 tracking-tight'>
-            Soluciones tecnológicas{' '}
-            <span className='text-green-600'>integrales</span>
-          </h1>
-          <p className='text-lg md:text-xl text-gray-600 font-medium max-w-2xl mx-auto'>
-            Explora nuestras áreas de especialización. Hacemos que la tecnología
-            trabaje a favor de tu empresa.
-          </p>
-        </motion.div>
-      </section>
+    <>
+      <Helmet>
+        <title key='title'>Novis - Servicios</title>
 
-      {/* 2. LISTADO EN Z-PATTERN (El efecto interactivo) */}
-      <section className='py-20 bg-white relative overflow-hidden'>
-        <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
-          <div className='space-y-24 md:space-y-32'>
-            {fullServices.map((service, index) => {
-              const isEven = index % 2 !== 0
-              const numberString = (index + 1).toString().padStart(2, '0')
+        <meta
+          name='keywords'
+          content={`Novis, Software, Servicops, Extremadura`}
+        />
+      </Helmet>
 
-              // Separamos el primer párrafo: La primera frase visible, el resto se esconde
-              const firstSentence = service.paragraphs[0].split('.')[0] + '.'
-              const remainingDescription = service.paragraphs[0]
-                .split('.')
-                .slice(1)
-                .join('.')
-                .trim()
+      <div className='bg-white flex flex-col w-full min-h-screen'>
+        {/* 1. HERO LUMINOSO Y DIRECTO */}
+        <section className='pt-24 pb-16 bg-white border-b border-gray-100 text-center px-4 relative overflow-hidden'>
+          <div className='absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-green-500/10 rounded-full blur-[100px] pointer-events-none'></div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className='max-w-4xl mx-auto relative z-10'
+          >
+            <span className='inline-block py-1.5 px-4 rounded-full bg-gray-100 text-gray-600 text-xs font-bold tracking-widest uppercase mb-6'>
+              Nuestras Especialidades
+            </span>
+            <h1 className='text-4xl md:text-5xl lg:text-6xl font-extrabold text-gray-900 mb-6 tracking-tight'>
+              Soluciones tecnológicas{' '}
+              <span className='text-green-600'>integrales</span>
+            </h1>
+            <p className='text-lg md:text-xl text-gray-600 font-medium max-w-2xl mx-auto'>
+              Explora nuestras áreas de especialización. Hacemos que la
+              tecnología trabaje a favor de tu empresa.
+            </p>
+          </motion.div>
+        </section>
 
-              return (
-                <motion.div
-                  key={service.id}
-                  initial={{ opacity: 0, y: 40 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: '-100px' }}
-                  transition={{ duration: 0.7 }}
-                  onClick={() => setSelectedService(service)}
-                  className={`flex flex-col lg:flex-row items-center gap-10 lg:gap-16 relative cursor-pointer group pt-8 ${isEven ? 'lg:flex-row-reverse' : ''}`}
-                >
-                  {/* Número gigante de fondo */}
-                  <div
-                    className={`absolute top-1/2 -translate-y-1/2 text-[12rem] md:text-[18rem] font-black text-gray-50/80 z-0 pointer-events-none transition-colors duration-500 group-hover:text-green-50/50 ${isEven ? '-left-8' : '-right-8'}`}
+        {/* 2. LISTADO EN Z-PATTERN (El efecto interactivo) */}
+        <section className='py-20 bg-white relative overflow-hidden'>
+          <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
+            <div className='space-y-24 md:space-y-32'>
+              {fullServices.map((service, index) => {
+                const isEven = index % 2 !== 0
+                const numberString = (index + 1).toString().padStart(2, '0')
+
+                // Separamos el primer párrafo: La primera frase visible, el resto se esconde
+                const firstSentence = service.paragraphs[0].split('.')[0] + '.'
+                const remainingDescription = service.paragraphs[0]
+                  .split('.')
+                  .slice(1)
+                  .join('.')
+                  .trim()
+
+                return (
+                  <motion.div
+                    key={service.id}
+                    initial={{ opacity: 0, y: 40 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, margin: '-100px' }}
+                    transition={{ duration: 0.7 }}
+                    onClick={() => setSelectedService(service)}
+                    className={`flex flex-col lg:flex-row items-center gap-10 lg:gap-16 relative cursor-pointer group pt-8 ${isEven ? 'lg:flex-row-reverse' : ''}`}
                   >
-                    {numberString}
-                  </div>
-
-                  {/* Columna Imagen */}
-                  <div className='w-full lg:w-5/12 relative z-10'>
-                    <div className='aspect-[4/3] w-full rounded-[2.5rem] overflow-hidden shadow-xl border border-gray-100 group-hover:shadow-2xl transition-all duration-500 relative'>
-                      <div className='absolute inset-0 bg-gray-900/10 group-hover:bg-transparent transition-colors duration-500 z-10'></div>
-                      <img
-                        src={service.image}
-                        alt={service.title}
-                        className='w-full h-full object-cover filter group-hover:scale-105 transition-transform duration-700 relative z-0'
-                      />
+                    {/* Número gigante de fondo */}
+                    <div
+                      className={`absolute top-1/2 -translate-y-1/2 text-[12rem] md:text-[18rem] font-black text-gray-50/80 z-0 pointer-events-none transition-colors duration-500 group-hover:text-green-50/50 ${isEven ? '-left-8' : '-right-8'}`}
+                    >
+                      {numberString}
                     </div>
-                  </div>
 
-                  {/* Columna Texto (Interactiva) */}
-                  <div className='w-full lg:w-7/12 relative z-10 p-6 md:p-10 rounded-3xl group-hover:bg-gray-50/80 transition-colors duration-500 border border-transparent group-hover:border-gray-100'>
-                    <div className='flex items-center mb-6'>
-                      <div className='w-14 h-14 bg-green-50 rounded-2xl flex items-center justify-center mr-5 group-hover:bg-green-600 transition-colors duration-500 flex-shrink-0'>
-                        <service.icon
-                          className='w-7 h-7 text-green-600 group-hover:text-white transition-colors duration-500'
-                          strokeWidth={1.5}
+                    {/* Columna Imagen */}
+                    <div className='w-full lg:w-5/12 relative z-10'>
+                      <div className='aspect-[4/3] w-full rounded-[2.5rem] overflow-hidden shadow-xl border border-gray-100 group-hover:shadow-2xl transition-all duration-500 relative'>
+                        <div className='absolute inset-0 bg-gray-900/10 group-hover:bg-transparent transition-colors duration-500 z-10'></div>
+                        <img
+                          src={service.image}
+                          alt={service.title}
+                          className='w-full h-full object-cover filter group-hover:scale-105 transition-transform duration-700 relative z-0'
                         />
                       </div>
-                      <h2 className='text-3xl md:text-4xl font-extrabold text-gray-900 tracking-tight group-hover:text-green-700 transition-colors duration-300'>
-                        {service.title}
-                      </h2>
                     </div>
 
-                    <div className='w-16 h-1.5 bg-green-500 rounded-full mb-6 opacity-50 group-hover:opacity-100 transition-opacity duration-300'></div>
+                    {/* Columna Texto (Interactiva) */}
+                    <div className='w-full lg:w-7/12 relative z-10 p-6 md:p-10 rounded-3xl group-hover:bg-gray-50/80 transition-colors duration-500 border border-transparent group-hover:border-gray-100'>
+                      <div className='flex items-center mb-6'>
+                        <div className='w-14 h-14 bg-green-50 rounded-2xl flex items-center justify-center mr-5 group-hover:bg-green-600 transition-colors duration-500 flex-shrink-0'>
+                          <service.icon
+                            className='w-7 h-7 text-green-600 group-hover:text-white transition-colors duration-500'
+                            strokeWidth={1.5}
+                          />
+                        </div>
+                        <h2 className='text-3xl md:text-4xl font-extrabold text-gray-900 tracking-tight group-hover:text-green-700 transition-colors duration-300'>
+                          {service.title}
+                        </h2>
+                      </div>
 
-                    {/* Algo de texto: La primera frase del párrafo (Siempre visible) */}
-                    <p className='text-lg text-gray-700 font-medium leading-relaxed'>
-                      {firstSentence}
-                    </p>
+                      <div className='w-16 h-1.5 bg-green-500 rounded-full mb-6 opacity-50 group-hover:opacity-100 transition-opacity duration-300'></div>
 
-                    {/* La breve descripción: El resto del párrafo (Aparece al hacer hover) */}
-                    <div className='max-h-0 opacity-0 overflow-hidden group-hover:max-h-[200px] group-hover:opacity-100 transition-all duration-700 ease-in-out mt-0 group-hover:mt-4'>
-                      <p className='text-gray-500 leading-relaxed'>
-                        {remainingDescription}
+                      {/* Algo de texto: La primera frase del párrafo (Siempre visible) */}
+                      <p className='text-lg text-gray-700 font-medium leading-relaxed'>
+                        {firstSentence}
                       </p>
+
+                      {/* La breve descripción: El resto del párrafo (Aparece al hacer hover) */}
+                      <div className='max-h-0 opacity-0 overflow-hidden group-hover:max-h-[200px] group-hover:opacity-100 transition-all duration-700 ease-in-out mt-0 group-hover:mt-4'>
+                        <p className='text-gray-500 leading-relaxed'>
+                          {remainingDescription}
+                        </p>
+                      </div>
+
+                      {/* Botón CTA (Aparece iluminado en hover) */}
+                      <div className='mt-8 inline-flex items-center px-6 py-3 bg-white border border-gray-200 group-hover:border-green-600 group-hover:bg-green-600 group-hover:text-white text-gray-700 font-bold rounded-xl transition-all shadow-sm'>
+                        Ver información completa
+                        <ArrowRight className='ml-3 w-5 h-5 transform group-hover:translate-x-1 transition-transform' />
+                      </div>
+                    </div>
+                  </motion.div>
+                )
+              })}
+            </div>
+          </div>
+        </section>
+
+        {/* 3. MODAL DE DETALLE COMPLETO */}
+        <AnimatePresence>
+          {selectedService && (
+            <>
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                onClick={() => setSelectedService(null)}
+                className='fixed inset-0 bg-gray-900/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 sm:p-6'
+              >
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.95, y: 20 }}
+                  animate={{ opacity: 1, scale: 1, y: 0 }}
+                  exit={{ opacity: 0, scale: 0.95, y: 20 }}
+                  onClick={(e) => e.stopPropagation()}
+                  className='bg-white w-full max-w-4xl max-h-[90vh] rounded-[2rem] shadow-2xl overflow-hidden flex flex-col relative'
+                >
+                  <button
+                    onClick={() => setSelectedService(null)}
+                    className='absolute top-4 right-4 z-20 w-10 h-10 bg-black/50 hover:bg-black/80 backdrop-blur-md text-white rounded-full flex items-center justify-center transition-colors'
+                  >
+                    <X className='w-5 h-5' />
+                  </button>
+
+                  <div className='overflow-y-auto overflow-x-hidden custom-scrollbar flex-grow'>
+                    <div className='relative h-64 sm:h-80 w-full'>
+                      <div className='absolute inset-0 bg-gradient-to-t from-gray-900/90 via-gray-900/30 to-transparent z-10'></div>
+                      <img
+                        src={selectedService.image}
+                        alt={selectedService.title}
+                        className='w-full h-full object-cover'
+                      />
+                      <div className='absolute bottom-0 left-0 p-8 sm:p-10 z-20 flex items-end'>
+                        <div className='w-16 h-16 bg-white rounded-2xl flex items-center justify-center mr-6 shadow-lg hidden sm:flex'>
+                          {selectedService.icon && (
+                            <selectedService.icon className='w-8 h-8 text-green-600' />
+                          )}
+                        </div>
+                        <h2 className='text-3xl sm:text-4xl font-bold text-white leading-tight drop-shadow-md'>
+                          {selectedService.title}
+                        </h2>
+                      </div>
                     </div>
 
-                    {/* Botón CTA (Aparece iluminado en hover) */}
-                    <div className='mt-8 inline-flex items-center px-6 py-3 bg-white border border-gray-200 group-hover:border-green-600 group-hover:bg-green-600 group-hover:text-white text-gray-700 font-bold rounded-xl transition-all shadow-sm'>
-                      Ver información completa
-                      <ArrowRight className='ml-3 w-5 h-5 transform group-hover:translate-x-1 transition-transform' />
+                    <div className='p-8 sm:p-12 space-y-6'>
+                      <p className='text-xl text-gray-800 font-medium border-l-4 border-green-500 pl-6 py-2 bg-gradient-to-r from-green-50 to-transparent'>
+                        {selectedService.paragraphs[0]}
+                      </p>
+
+                      <div className='space-y-5 text-gray-600 leading-relaxed text-lg'>
+                        {selectedService.paragraphs
+                          .slice(1)
+                          .map((paragraph, index) => (
+                            <p key={index}>{paragraph}</p>
+                          ))}
+                      </div>
                     </div>
+                  </div>
+
+                  <div className='bg-gray-50 border-t border-gray-100 p-6 sm:px-10 flex flex-col sm:flex-row justify-between items-center gap-4 flex-shrink-0'>
+                    <span className='text-gray-500 font-medium text-sm text-center sm:text-left'>
+                      ¿Te interesa implementar este servicio en tu empresa?
+                    </span>
+                    <Link
+                      to='/contacto'
+                      onClick={() => setSelectedService(null)}
+                      className='w-full sm:w-auto px-8 py-3 bg-green-600 hover:bg-green-700 text-white font-bold rounded-xl transition-colors shadow-sm text-center'
+                    >
+                      Contactar ahora
+                    </Link>
                   </div>
                 </motion.div>
-              )
-            })}
-          </div>
-        </div>
-      </section>
-
-      {/* 3. MODAL DE DETALLE COMPLETO */}
-      <AnimatePresence>
-        {selectedService && (
-          <>
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              onClick={() => setSelectedService(null)}
-              className='fixed inset-0 bg-gray-900/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 sm:p-6'
-            >
-              <motion.div
-                initial={{ opacity: 0, scale: 0.95, y: 20 }}
-                animate={{ opacity: 1, scale: 1, y: 0 }}
-                exit={{ opacity: 0, scale: 0.95, y: 20 }}
-                onClick={(e) => e.stopPropagation()}
-                className='bg-white w-full max-w-4xl max-h-[90vh] rounded-[2rem] shadow-2xl overflow-hidden flex flex-col relative'
-              >
-                <button
-                  onClick={() => setSelectedService(null)}
-                  className='absolute top-4 right-4 z-20 w-10 h-10 bg-black/50 hover:bg-black/80 backdrop-blur-md text-white rounded-full flex items-center justify-center transition-colors'
-                >
-                  <X className='w-5 h-5' />
-                </button>
-
-                <div className='overflow-y-auto overflow-x-hidden custom-scrollbar flex-grow'>
-                  <div className='relative h-64 sm:h-80 w-full'>
-                    <div className='absolute inset-0 bg-gradient-to-t from-gray-900/90 via-gray-900/30 to-transparent z-10'></div>
-                    <img
-                      src={selectedService.image}
-                      alt={selectedService.title}
-                      className='w-full h-full object-cover'
-                    />
-                    <div className='absolute bottom-0 left-0 p-8 sm:p-10 z-20 flex items-end'>
-                      <div className='w-16 h-16 bg-white rounded-2xl flex items-center justify-center mr-6 shadow-lg hidden sm:flex'>
-                        {selectedService.icon && (
-                          <selectedService.icon className='w-8 h-8 text-green-600' />
-                        )}
-                      </div>
-                      <h2 className='text-3xl sm:text-4xl font-bold text-white leading-tight drop-shadow-md'>
-                        {selectedService.title}
-                      </h2>
-                    </div>
-                  </div>
-
-                  <div className='p-8 sm:p-12 space-y-6'>
-                    <p className='text-xl text-gray-800 font-medium border-l-4 border-green-500 pl-6 py-2 bg-gradient-to-r from-green-50 to-transparent'>
-                      {selectedService.paragraphs[0]}
-                    </p>
-
-                    <div className='space-y-5 text-gray-600 leading-relaxed text-lg'>
-                      {selectedService.paragraphs
-                        .slice(1)
-                        .map((paragraph, index) => (
-                          <p key={index}>{paragraph}</p>
-                        ))}
-                    </div>
-                  </div>
-                </div>
-
-                <div className='bg-gray-50 border-t border-gray-100 p-6 sm:px-10 flex flex-col sm:flex-row justify-between items-center gap-4 flex-shrink-0'>
-                  <span className='text-gray-500 font-medium text-sm text-center sm:text-left'>
-                    ¿Te interesa implementar este servicio en tu empresa?
-                  </span>
-                  <Link
-                    to='/contacto'
-                    onClick={() => setSelectedService(null)}
-                    className='w-full sm:w-auto px-8 py-3 bg-green-600 hover:bg-green-700 text-white font-bold rounded-xl transition-colors shadow-sm text-center'
-                  >
-                    Contactar ahora
-                  </Link>
-                </div>
               </motion.div>
-            </motion.div>
-          </>
-        )}
-      </AnimatePresence>
+            </>
+          )}
+        </AnimatePresence>
 
-      {/* 4. CTA FINAL */}
-      <section className='py-20 bg-gray-900 text-center px-4 mt-auto'>
-        <div className='max-w-3xl mx-auto'>
-          <h2 className='text-3xl font-bold text-white mb-6'>
-            ¿Tienes dudas sobre qué tecnología implementar?
-          </h2>
-          <p className='text-gray-400 mb-10 text-lg'>
-            Nuestro equipo está a tu disposición para auditar tu caso sin
-            compromiso.
-          </p>
-          <Link
-            to='/contacto'
-            className='inline-flex items-center justify-center w-full sm:w-auto px-8 py-4 bg-green-600 hover:bg-green-500 text-white font-bold rounded-xl transition-colors shadow-lg'
-          >
-            Contacta con nuestro equipo.
-            <ArrowRight className='ml-3 w-5 h-5' />
-          </Link>
-        </div>
-      </section>
-    </div>
+        {/* 4. CTA FINAL */}
+        <section className='py-20 bg-gray-900 text-center px-4 mt-auto'>
+          <div className='max-w-3xl mx-auto'>
+            <h2 className='text-3xl font-bold text-white mb-6'>
+              ¿Tienes dudas sobre qué tecnología implementar?
+            </h2>
+            <p className='text-gray-400 mb-10 text-lg'>
+              Nuestro equipo está a tu disposición para auditar tu caso sin
+              compromiso.
+            </p>
+            <Link
+              to='/contacto'
+              className='inline-flex items-center justify-center w-full sm:w-auto px-8 py-4 bg-green-600 hover:bg-green-500 text-white font-bold rounded-xl transition-colors shadow-lg'
+            >
+              Contacta con nuestro equipo.
+              <ArrowRight className='ml-3 w-5 h-5' />
+            </Link>
+          </div>
+        </section>
+      </div>
+    </>
   )
 }

@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import logoNovis from '../assets/logo-novis-52px.png'
+import logoNovis from '../assets/logo-novis-alta.png'
 
 export function TechOrbit() {
   // Anillo Interior (Tecnologías Core)

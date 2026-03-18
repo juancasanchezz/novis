@@ -1,1 +1,32 @@
 @import 'tailwindcss';
+
+@theme {
+  /* Al definir variables --color-green-*, Tailwind v4 sobrescribe 
+     automáticamente TODAS nuestras clases bg-green-*, text-green-*, etc. */
+  --color-green-50: #f0f5ec;
+  --color-green-100: #e8f2e1;
+  --color-green-200: #d4e3cc;
+  --color-green-300: #afd991;
+  --color-green-400: #8cc26b;
+  --color-green-500: #6ba641;
+  --color-green-600: #6ba641; /* Este es el primary que usamos en botones */
+  --color-green-700: #5a8c37; /* Este es el hover que usamos */
+  --color-green-800: #48722c;
+  --color-green-900: #355520;
+
+  /* Mantenemos las variables base que ella configuró */
+  --color-background: #ffffff;
+  --color-foreground: #0d0d0d;
+  --color-border: #d4e3cc;
+}
+
+@layer base {
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family:
+      system-ui,
+      -apple-system,
+      sans-serif;
+  }
+}

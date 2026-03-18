@@ -12,7 +12,7 @@ import {
 } from 'lucide-react'
 import { Link, NavLink, useLocation } from 'react-router-dom'
 
-import logoNovis from '../assets/logo-novis-52px.png'
+import logoNovis from '../assets/logo-novis-alta.png'
 
 export function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)

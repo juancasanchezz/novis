@@ -121,9 +121,12 @@ export function ClientDetailPage() {
   return (
     <>
       <Helmet>
-        <title>Novis - {client.name}</title>
-        <meta name='description' content={client.description[0]} />
-        <meta name='keywords' content='Novis, Desarrollo de Software, Blog' />
+        <title key='title'>{`Novis - ${client.name}`}</title>
+
+        <meta
+          name='keywords'
+          content={`Novis, Software, ${client.name}, Extremadura`}
+        />
       </Helmet>
       <div className='bg-gray-50 flex flex-col w-full min-h-screen'>
         {/* 1. NAVEGACIÓN (Migas de pan) */}

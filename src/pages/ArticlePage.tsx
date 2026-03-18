@@ -21,7 +21,7 @@ export function ArticlePage() {
   return (
     <>
       <Helmet>
-        <title>Novis - {article.title}</title>
+        <title key='title'>{`Novis - ${article.title}`}</title>
         <meta name='description' content={article.excerpt} />
         <meta name='keywords' content='Novis, Desarrollo de Software, Blog' />
       </Helmet>
