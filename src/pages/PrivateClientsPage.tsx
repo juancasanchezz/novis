@@ -31,8 +31,8 @@ export function PrivateClientsPage() {
           content={`Novis, Software, Clientes Privados, Extremadura`}
         />
       </Helmet>
-      // Usamos min-h-[calc(100vh-6rem)] para que ocupe toda la pantalla
-      restando el Header
+      {/*Usamos min-h-[calc(100vh-6rem)] para que ocupe toda la pantalla
+      restando el Header*/}
       <div className='flex flex-col lg:flex-row min-h-[calc(100vh-6rem)] bg-white w-full'>
         {/* PANEL IZQUIERDO: Branding y Propuesta de Valor (Oscuro y Corporativo) */}
         <div className='lg:w-5/12 bg-gray-900 relative p-12 lg:p-20 flex flex-col justify-center overflow-hidden border-r border-gray-800'>
