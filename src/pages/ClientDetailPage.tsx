@@ -1,6 +1,6 @@
 import { useParams, Link, Navigate } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import { ArrowLeft, ChevronRight } from 'lucide-react' // Eliminado ExternalLink
+import { ArrowLeft, ChevronRight } from 'lucide-react'
 import { Helmet } from 'react-helmet-async'
 
 // Importamos los logos principales
@@ -25,7 +25,6 @@ import vanza2 from '../assets/vanza11-768x576.png'
 
 import infoex from '../assets/infoex.jpg'
 
-// Interfaces para tipar correctamente los datos (Adiós errores 'any')
 interface ClientButton {
   text: string
   link: string
@@ -39,7 +38,6 @@ interface ClientData {
   gallery: string[]
 }
 
-// Base de datos de proyectos tipada con TypeScript
 const clientsData: Record<string, ClientData> = {
   'escuela-de-administracion-publica': {
     name: 'Escuela de Administración de Extremadura',
@@ -128,28 +126,28 @@ export function ClientDetailPage() {
           content={`Novis, Software, ${client.name}, Extremadura`}
         />
       </Helmet>
-      <div className='bg-gray-50 flex flex-col w-full min-h-screen'>
+      <div className='bg-slate-50 flex flex-col w-full min-h-screen'>
         {/* 1. NAVEGACIÓN (Migas de pan) */}
-        <div className='bg-white border-b border-gray-200 py-4'>
+        <div className='bg-white border-b border-slate-200 py-4'>
           <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
-            <nav className='flex items-center text-sm font-medium text-gray-500'>
+            <nav className='flex items-center text-sm font-medium text-slate-500'>
               <Link
                 to='/novis'
-                className='hover:text-green-600 transition-colors'
+                className='hover:text-emerald-600 transition-colors'
               >
                 NOVIS
               </Link>
-              <ChevronRight className='w-4 h-4 mx-2 text-gray-400' />
-              <span className='text-gray-900 cursor-default'>Clientes</span>
-              <ChevronRight className='w-4 h-4 mx-2 text-gray-400' />
+              <ChevronRight className='w-4 h-4 mx-2 text-slate-400' />
+              <span className='text-slate-900 cursor-default'>Clientes</span>
+              <ChevronRight className='w-4 h-4 mx-2 text-slate-400' />
               <Link
                 to='/clientes/instituciones'
-                className='hover:text-green-600 transition-colors'
+                className='hover:text-emerald-600 transition-colors'
               >
                 Instituciones
               </Link>
-              <ChevronRight className='w-4 h-4 mx-2 text-gray-400' />
-              <span className='text-green-600 font-semibold truncate max-w-[200px] md:max-w-none'>
+              <ChevronRight className='w-4 h-4 mx-2 text-slate-400' />
+              <span className='text-emerald-600 font-bold truncate max-w-[200px] md:max-w-none'>
                 {client.name}
               </span>
             </nav>
@@ -179,11 +177,11 @@ export function ClientDetailPage() {
                 animate={{ opacity: 1, x: 0 }}
                 className='w-full lg:w-2/3 text-center lg:text-left'
               >
-                <h1 className='text-3xl md:text-5xl font-bold text-gray-900 mb-8 leading-tight'>
+                <h1 className='text-3xl md:text-5xl font-bold text-slate-900 mb-8 leading-tight'>
                   {client.name}
                 </h1>
 
-                <div className='space-y-4 mb-10 text-gray-600 text-lg leading-relaxed'>
+                <div className='space-y-4 mb-10 text-slate-600 text-lg leading-relaxed'>
                   {client.description.map((paragraph: string, i: number) => (
                     <p key={i}>{paragraph}</p>
                   ))}
@@ -197,7 +195,7 @@ export function ClientDetailPage() {
                       href={btn.link}
                       target='_blank'
                       rel='noopener noreferrer'
-                      className='inline-flex items-center px-6 py-3 bg-[#5cb85c] hover:bg-green-600 text-white font-bold rounded-md transition-colors shadow-sm'
+                      className='inline-flex items-center px-6 py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded-xl transition-colors shadow-sm'
                     >
                       {btn.text}
                     </a>
@@ -209,13 +207,13 @@ export function ClientDetailPage() {
         </section>
 
         {/* 3. GALERÍA DE CAPTURAS DEL SOFTWARE */}
-        <section className='py-20 bg-gray-50 border-t border-gray-100'>
+        <section className='py-20 bg-slate-50 border-t border-slate-200'>
           <div className='max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8'>
             <div className='text-center mb-16'>
-              <h2 className='text-2xl font-bold text-gray-900 mb-4'>
+              <h2 className='text-2xl font-bold text-slate-900 mb-4'>
                 Capturas del Proyecto
               </h2>
-              <div className='w-12 h-1 bg-green-600 mx-auto rounded-full'></div>
+              <div className='w-12 h-1.5 bg-emerald-600 mx-auto rounded-full'></div>
             </div>
 
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center'>
@@ -226,13 +224,15 @@ export function ClientDetailPage() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.1 }}
-                  className='w-full rounded-xl overflow-hidden shadow-md border border-gray-200 bg-white group'
+                  className='w-full rounded-[2rem] overflow-hidden shadow-md hover:shadow-xl border border-slate-200 bg-white group transition-all duration-300 p-2'
                 >
-                  <img
-                    src={imgSrc}
-                    alt={`Captura de ${client.name} ${index + 1}`}
-                    className='w-full h-auto object-cover transform transition-transform duration-500 group-hover:scale-105'
-                  />
+                  <div className="rounded-[1.5rem] overflow-hidden">
+                    <img
+                      src={imgSrc}
+                      alt={`Captura de ${client.name} ${index + 1}`}
+                      className='w-full h-auto object-cover transform transition-transform duration-500 group-hover:scale-105'
+                    />
+                  </div>
                 </motion.div>
               ))}
             </div>
@@ -240,10 +240,10 @@ export function ClientDetailPage() {
         </section>
 
         {/* Botón volver abajo */}
-        <div className='pb-20 flex justify-center bg-gray-50'>
+        <div className='pb-20 flex justify-center bg-slate-50'>
           <Link
             to='/clientes/instituciones'
-            className='inline-flex items-center px-8 py-3 bg-white border-2 border-gray-200 hover:border-green-600 hover:text-green-700 text-gray-700 font-bold rounded-xl transition-all'
+            className='inline-flex items-center px-8 py-4 bg-white border border-slate-200 hover:border-emerald-500 hover:text-emerald-700 text-slate-700 font-bold rounded-2xl transition-all shadow-sm hover:shadow-md'
           >
             <ArrowLeft className='w-5 h-5 mr-3' /> Volver al listado de clientes
           </Link>

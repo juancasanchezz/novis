@@ -1,5 +1,6 @@
-import { motion } from 'framer-motion'
-import { CheckCircle2, ShieldCheck, Landmark, ExternalLink } from 'lucide-react'
+import { motion, AnimatePresence } from 'framer-motion'
+import { useState } from 'react'
+import { CheckCircle2, ShieldCheck, Landmark, ExternalLink, Building2 } from 'lucide-react'
 
 // Logos mapeados
 import logo1 from '../assets/logo1-1.png'
@@ -15,129 +16,91 @@ const institutionsData = [
     id: 1,
     logo: logo4,
     title: 'Junta de Extremadura',
-    description:
-      'Socio tecnológico en proyectos de modernización de servicios ciudadanos regionales.',
-    points: [
-      'Consultoría técnica para la implementación de nuevas tecnologías administrativas.',
-      'Desarrollo de software a medida para consejerías y organismos autónomos.',
-      'Soporte evolutivo y mantenimiento de sistemas críticos.',
-    ],
-    buttonText: 'Junta de Extremadura',
+    description: 'Socio tecnológico en proyectos de modernización de servicios ciudadanos regionales.',
+    points: ['Consultoría técnica', 'Software a medida', 'Soporte evolutivo'],
+    buttonText: 'Ver Proyecto',
     link: '/clientes/instituciones/junta-de-extremadura',
+    colSpan: 'md:col-span-2 lg:col-span-2', // Bento large block
   },
   {
     id: 2,
     logo: logo5,
-    title: 'INFOEX - Servicio de Prevención y Extinción de Incendios',
-    description:
-      'Desarrollo de herramientas tecnológicas para la coordinación y gestión operativa de emergencias forestales.',
-    points: [
-      'Sistemas de geolocalización y seguimiento de recursos en tiempo real.',
-      'Plataformas de gestión centralizada para personal de emergencias y retenes.',
-      'Análisis de datos y reportes de actuación para la toma de decisiones críticas.',
-    ],
-    buttonText: 'Proyecto INFOEX',
+    title: 'INFOEX',
+    description: 'Herramientas para la gestión operativa de emergencias forestales.',
+    points: ['Geolocalización', 'Gestión centralizada', 'Análisis de datos'],
+    buttonText: 'Ver Proyecto',
     link: '/clientes/instituciones/infoex',
+    colSpan: 'md:col-span-1 lg:col-span-1',
   },
   {
     id: 3,
     logo: logo1,
-    title: 'Escuela de Administración Pública de Extremadura',
-    description:
-      'Servicio para la gestión educativa, administración integral y el hosting de la plataforma @vanza de educación a distancia en la comunidad autónoma de Extremadura',
-    points: [
-      'Portal del alumno personalizado para la gestión integral del expediente formativo.',
-      'Administración y gestión técnica avanzada en plataformas Moodle y Open Edx.',
-      'Sincronización de datos y automatización de certificaciones oficiales.',
-    ],
-    buttonText: 'Escuela Administración Pública',
+    title: 'Escuela de Administración Pública',
+    description: 'Hosting y gestión integral de la plataforma @vanza de educación a distancia.',
+    points: ['Portal del alumno', 'Moodle y Open Edx', 'Automatización'],
+    buttonText: 'Ver Proyecto',
     link: '/clientes/instituciones/escuela-de-administracion-publica',
+    colSpan: 'md:col-span-1 lg:col-span-1',
   },
   {
     id: 4,
     logo: logo2,
     title: 'Diputación de Cáceres',
-    description:
-      'Desarrollo de herramientas de gestión territorial y administrativa para la provincia.',
-    points: [
-      'Aplicación a medida para la gestión del catálogo formativo provincial.',
-      'Administración estratégica de plataformas de e-learning Moodle y Open Edx.',
-      'Proyecto de gestión de obras para la planificación y seguimiento de infraestructuras.',
-    ],
-    buttonText: 'Diputación de Cáceres',
+    description: 'Herramientas de gestión territorial y administrativa para la provincia.',
+    points: ['Catálogo formativo', 'Plataformas e-learning', 'Gestión de obras'],
+    buttonText: 'Ver Proyecto',
     link: '/clientes/instituciones/diputacion-de-caceres',
+    colSpan: 'md:col-span-1 lg:col-span-1',
   },
   {
     id: 5,
     logo: logo3,
-    title: 'INCUAL - Instituto Nacional de las Cualificaciones',
-    description:
-      'Apoyo tecnológico estratégico en la gestión y difusión del Catálogo Nacional de Cualificaciones Profesionales.',
-    points: [
-      'Desarrollo de sistemas para la gestión eficiente de cualificaciones y unidades de competencia.',
-      'Herramientas avanzadas para la sincronización de datos con registros estatales y autonómicos.',
-      'Soporte técnico especializado y mantenimiento preventivo de plataformas críticas.',
-    ],
-    buttonText: 'Visitar INCUAL',
+    title: 'INCUAL',
+    description: 'Gestión y difusión del Catálogo Nacional de Cualificaciones Profesionales.',
+    points: ['Gestión eficiente', 'Sincronización de datos', 'Mantenimiento'],
+    buttonText: 'Ver Proyecto',
     link: '/clientes/instituciones/instituto-nacional-de-las-cualificaciones',
+    colSpan: 'md:col-span-2 lg:col-span-1',
   },
 ]
 
-// Logos interactivos para el Banner Superior
-const collaboratorLogos = [
-  { src: logo4, alt: 'Junta de Extremadura', targetId: 1 },
-  { src: logo5, alt: 'INFOEX', targetId: 2 },
-  { src: logo1, alt: 'Escuela Administración Pública', targetId: 3 },
-  { src: logo2, alt: 'Diputación de Cáceres', targetId: 4 },
-  { src: logo3, alt: 'INCUAL', targetId: 5 },
-]
-
 export function InstitutionsPage() {
-  // Función para hacer Smooth Scroll hacia la sección exacta
-  const scrollToInstitution = (id: number) => {
-    const element = document.getElementById(`institucion-${id}`)
-    if (element) {
-      const offset = 100 // Margen para el header
-      const elementPosition =
-        element.getBoundingClientRect().top + window.scrollY
-
-      window.scrollTo({
-        top: elementPosition - offset,
-        behavior: 'smooth',
-      })
-    }
-  }
+  const [hoveredCard, setHoveredCard] = useState<number | null>(null)
 
   return (
     <>
       <Helmet>
         <title key='title'>Novis - Instituciones Públicas</title>
-
         <meta
           name='keywords'
-          content={`Novis, Software, Clientes, Extremadura`}
+          content={`Novis, Software, Clientes, Extremadura, Sector Público`}
         />
       </Helmet>
 
-      <div className='bg-white flex flex-col w-full min-h-screen'>
-        {/* 1. HERO LUMINOSO (Más compacto y menos invasivo) */}
-        <section className='pt-20 pb-12 md:pt-28 md:pb-16 bg-white relative'>
-          <div className='max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center'>
+      <div className='bg-slate-50 flex flex-col w-full min-h-screen text-slate-600'>
+        {/* 1. HERO LUMINOSO */}
+        <section className='pt-32 pb-16 md:pt-40 md:pb-24 relative overflow-hidden'>
+          <div className='absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-emerald-100/50 via-slate-50 to-slate-50 z-0'></div>
+          
+          <div className='max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center'>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
             >
-              <span className='inline-block py-1.5 px-4 rounded-full bg-gray-50 border border-gray-200 text-gray-500 text-xs font-bold tracking-widest uppercase mb-6 shadow-sm'>
+              <span className='inline-flex items-center py-1.5 px-4 rounded-full bg-emerald-100 border border-emerald-200 text-emerald-700 text-xs font-bold tracking-[0.2em] uppercase mb-8 shadow-sm backdrop-blur-sm'>
+                <Building2 className="w-3.5 h-3.5 mr-2" />
                 Sector Público
               </span>
 
-              <h1 className='text-4xl md:text-5xl font-extrabold text-gray-900 mb-6 tracking-tight'>
+              <h1 className='text-4xl md:text-6xl font-black text-slate-900 mb-8 tracking-tight'>
                 Colaboración con{' '}
-                <span className='text-green-600'>Instituciones</span>
+                <span className='text-transparent bg-clip-text bg-gradient-to-r from-emerald-500 to-green-500'>
+                  Instituciones
+                </span>
               </h1>
 
-              <p className='text-lg text-gray-600 leading-relaxed font-medium'>
+              <p className='text-lg md:text-xl text-slate-600 leading-relaxed font-medium max-w-3xl mx-auto'>
                 Proporcionamos soluciones tecnológicas robustas y seguras para
                 la administración pública, adaptándonos a los estándares
                 oficiales más exigentes.
@@ -146,148 +109,101 @@ export function InstitutionsPage() {
           </div>
         </section>
 
-        {/* 2. TRUST BANNER INTERACTIVO (Logos Flotantes) */}
-        <section className='pb-16 pt-8 bg-white overflow-hidden relative border-b border-gray-100'>
-          {/* Fondo de puntos sutil (igual que en tu captura) */}
-          <div className='absolute inset-0 z-0 opacity-[0.03] bg-[radial-gradient(#000_2px,transparent_2px)] [background-size:24px_24px] pointer-events-none'></div>
-
-          <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10'>
-            <p className='text-xs font-bold text-gray-400 uppercase tracking-widest mb-10'>
-              Descubre nuestros casos de éxito (Haz clic)
-            </p>
-
-            <div className='flex flex-wrap justify-center items-center gap-6 md:gap-10'>
-              {collaboratorLogos.map((logo, index) => (
-                <motion.button
-                  key={index}
-                  onClick={() => scrollToInstitution(logo.targetId)}
-                  animate={{ y: [0, -12, 0] }}
-                  transition={{
-                    duration: 4,
-                    repeat: Infinity,
-                    ease: 'easeInOut',
-                    delay: index * 0.3,
-                  }}
-                  whileHover={{
-                    scale: 1.08,
-                    y: 0,
-                    transition: { duration: 0.2 },
-                  }}
-                  whileTap={{ scale: 0.95 }}
-                  className='w-24 h-24 md:w-32 md:h-32 bg-white rounded-full shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-gray-100 flex items-center justify-center p-5 cursor-pointer group hover:border-green-200 hover:shadow-green-500/10 transition-all'
-                  title={`Ver proyecto de ${logo.alt}`}
+        {/* 2. BENTO GRID INTERACTIVO (Casos de Éxito) */}
+        <section className='pb-24 relative z-10'>
+          <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
+            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>
+              {institutionsData.map((inst, index) => (
+                <motion.div
+                  key={inst.id}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.1 }}
+                  onHoverStart={() => setHoveredCard(inst.id)}
+                  onHoverEnd={() => setHoveredCard(null)}
+                  className={`group relative h-[400px] rounded-3xl bg-white border border-slate-200 shadow-sm overflow-hidden flex flex-col justify-center items-center cursor-pointer transition-all duration-500 hover:border-emerald-300 hover:shadow-xl hover:shadow-emerald-100 ${inst.colSpan}`}
                 >
-                  <img
-                    src={logo.src}
-                    alt={logo.alt}
-                    className='w-full h-full object-contain filter grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300'
-                  />
-                </motion.button>
+                  {/* Gradiente de fondo en hover */}
+                  <div className='absolute inset-0 bg-gradient-to-b from-transparent via-white/90 to-white opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-0'></div>
+
+                  {/* Logo Center (Escala y sube en hover) */}
+                  <motion.div
+                    animate={{
+                      y: hoveredCard === inst.id ? -100 : 0,
+                      scale: hoveredCard === inst.id ? 0.6 : 1,
+                    }}
+                    transition={{ duration: 0.4, ease: "easeInOut" }}
+                    className='relative z-10 w-48 h-48 flex items-center justify-center p-6 bg-slate-50 rounded-full border border-slate-100 shadow-lg group-hover:bg-emerald-50 group-hover:border-emerald-100'
+                  >
+                    <img
+                      src={inst.logo}
+                      alt={inst.title}
+                      className='w-full h-full object-contain transition-transform duration-500 group-hover:scale-110'
+                    />
+                  </motion.div>
+
+                  {/* Contenido Revelado en Hover */}
+                  <AnimatePresence>
+                    {hoveredCard === inst.id && (
+                      <motion.div
+                        initial={{ opacity: 0, y: 50 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: 20 }}
+                        transition={{ duration: 0.3, delay: 0.1 }}
+                        className='absolute bottom-0 left-0 w-full p-8 z-20 flex flex-col'
+                      >
+                        <h3 className='text-2xl font-bold text-slate-900 mb-3 tracking-tight'>
+                          {inst.title}
+                        </h3>
+                        <p className='text-sm text-slate-600 mb-4 line-clamp-2'>
+                          {inst.description}
+                        </p>
+                        <div className='flex flex-wrap gap-2 mb-6'>
+                          {inst.points.map((point, i) => (
+                            <span key={i} className='text-[10px] uppercase tracking-wider font-bold bg-emerald-50 text-emerald-700 py-1 px-2.5 rounded-full border border-emerald-200'>
+                              {point}
+                            </span>
+                          ))}
+                        </div>
+                        <a
+                          href={inst.link}
+                          className='inline-flex items-center justify-center w-full py-3 bg-slate-900 hover:bg-emerald-600 text-white font-bold rounded-xl transition-colors shadow-md'
+                        >
+                          {inst.buttonText}
+                          <ExternalLink className='ml-2 w-4 h-4' />
+                        </a>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </motion.div>
               ))}
             </div>
           </div>
         </section>
 
-        {/* 3. LISTADO DE CASOS DE ÉXITO (Z-PATTERN) */}
-        <section className='py-24 bg-white relative overflow-hidden'>
-          <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
-            <div className='space-y-32 md:space-y-40'>
-              {institutionsData.map((inst, index) => {
-                const isEven = index % 2 !== 0
-                const numberString = (index + 1).toString().padStart(2, '0')
-
-                return (
-                  <motion.div
-                    id={`institucion-${inst.id}`}
-                    key={inst.id}
-                    initial={{ opacity: 0, y: 40 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, margin: '-100px' }}
-                    transition={{ duration: 0.7 }}
-                    className={`flex flex-col lg:flex-row items-center gap-12 lg:gap-20 relative ${isEven ? 'lg:flex-row-reverse' : ''} pt-10`}
-                  >
-                    <div
-                      className={`absolute top-1/2 -translate-y-1/2 text-[15rem] md:text-[20rem] font-black text-gray-50/80 z-0 pointer-events-none select-none ${isEven ? '-left-10' : '-right-10'}`}
-                    >
-                      {numberString}
-                    </div>
-
-                    <div className='w-full lg:w-5/12 relative z-10 flex justify-center'>
-                      <div className='w-full max-w-sm aspect-square bg-white rounded-[3rem] shadow-[0_20px_50px_rgb(0,0,0,0.06)] border border-gray-100 flex items-center justify-center p-12 group hover:-translate-y-2 transition-transform duration-500'>
-                        <img
-                          src={inst.logo}
-                          alt={inst.title}
-                          className='w-full h-full object-contain filter group-hover:scale-105 transition-transform duration-500 relative z-10'
-                        />
-                      </div>
-                    </div>
-
-                    <div className='w-full lg:w-7/12 relative z-10'>
-                      <div className='mb-8'>
-                        <h2 className='text-3xl md:text-4xl font-extrabold text-gray-900 mb-6 leading-tight tracking-tight'>
-                          {inst.title}
-                        </h2>
-                        <div className='w-16 h-1.5 bg-green-500 rounded-full'></div>
-                      </div>
-
-                      <p className='text-lg text-gray-600 mb-8 leading-relaxed font-medium'>
-                        {inst.description}
-                      </p>
-
-                      <ul className='space-y-4 mb-10'>
-                        {inst.points.map((point, i) => (
-                          <li
-                            key={i}
-                            className='flex items-start bg-gray-50/80 p-4 rounded-2xl border border-gray-100/50 hover:bg-green-50/50 hover:border-green-100 transition-colors'
-                          >
-                            <CheckCircle2
-                              className='w-6 h-6 text-green-600 mr-4 mt-0.5 flex-shrink-0'
-                              strokeWidth={2.5}
-                            />
-                            <span className='text-gray-700 leading-relaxed font-medium'>
-                              {point}
-                            </span>
-                          </li>
-                        ))}
-                      </ul>
-
-                      <a
-                        href={inst.link}
-                        className='inline-flex items-center px-8 py-4 bg-gray-900 hover:bg-green-600 text-white font-bold rounded-xl transition-all shadow-md group'
-                      >
-                        {inst.buttonText}
-                        <ExternalLink className='ml-3 w-5 h-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform' />
-                      </a>
-                    </div>
-                  </motion.div>
-                )
-              })}
-            </div>
-          </div>
-        </section>
-
         {/* 4. BLOQUE DE SEGURIDAD */}
-        <section className='py-24 bg-gray-900 text-white relative overflow-hidden'>
-          <div className='absolute top-0 right-0 w-1/2 h-full opacity-10 bg-[radial-gradient(#22c55e_2px,transparent_2px)] [background-size:24px_24px]'></div>
+        <section className='py-24 bg-slate-50 border-t border-slate-200 relative overflow-hidden'>
+          <div className='absolute top-0 right-0 w-1/2 h-full opacity-5 bg-[radial-gradient(#10b981_2px,transparent_2px)] [background-size:24px_24px]'></div>
 
           <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10'>
             <div className='grid md:grid-cols-2 gap-8 md:gap-12'>
-              <div className='p-10 md:p-12 bg-white/5 rounded-3xl border border-white/10 backdrop-blur-sm'>
-                <Landmark className='w-12 h-12 text-green-500 mb-6' />
-                <h3 className='text-2xl font-bold mb-4 tracking-tight'>
+              <div className='p-10 md:p-12 bg-white rounded-[2rem] border border-slate-200 hover:border-emerald-300 transition-colors shadow-lg hover:shadow-xl'>
+                <Landmark className='w-12 h-12 text-emerald-600 mb-6' />
+                <h3 className='text-2xl font-bold mb-4 tracking-tight text-slate-900'>
                   Administración Pública
                 </h3>
-                <p className='text-gray-400 leading-relaxed text-lg'>
+                <p className='text-slate-600 leading-relaxed text-lg'>
                   Soluciones diseñadas bajo estrictos estándares de
                   transparencia, accesibilidad y eficiencia para el ciudadano.
                 </p>
               </div>
-              <div className='p-10 md:p-12 bg-white/5 rounded-3xl border border-white/10 backdrop-blur-sm'>
-                <ShieldCheck className='w-12 h-12 text-green-500 mb-6' />
-                <h3 className='text-2xl font-bold mb-4 tracking-tight'>
+              <div className='p-10 md:p-12 bg-white rounded-[2rem] border border-slate-200 hover:border-emerald-300 transition-colors shadow-lg hover:shadow-xl'>
+                <ShieldCheck className='w-12 h-12 text-emerald-600 mb-6' />
+                <h3 className='text-2xl font-bold mb-4 tracking-tight text-slate-900'>
                   Seguridad Estatal
                 </h3>
-                <p className='text-gray-400 leading-relaxed text-lg'>
+                <p className='text-slate-600 leading-relaxed text-lg'>
                   Protección integral de datos y cumplimiento normativo riguroso
                   en infraestructuras críticas institucionales.
                 </p>

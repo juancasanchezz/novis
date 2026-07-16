@@ -12,6 +12,7 @@ import { PrivateClientsPage } from './pages/PrivateClientsPage'
 import { ServicesPage } from './pages/ServicesPage'
 import { ClientDetailPage } from './pages/ClientDetailPage'
 import { ClientsMainPage } from './pages/ClientsMainPage'
+import { SuccessCasesPage } from './pages/SuccessCasesPage'
 import { ContactPage } from './pages/ContactPage'
 import { NewsPage } from './pages/NewsPage'
 import { ArticlePage } from './pages/ArticlePage'
@@ -22,7 +23,7 @@ function App() {
     // Envolvemos toda la aplicación en el <Router>
     <Router>
       <ScrollToTop />
-      <div className='min-h-screen flex flex-col font-sans bg-white text-gray-900'>
+      <div className='min-h-screen flex flex-col font-sans bg-slate-50 text-slate-900 selection:bg-emerald-500/30'>
         {/* El Header se mostrará en todas las páginas */}
         <Header />
 
@@ -47,6 +48,7 @@ function App() {
 
             {/* Aquí añadiremos las futuras rutas: */}
             <Route path='/servicios' element={<ServicesPage />} />
+            <Route path='/casos-de-exito' element={<SuccessCasesPage />} />
             <Route path='/actualidad' element={<NewsPage />} />
             <Route path='/actualidad/:slug' element={<ArticlePage />} />
             <Route path='/contacto' element={<ContactPage />} />

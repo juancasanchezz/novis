@@ -18,15 +18,33 @@
   --color-background: #ffffff;
   --color-foreground: #0d0d0d;
   --color-border: #d4e3cc;
+
+  /* Fuentes modernas */
+  --font-sans: 'Inter', system-ui, sans-serif;
+  --font-heading: 'Outfit', system-ui, sans-serif;
 }
 
 @layer base {
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
-    font-family:
-      system-ui,
-      -apple-system,
-      sans-serif;
+    font-family: var(--font-sans);
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+  }
+}
+
+@layer utilities {
+  @keyframes marquee {
+    0% { transform: translateX(0%); }
+    100% { transform: translateX(-50%); }
+  }
+  .animate-marquee {
+    animation: marquee 30s linear infinite;
+  }
+  .animate-marquee:hover {
+    animation-play-state: paused;
   }
 }

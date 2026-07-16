@@ -1,6 +1,6 @@
-import { useState, useEffect } from 'react'
-import { motion } from 'framer-motion'
+import { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
+import { ChevronLeft, ChevronRight } from 'lucide-react'
 
 // Importación de logos
 import logo1 from '../assets/logo1-150x150.png'
@@ -38,67 +38,130 @@ const institutions = [
 ]
 
 export function Clients() {
-  const [activeIndex, setActiveIndex] = useState(0)
+  // Array super duplicado para garantizar el scroll infinito visualmente
+  const infiniteLogos = [...institutions, ...institutions, ...institutions, ...institutions, ...institutions, ...institutions]
+  
+  const scrollRef = useRef<HTMLDivElement>(null)
+  const [isHovering, setIsHovering] = useState(false)
+  const [isInteracting, setIsInteracting] = useState(false) // Para pausar un momento cuando el usuario hace click
 
+  // Efecto de Auto-Scroll suave
   useEffect(() => {
-    const interval = setInterval(() => {
-      setActiveIndex((current) => (current + 1) % institutions.length)
-    }, 3000)
-    return () => clearInterval(interval)
-  }, [])
+    let animationFrameId: number
+
+    const scroll = () => {
+      if (scrollRef.current && !isHovering && !isInteracting) {
+        // Velocidad de scroll (píxeles por frame)
+        scrollRef.current.scrollLeft += 1
+
+        // Magia del scroll infinito:
+        // Si hemos superado la mitad del ancho total desplazable, reseteamos al inicio suavemente
+        const maxScroll = scrollRef.current.scrollWidth / 2
+        if (scrollRef.current.scrollLeft >= maxScroll) {
+          scrollRef.current.scrollLeft -= maxScroll
+        }
+      }
+      animationFrameId = requestAnimationFrame(scroll)
+    }
+
+    animationFrameId = requestAnimationFrame(scroll)
+    return () => cancelAnimationFrame(animationFrameId)
+  }, [isHovering, isInteracting])
+
+  // Controles Manuales
+  const handleScroll = (direction: 'left' | 'right') => {
+    if (scrollRef.current) {
+      setIsInteracting(true)
+      const scrollAmount = 400 // Cantidad de px a desplazar por click
+      
+      scrollRef.current.scrollBy({
+        left: direction === 'right' ? scrollAmount : -scrollAmount,
+        behavior: 'smooth'
+      })
+
+      // Reanudar el auto-scroll después de 2 segundos de inactividad
+      setTimeout(() => {
+        setIsInteracting(false)
+      }, 2000)
+    }
+  }
 
   return (
-    <section className='py-20 bg-gray-50 border-b border-gray-200'>
-      <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className='bg-white rounded-2xl shadow-sm border border-gray-100 p-8 md:p-12 lg:p-16 overflow-hidden'
+    <section className='py-24 md:py-32 bg-gradient-to-b from-sky-50 via-white to-emerald-50 border-y border-emerald-100 overflow-hidden relative shadow-sm'>
+      {/* Elementos decorativos de fondo */}
+      <div className='absolute top-0 left-0 w-full h-full overflow-hidden z-0 pointer-events-none'>
+        <div className='absolute -top-[20%] -left-[10%] w-[50%] h-[50%] rounded-full bg-emerald-400/5 blur-[120px]'></div>
+        <div className='absolute top-[60%] -right-[10%] w-[40%] h-[60%] rounded-full bg-sky-400/5 blur-[100px]'></div>
+      </div>
+
+      <div className='max-w-[100vw] mx-auto relative z-10'>
+        <div className='text-center mb-16 md:mb-24 px-4'>
+          <span className='inline-flex items-center px-4 py-1.5 rounded-full bg-white border border-emerald-200 text-emerald-600 text-xs font-bold tracking-widest uppercase mb-6 shadow-sm'>
+            Confianza y Excelencia
+          </span>
+          <h2 className='text-4xl md:text-5xl lg:text-6xl font-black text-slate-900 mb-6 drop-shadow-sm tracking-tight leading-tight'>
+            Nuestros clientes <br className='md:hidden' /> nos <span className='text-transparent bg-clip-text bg-gradient-to-r from-emerald-500 to-green-500'>avalan</span>
+          </h2>
+          <p className='text-slate-600 text-lg md:text-xl font-medium max-w-3xl mx-auto'>
+            Instituciones públicas y empresas privadas líderes confían en nuestra experiencia para impulsar su transformación digital.
+          </p>
+        </div>
+
+        {/* Contenedor Principal del Carrusel */}
+        <div 
+          className='relative group w-full'
+          onMouseEnter={() => setIsHovering(true)}
+          onMouseLeave={() => setIsHovering(false)}
         >
-          <div className='text-center mb-12 md:mb-16'>
-            <h2 className='text-2xl md:text-3xl font-bold text-gray-900 mb-4 tracking-tight'>
-              Algunos de nuestros clientes
-            </h2>
-            <div className='w-16 h-1.5 bg-green-600 mx-auto rounded-full'></div>
-          </div>
+          {/* Sombras en los bordes para desvanecimiento superpuestas a las flechas */}
+          <div className="absolute top-0 left-0 w-16 md:w-48 h-full bg-gradient-to-r from-white to-transparent z-10 pointer-events-none"></div>
+          <div className="absolute top-0 right-0 w-16 md:w-48 h-full bg-gradient-to-l from-white to-transparent z-10 pointer-events-none"></div>
 
-          {/* Pasamos a md:grid-cols-5 para que quepan perfectamente los 5 logos en una fila */}
-          <div className='grid grid-cols-2 md:grid-cols-5 gap-y-16 gap-x-8 items-center justify-items-center'>
-            {institutions.map((logo, index) => {
-              const isActive = index === activeIndex
+          {/* Flecha Izquierda */}
+          <button 
+            onClick={() => handleScroll('left')}
+            className='absolute left-2 md:left-8 top-1/2 -translate-y-1/2 z-20 w-12 h-12 md:w-16 md:h-16 rounded-full bg-white/80 border border-slate-200 text-emerald-600 flex items-center justify-center backdrop-blur-md opacity-0 group-hover:opacity-100 hover:bg-emerald-500 hover:text-white hover:border-emerald-500 hover:scale-110 transition-all duration-300 shadow-sm hover:shadow-lg'
+            aria-label="Anterior cliente"
+          >
+            <ChevronLeft className='w-6 h-6 md:w-8 md:h-8' />
+          </button>
 
-              return (
-                <Link
-                  key={logo.id}
-                  to={logo.link}
-                  className='w-full flex justify-center items-center h-28 md:h-32 relative group cursor-pointer'
-                  title={`Ver proyecto de ${logo.alt}`}
-                >
-                  <motion.img
-                    src={logo.src}
-                    alt={logo.alt}
-                    animate={{
-                      scale: isActive ? 1.4 : 1.1,
-                      opacity: isActive ? 1 : 0.4,
-                      filter: isActive ? 'grayscale(0%)' : 'grayscale(100%)',
-                    }}
-                    // Añadimos un hover para que si el usuario pasa el ratón, se ilumine aunque no sea el activo
-                    whileHover={{
-                      scale: 1.4,
-                      opacity: 1,
-                      filter: 'grayscale(0%)',
-                    }}
-                    transition={{ duration: 0.8, ease: 'easeInOut' }}
-                    className='max-h-full max-w-[70%] md:max-w-[80%] object-contain absolute drop-shadow-sm group-hover:drop-shadow-lg transition-all'
-                  />
-                </Link>
-              )
-            })}
+          {/* Flecha Derecha */}
+          <button 
+            onClick={() => handleScroll('right')}
+            className='absolute right-2 md:right-8 top-1/2 -translate-y-1/2 z-20 w-12 h-12 md:w-16 md:h-16 rounded-full bg-white/80 border border-slate-200 text-emerald-600 flex items-center justify-center backdrop-blur-md opacity-0 group-hover:opacity-100 hover:bg-emerald-500 hover:text-white hover:border-emerald-500 hover:scale-110 transition-all duration-300 shadow-sm hover:shadow-lg'
+            aria-label="Siguiente cliente"
+          >
+            <ChevronRight className='w-6 h-6 md:w-8 md:h-8' />
+          </button>
+
+          {/* Carrusel Scrollable */}
+          <div 
+            ref={scrollRef}
+            className='flex items-center space-x-12 md:space-x-20 overflow-x-auto hide-scrollbar w-full px-8 md:px-24 snap-x snap-mandatory'
+            style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+          >
+            {infiniteLogos.map((logo, index) => (
+              <Link
+                key={`${logo.id}-${index}`}
+                to={logo.link}
+                // Reducimos el padding para que la imagen ocupe más espacio real en la tarjeta
+                // Cambiamos el fondo a blanco para que el logo resalte perfectamente y se fusione si tiene fondo blanco
+                className='flex-shrink-0 w-48 md:w-64 h-28 md:h-36 relative flex items-center justify-center group/logo cursor-pointer bg-white rounded-2xl border border-slate-200 hover:border-emerald-300 transition-all duration-500 p-2 md:p-4 shadow-sm hover:shadow-[0_8px_30px_rgba(16,185,129,0.15)] snap-center overflow-hidden'
+                title={`Ver proyecto de ${logo.alt}`}
+              >
+                <img
+                  src={logo.src}
+                  alt={logo.alt}
+                  // Aumentamos la escala base para que se vean mucho más grandes y claros
+                  className='max-h-full max-w-full object-contain scale-[1.3] md:scale-[1.5] transition-transform duration-500 group-hover/logo:scale-[1.45] md:group-hover/logo:scale-[1.6]'
+                />
+              </Link>
+            ))}
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   )
 }
+

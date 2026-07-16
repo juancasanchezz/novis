@@ -11,11 +11,11 @@ import {
   Globe,
   ArrowRight,
   X,
+  Plus
 } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import { Helmet } from 'react-helmet-async'
 
-// Los textos y servicios se mantienen intactos
 const fullServices = [
   {
     id: 'desarrollo',
@@ -33,20 +33,20 @@ const fullServices = [
   {
     id: 'consultoria',
     icon: Briefcase,
-    title: 'Consultoría en Software',
+    title: 'Consultoría TI',
     image:
       'https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=2070&auto=format&fit=crop',
     paragraphs: [
       'Nuestra empresa de consultoría de software ofrece soluciones integrales y asesoramiento experto para maximizar el potencial tecnológico de su negocio. Con un enfoque centrado en el cliente, evaluamos sus necesidades y diseñamos estrategias personalizadas para alcanzar sus objetivos.',
       'Nuestro equipo de consultores altamente calificados tiene una amplia experiencia en diversos sectores y dominios tecnológicos. Analizamos su infraestructura existente, identificamos áreas de mejora y proponemos soluciones innovadoras que impulsen la eficiencia y la rentabilidad.',
       'Desde la selección de plataformas y tecnologías hasta la gestión de proyectos y la optimización de procesos, brindamos orientación experta en cada etapa del ciclo de vida del software.',
-      'Ya sea que necesite optimizar su flujo de trabajo, implementar nuevas soluciones o resolver desafíos técnicos, estamos aquí para ayudarlo a aprovechar al máximo su inversión en tecnología. Confíe en nuestra consultoría de software y lleve su negocio al siguiente nivel de éxito.',
+      'Ya sea que necesite optimizar su flujo de trabajo, implementar nuevas soluciones o resolver desafíos técnicos, estamos aquí para ayudarlo a aprovechar al máximo su inversión en tecnología.',
     ],
   },
   {
     id: 'ia',
     icon: BrainCircuit,
-    title: 'Desarrollo de IA',
+    title: 'Inteligencia Artificial',
     image:
       'https://images.unsplash.com/photo-1620712943543-bcc4688e7485?q=80&w=2070&auto=format&fit=crop',
     paragraphs: [
@@ -58,7 +58,7 @@ const fullServices = [
   {
     id: 'pruebas',
     icon: ListChecks,
-    title: 'Pruebas de Software',
+    title: 'QA y Pruebas',
     image:
       'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=2070&auto=format&fit=crop',
     paragraphs: [
@@ -70,7 +70,7 @@ const fullServices = [
   {
     id: 'mantenimiento',
     icon: Wrench,
-    title: 'Mantenimiento y Soporte',
+    title: 'Soporte Continuo',
     image:
       'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=2070&auto=format&fit=crop',
     paragraphs: [
@@ -95,7 +95,7 @@ const fullServices = [
   {
     id: 'integracion',
     icon: Network,
-    title: 'Integración de Sistemas',
+    title: 'Integración Sistemas',
     image:
       'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=2034&auto=format&fit=crop',
     paragraphs: [
@@ -125,6 +125,7 @@ type Service = (typeof fullServices)[0] | null
 
 export function ServicesPage() {
   const [selectedService, setSelectedService] = useState<Service>(null)
+  const [hoveredIndex, setHoveredIndex] = useState<number>(0)
 
   useEffect(() => {
     if (selectedService) {
@@ -144,112 +145,126 @@ export function ServicesPage() {
 
         <meta
           name='keywords'
-          content={`Novis, Software, Servicops, Extremadura`}
+          content={`Novis, Software, Servicios, Extremadura`}
         />
       </Helmet>
 
-      <div className='bg-white flex flex-col w-full min-h-screen'>
+      <div className='bg-gradient-to-br from-sky-50 via-white to-emerald-50/30 flex flex-col w-full min-h-screen'>
         {/* 1. HERO LUMINOSO Y DIRECTO */}
-        <section className='pt-24 pb-16 bg-white border-b border-gray-100 text-center px-4 relative overflow-hidden'>
-          <div className='absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-green-500/10 rounded-full blur-[100px] pointer-events-none'></div>
+        <section className='pt-32 pb-20 md:pt-40 md:pb-24 border-b border-slate-200 text-center px-4 relative overflow-hidden'>
+          <div className='absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-emerald-500/10 rounded-full blur-[120px] pointer-events-none'></div>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             className='max-w-4xl mx-auto relative z-10'
           >
-            <span className='inline-block py-1.5 px-4 rounded-full bg-gray-100 text-gray-600 text-xs font-bold tracking-widest uppercase mb-6'>
+            <span className='inline-block py-1.5 px-4 rounded-full bg-emerald-50 text-emerald-600 text-xs font-bold tracking-[0.2em] uppercase mb-6 border border-emerald-200 backdrop-blur-md shadow-sm'>
               Nuestras Especialidades
             </span>
-            <h1 className='text-4xl md:text-5xl lg:text-6xl font-extrabold text-gray-900 mb-6 tracking-tight'>
+            <h1 className='text-5xl md:text-6xl lg:text-7xl font-black text-slate-900 mb-6 tracking-tighter drop-shadow-sm'>
               Soluciones tecnológicas{' '}
-              <span className='text-green-600'>integrales</span>
+              <span className='text-transparent bg-clip-text bg-gradient-to-r from-emerald-500 to-green-500'>
+                integrales
+              </span>
             </h1>
-            <p className='text-lg md:text-xl text-gray-600 font-medium max-w-2xl mx-auto'>
-              Explora nuestras áreas de especialización. Hacemos que la
-              tecnología trabaje a favor de tu empresa.
+            <p className='text-lg md:text-xl text-slate-600 font-light max-w-2xl mx-auto leading-relaxed'>
+              Explora nuestras áreas de especialización. Construimos software robusto y escalable para que tu empresa lidere en la era digital.
             </p>
           </motion.div>
         </section>
 
-        {/* 2. LISTADO EN Z-PATTERN (El efecto interactivo) */}
-        <section className='py-20 bg-white relative overflow-hidden'>
-          <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
-            <div className='space-y-24 md:space-y-32'>
+        {/* 2. TARJETAS EXPANDIBLES (HORIZONTAL ACCORDION) */}
+        <section className='py-20 relative overflow-hidden bg-transparent'>
+          <div className='max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8'>
+            <div className='flex flex-col xl:flex-row h-auto xl:h-[600px] w-full gap-4 xl:gap-2'>
               {fullServices.map((service, index) => {
-                const isEven = index % 2 !== 0
-                const numberString = (index + 1).toString().padStart(2, '0')
-
-                // Separamos el primer párrafo: La primera frase visible, el resto se esconde
+                const isHovered = hoveredIndex === index
                 const firstSentence = service.paragraphs[0].split('.')[0] + '.'
-                const remainingDescription = service.paragraphs[0]
-                  .split('.')
-                  .slice(1)
-                  .join('.')
-                  .trim()
 
                 return (
                   <motion.div
                     key={service.id}
-                    initial={{ opacity: 0, y: 40 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, margin: '-100px' }}
-                    transition={{ duration: 0.7 }}
+                    onMouseEnter={() => setHoveredIndex(index)}
                     onClick={() => setSelectedService(service)}
-                    className={`flex flex-col lg:flex-row items-center gap-10 lg:gap-16 relative cursor-pointer group pt-8 ${isEven ? 'lg:flex-row-reverse' : ''}`}
+                    className={`relative rounded-[2rem] overflow-hidden cursor-pointer transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)]
+                      flex-shrink-0 xl:flex-shrink
+                      h-[300px] xl:h-full shadow-sm border border-slate-200/50
+                      ${isHovered ? 'xl:flex-[3.5] xl:max-w-[800px]' : 'xl:flex-[1] xl:max-w-[180px]'}
+                      group
+                    `}
+                    style={{
+                      boxShadow: isHovered
+                        ? '0 20px 40px -10px rgba(16,185,129,0.15), inset 0 0 0 1px rgba(16,185,129,0.2)'
+                        : 'inset 0 0 0 1px rgba(0,0,0,0.05)',
+                    }}
                   >
-                    {/* Número gigante de fondo */}
+                    {/* Imagen de fondo */}
                     <div
-                      className={`absolute top-1/2 -translate-y-1/2 text-[12rem] md:text-[18rem] font-black text-gray-50/80 z-0 pointer-events-none transition-colors duration-500 group-hover:text-green-50/50 ${isEven ? '-left-8' : '-right-8'}`}
-                    >
-                      {numberString}
-                    </div>
+                      className='absolute inset-0 bg-cover bg-center transition-transform duration-1000 group-hover:scale-105'
+                      style={{ backgroundImage: `url(${service.image})` }}
+                    />
+                    
+                    {/* Overlay: luminoso pero que permite ver la imagen clara arriba */}
+                    <div 
+                      className={`absolute inset-0 transition-colors duration-700
+                        ${isHovered 
+                          ? 'bg-gradient-to-t from-white/95 via-white/70 to-transparent' 
+                          : 'bg-gradient-to-t from-white/90 via-white/50 to-white/20'
+                        }
+                      `} 
+                    />
 
-                    {/* Columna Imagen */}
-                    <div className='w-full lg:w-5/12 relative z-10'>
-                      <div className='aspect-[4/3] w-full rounded-[2.5rem] overflow-hidden shadow-xl border border-gray-100 group-hover:shadow-2xl transition-all duration-500 relative'>
-                        <div className='absolute inset-0 bg-gray-900/10 group-hover:bg-transparent transition-colors duration-500 z-10'></div>
-                        <img
-                          src={service.image}
-                          alt={service.title}
-                          className='w-full h-full object-cover filter group-hover:scale-105 transition-transform duration-700 relative z-0'
-                        />
-                      </div>
-                    </div>
-
-                    {/* Columna Texto (Interactiva) */}
-                    <div className='w-full lg:w-7/12 relative z-10 p-6 md:p-10 rounded-3xl group-hover:bg-gray-50/80 transition-colors duration-500 border border-transparent group-hover:border-gray-100'>
-                      <div className='flex items-center mb-6'>
-                        <div className='w-14 h-14 bg-green-50 rounded-2xl flex items-center justify-center mr-5 group-hover:bg-green-600 transition-colors duration-500 flex-shrink-0'>
-                          <service.icon
-                            className='w-7 h-7 text-green-600 group-hover:text-white transition-colors duration-500'
-                            strokeWidth={1.5}
+                    {/* Contenido */}
+                    <div className='absolute inset-0 flex flex-col justify-end p-6 md:p-8 xl:p-10'>
+                      <div className='flex items-center gap-4 xl:gap-6'>
+                        {/* Icono */}
+                        <div className={`flex items-center justify-center rounded-2xl bg-white/80 backdrop-blur-md border border-emerald-100 shadow-sm transition-all duration-500 flex-shrink-0
+                          ${isHovered ? 'w-14 h-14' : 'w-12 h-12 xl:w-14 xl:h-14'}
+                        `}>
+                          <service.icon 
+                            className={`text-emerald-600 transition-all duration-500
+                              ${isHovered ? 'w-6 h-6 scale-110' : 'w-5 h-5 xl:w-6 xl:h-6'}
+                            `} 
+                            strokeWidth={2} 
                           />
                         </div>
-                        <h2 className='text-3xl md:text-4xl font-extrabold text-gray-900 tracking-tight group-hover:text-green-700 transition-colors duration-300'>
+
+                        {/* Título y Texto (Visible al expandir o en móvil) */}
+                        <div className={`overflow-hidden transition-all duration-700 ease-in-out whitespace-nowrap xl:whitespace-normal
+                          ${isHovered ? 'w-full opacity-100 translate-x-0' : 'w-full xl:w-0 opacity-100 xl:opacity-0 xl:-translate-x-4'}
+                        `}>
+                          <h3 className='text-2xl md:text-3xl font-bold text-slate-900 tracking-tight mb-2'>
+                            {service.title}
+                          </h3>
+                          
+                          {/* Texto corto animado (solo visible en hover desktop o siempre en móvil si hay espacio) */}
+                          <div className={`hidden xl:block transition-all duration-700 delay-100
+                            ${isHovered ? 'opacity-100 translate-y-0 max-h-40' : 'opacity-0 translate-y-4 max-h-0'}
+                          `}>
+                            <p className='text-slate-600 font-light leading-relaxed mb-4 line-clamp-2'>
+                              {firstSentence}
+                            </p>
+                            <span className='inline-flex items-center text-emerald-600 font-bold text-sm group-hover:text-emerald-500 transition-colors'>
+                              Ver detalles completos <ArrowRight className='ml-2 w-4 h-4' />
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Título Rotado (Visible SOLO cuando NO está expandido en desktop) */}
+                      <div className={`hidden xl:block absolute bottom-10 left-1/2 -translate-x-1/2 origin-bottom-left -rotate-90 whitespace-nowrap transition-all duration-500 ease-in-out
+                        ${isHovered ? 'opacity-0 invisible' : 'opacity-100 visible'}
+                      `}>
+                        <h3 className='text-xl font-bold text-slate-600 tracking-wider uppercase pl-16'>
                           {service.title}
-                        </h2>
-                      </div>
-
-                      <div className='w-16 h-1.5 bg-green-500 rounded-full mb-6 opacity-50 group-hover:opacity-100 transition-opacity duration-300'></div>
-
-                      {/* Algo de texto: La primera frase del párrafo (Siempre visible) */}
-                      <p className='text-lg text-gray-700 font-medium leading-relaxed'>
-                        {firstSentence}
-                      </p>
-
-                      {/* La breve descripción: El resto del párrafo (Aparece al hacer hover) */}
-                      <div className='max-h-0 opacity-0 overflow-hidden group-hover:max-h-[200px] group-hover:opacity-100 transition-all duration-700 ease-in-out mt-0 group-hover:mt-4'>
-                        <p className='text-gray-500 leading-relaxed'>
-                          {remainingDescription}
-                        </p>
-                      </div>
-
-                      {/* Botón CTA (Aparece iluminado en hover) */}
-                      <div className='mt-8 inline-flex items-center px-6 py-3 bg-white border border-gray-200 group-hover:border-green-600 group-hover:bg-green-600 group-hover:text-white text-gray-700 font-bold rounded-xl transition-all shadow-sm'>
-                        Ver información completa
-                        <ArrowRight className='ml-3 w-5 h-5 transform group-hover:translate-x-1 transition-transform' />
+                        </h3>
                       </div>
                     </div>
+
+                    {/* Hover indicator line at the bottom */}
+                    <div className={`absolute bottom-0 left-0 h-1.5 bg-emerald-500 transition-all duration-700 ease-in-out
+                      ${isHovered ? 'w-full' : 'w-0'}
+                    `}></div>
                   </motion.div>
                 )
               })}
@@ -257,7 +272,7 @@ export function ServicesPage() {
           </div>
         </section>
 
-        {/* 3. MODAL DE DETALLE COMPLETO */}
+        {/* 3. MODAL DE DETALLE COMPLETO (Tema Luminoso) */}
         <AnimatePresence>
           {selectedService && (
             <>
@@ -266,48 +281,48 @@ export function ServicesPage() {
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 onClick={() => setSelectedService(null)}
-                className='fixed inset-0 bg-gray-900/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 sm:p-6'
+                className='fixed inset-0 bg-slate-900/40 backdrop-blur-sm z-50 flex items-center justify-center p-4 sm:p-6'
               >
                 <motion.div
                   initial={{ opacity: 0, scale: 0.95, y: 20 }}
                   animate={{ opacity: 1, scale: 1, y: 0 }}
                   exit={{ opacity: 0, scale: 0.95, y: 20 }}
                   onClick={(e) => e.stopPropagation()}
-                  className='bg-white w-full max-w-4xl max-h-[90vh] rounded-[2rem] shadow-2xl overflow-hidden flex flex-col relative'
+                  className='bg-white border border-slate-200 w-full max-w-4xl max-h-[90vh] rounded-[2rem] shadow-2xl overflow-hidden flex flex-col relative'
                 >
                   <button
                     onClick={() => setSelectedService(null)}
-                    className='absolute top-4 right-4 z-20 w-10 h-10 bg-black/50 hover:bg-black/80 backdrop-blur-md text-white rounded-full flex items-center justify-center transition-colors'
+                    className='absolute top-4 right-4 z-20 w-10 h-10 bg-white/80 hover:bg-white border border-slate-200 backdrop-blur-md text-slate-800 rounded-full flex items-center justify-center transition-colors shadow-sm'
                   >
                     <X className='w-5 h-5' />
                   </button>
 
                   <div className='overflow-y-auto overflow-x-hidden custom-scrollbar flex-grow'>
                     <div className='relative h-64 sm:h-80 w-full'>
-                      <div className='absolute inset-0 bg-gradient-to-t from-gray-900/90 via-gray-900/30 to-transparent z-10'></div>
+                      <div className='absolute inset-0 bg-gradient-to-t from-white via-white/80 to-transparent z-10'></div>
                       <img
                         src={selectedService.image}
                         alt={selectedService.title}
                         className='w-full h-full object-cover'
                       />
                       <div className='absolute bottom-0 left-0 p-8 sm:p-10 z-20 flex items-end'>
-                        <div className='w-16 h-16 bg-white rounded-2xl flex items-center justify-center mr-6 shadow-lg hidden sm:flex'>
+                        <div className='w-16 h-16 bg-white border border-emerald-100 shadow-sm rounded-2xl flex items-center justify-center mr-6 hidden sm:flex'>
                           {selectedService.icon && (
-                            <selectedService.icon className='w-8 h-8 text-green-600' />
+                            <selectedService.icon className='w-8 h-8 text-emerald-600' strokeWidth={2} />
                           )}
                         </div>
-                        <h2 className='text-3xl sm:text-4xl font-bold text-white leading-tight drop-shadow-md'>
+                        <h2 className='text-3xl sm:text-5xl font-black text-slate-900 leading-tight drop-shadow-sm tracking-tight'>
                           {selectedService.title}
                         </h2>
                       </div>
                     </div>
 
                     <div className='p-8 sm:p-12 space-y-6'>
-                      <p className='text-xl text-gray-800 font-medium border-l-4 border-green-500 pl-6 py-2 bg-gradient-to-r from-green-50 to-transparent'>
+                      <p className='text-xl text-slate-800 font-medium border-l-4 border-emerald-500 pl-6 py-2 bg-gradient-to-r from-emerald-50 to-transparent'>
                         {selectedService.paragraphs[0]}
                       </p>
 
-                      <div className='space-y-5 text-gray-600 leading-relaxed text-lg'>
+                      <div className='space-y-5 text-slate-600 font-light leading-relaxed text-lg'>
                         {selectedService.paragraphs
                           .slice(1)
                           .map((paragraph, index) => (
@@ -317,14 +332,14 @@ export function ServicesPage() {
                     </div>
                   </div>
 
-                  <div className='bg-gray-50 border-t border-gray-100 p-6 sm:px-10 flex flex-col sm:flex-row justify-between items-center gap-4 flex-shrink-0'>
-                    <span className='text-gray-500 font-medium text-sm text-center sm:text-left'>
+                  <div className='bg-slate-50 border-t border-slate-200 p-6 sm:px-10 flex flex-col sm:flex-row justify-between items-center gap-4 flex-shrink-0'>
+                    <span className='text-slate-600 font-medium text-sm text-center sm:text-left'>
                       ¿Te interesa implementar este servicio en tu empresa?
                     </span>
                     <Link
                       to='/contacto'
                       onClick={() => setSelectedService(null)}
-                      className='w-full sm:w-auto px-8 py-3 bg-green-600 hover:bg-green-700 text-white font-bold rounded-xl transition-colors shadow-sm text-center'
+                      className='w-full sm:w-auto px-8 py-3 bg-emerald-600 hover:bg-emerald-500 text-white font-bold rounded-xl transition-all shadow-[0_4px_14px_rgba(16,185,129,0.3)] hover:shadow-[0_6px_20px_rgba(16,185,129,0.4)] hover:-translate-y-0.5 text-center'
                     >
                       Contactar ahora
                     </Link>
@@ -336,20 +351,21 @@ export function ServicesPage() {
         </AnimatePresence>
 
         {/* 4. CTA FINAL */}
-        <section className='py-20 bg-gray-900 text-center px-4 mt-auto'>
-          <div className='max-w-3xl mx-auto'>
-            <h2 className='text-3xl font-bold text-white mb-6'>
-              ¿Tienes dudas sobre qué tecnología implementar?
+        <section className='py-32 bg-transparent border-t border-slate-200 text-center px-4 mt-auto relative overflow-hidden'>
+          <div className='absolute inset-0 bg-gradient-to-t from-emerald-50/50 to-transparent pointer-events-none'></div>
+          <div className='max-w-3xl mx-auto relative z-10'>
+            <h2 className='text-4xl md:text-5xl font-black text-slate-900 mb-6 tracking-tighter'>
+              ¿Dudas sobre qué <span className='text-emerald-500'>tecnología</span> implementar?
             </h2>
-            <p className='text-gray-400 mb-10 text-lg'>
-              Nuestro equipo está a tu disposición para auditar tu caso sin
-              compromiso.
+            <p className='text-slate-600 mb-10 text-xl font-light leading-relaxed'>
+              Nuestro equipo de ingenieros está a tu disposición para auditar tu caso sin
+              compromiso y trazar una hoja de ruta.
             </p>
             <Link
               to='/contacto'
-              className='inline-flex items-center justify-center w-full sm:w-auto px-8 py-4 bg-green-600 hover:bg-green-500 text-white font-bold rounded-xl transition-colors shadow-lg'
+              className='inline-flex items-center justify-center w-full sm:w-auto px-8 py-4 bg-emerald-600 hover:bg-emerald-500 text-white font-bold rounded-xl transition-all shadow-[0_8px_30px_rgba(16,185,129,0.2)] hover:shadow-[0_8px_30px_rgba(16,185,129,0.4)] hover:-translate-y-1'
             >
-              Contacta con nuestro equipo.
+              Hablar con un experto
               <ArrowRight className='ml-3 w-5 h-5' />
             </Link>
           </div>

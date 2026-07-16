@@ -1,7 +1,6 @@
 export const categories = [
   'Desarrollo',
   'Tecnología',
-  'Casos de Éxito',
   'Noticias',
 ]
 

@@ -17,7 +17,6 @@ export function PrivateClientsPage() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    // Aquí iría la lógica de autenticación en el futuro
     console.log('Intento de login:', { username, password })
   }
 
@@ -25,26 +24,24 @@ export function PrivateClientsPage() {
     <>
       <Helmet>
         <title key='title'>Novis - Instituciones Privadas</title>
-
         <meta
           name='keywords'
           content={`Novis, Software, Clientes Privados, Extremadura`}
         />
       </Helmet>
-      {/*Usamos min-h-[calc(100vh-6rem)] para que ocupe toda la pantalla
-      restando el Header*/}
-      <div className='flex flex-col lg:flex-row min-h-[calc(100vh-6rem)] bg-white w-full'>
-        {/* PANEL IZQUIERDO: Branding y Propuesta de Valor (Oscuro y Corporativo) */}
-        <div className='lg:w-5/12 bg-gray-900 relative p-12 lg:p-20 flex flex-col justify-center overflow-hidden border-r border-gray-800'>
-          {/* Imagen de fondo sutil (abstracto tecnológico/servidores) */}
+      
+      <div className='flex flex-col lg:flex-row min-h-[calc(100vh-5rem)] bg-slate-50 w-full overflow-hidden'>
+        {/* PANEL IZQUIERDO: Branding y Propuesta de Valor */}
+        <div className='lg:w-5/12 relative p-12 lg:p-20 flex flex-col justify-center overflow-hidden border-b lg:border-b-0 lg:border-r border-slate-200'>
+          {/* Imagen de fondo sutil */}
           <div
-            className='absolute inset-0 z-0 opacity-20 mix-blend-luminosity bg-cover bg-center'
+            className='absolute inset-0 z-0 opacity-10 bg-cover bg-center'
             style={{
               backgroundImage:
                 "url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2070&auto=format&fit=crop')",
             }}
           ></div>
-          <div className='absolute inset-0 z-0 bg-gradient-to-br from-gray-900 via-gray-900 to-green-900/40'></div>
+          <div className='absolute inset-0 z-0 bg-[radial-gradient(ellipse_at_bottom_left,_var(--tw-gradient-stops))] from-emerald-100/50 via-slate-50 to-slate-50'></div>
 
           <div className='relative z-10'>
             <motion.div
@@ -52,70 +49,76 @@ export function PrivateClientsPage() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
             >
-              <div className='w-16 h-16 bg-green-500/20 rounded-2xl flex items-center justify-center mb-8 border border-green-500/30'>
+              <div className='w-16 h-16 bg-emerald-50 rounded-2xl flex items-center justify-center mb-8 border border-emerald-200 shadow-sm'>
                 <ShieldCheck
-                  className='w-8 h-8 text-green-400'
+                  className='w-8 h-8 text-emerald-600'
                   strokeWidth={1.5}
                 />
               </div>
-              <h1 className='text-3xl md:text-4xl font-bold text-white mb-6 tracking-tight'>
-                Área de Clientes Privados
+              <h1 className='text-3xl md:text-5xl font-black text-slate-900 mb-6 tracking-tight'>
+                Área de <span className='text-transparent bg-clip-text bg-gradient-to-r from-emerald-500 to-green-500'>Clientes Privados</span>
               </h1>
-              <p className='text-lg text-gray-300 mb-12 leading-relaxed'>
+              <p className='text-lg text-slate-600 mb-12 leading-relaxed'>
                 Acceso exclusivo al entorno seguro de NOVIS Software. Gestione
                 sus proyectos, consulte documentación y contacte con su equipo
-                asignado.
+                asignado en tiempo real.
               </p>
 
               {/* Ventajas del portal */}
               <div className='space-y-6'>
-                <div className='flex items-center text-gray-300'>
-                  <FileText className='w-5 h-5 text-green-500 mr-4 flex-shrink-0' />
-                  <span>Gestión documental y seguimiento de hitos.</span>
+                <div className='flex items-center text-slate-700 bg-white p-4 rounded-2xl border border-slate-200 shadow-sm'>
+                  <FileText className='w-6 h-6 text-emerald-600 mr-4 flex-shrink-0' />
+                  <span className='font-medium'>Gestión documental y seguimiento de hitos.</span>
                 </div>
-                <div className='flex items-center text-gray-300'>
-                  <Lock className='w-5 h-5 text-green-500 mr-4 flex-shrink-0' />
-                  <span>Entorno cifrado de alta seguridad (End-to-End).</span>
+                <div className='flex items-center text-slate-700 bg-white p-4 rounded-2xl border border-slate-200 shadow-sm'>
+                  <Lock className='w-6 h-6 text-emerald-600 mr-4 flex-shrink-0' />
+                  <span className='font-medium'>Entorno cifrado de alta seguridad (End-to-End).</span>
                 </div>
-                <div className='flex items-center text-gray-300'>
-                  <HeadphonesIcon className='w-5 h-5 text-green-500 mr-4 flex-shrink-0' />
-                  <span>Soporte técnico prioritario (SLA garantizado).</span>
+                <div className='flex items-center text-slate-700 bg-white p-4 rounded-2xl border border-slate-200 shadow-sm'>
+                  <HeadphonesIcon className='w-6 h-6 text-emerald-600 mr-4 flex-shrink-0' />
+                  <span className='font-medium'>Soporte técnico prioritario (SLA garantizado).</span>
                 </div>
               </div>
             </motion.div>
           </div>
         </div>
 
-        {/* PANEL DERECHO: Formulario de Login */}
-        <div className='lg:w-7/12 flex items-center justify-center p-8 md:p-16 lg:p-24 bg-gray-50'>
+        {/* PANEL DERECHO: Formulario de Login Glassmorphism */}
+        <div className='lg:w-7/12 flex items-center justify-center p-8 md:p-16 lg:p-24 relative'>
+          <div className='absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-white via-slate-50 to-slate-50 z-0'></div>
+          
           <motion.div
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className='w-full max-w-md'
+            className='w-full max-w-md relative z-10'
           >
-            <div className='bg-white p-10 md:p-12 rounded-3xl shadow-xl shadow-gray-200/50 border border-gray-100'>
-              <div className='text-center mb-10'>
-                <h2 className='text-2xl font-bold text-gray-900 mb-2'>
+            <div className='bg-white p-10 md:p-12 rounded-[2rem] shadow-xl shadow-slate-200 border border-slate-200 relative overflow-hidden'>
+              
+              {/* Brillo decorativo */}
+              <div className="absolute -top-24 -right-24 w-48 h-48 bg-emerald-400 rounded-full blur-[100px] opacity-10 pointer-events-none"></div>
+
+              <div className='text-center mb-10 relative z-10'>
+                <h2 className='text-3xl font-bold text-slate-900 mb-2 tracking-tight'>
                   Iniciar Sesión
                 </h2>
-                <p className='text-gray-500'>
+                <p className='text-slate-500 font-medium'>
                   Introduzca sus credenciales de acceso
                 </p>
               </div>
 
-              <form onSubmit={handleSubmit} className='space-y-6'>
+              <form onSubmit={handleSubmit} className='space-y-6 relative z-10'>
                 {/* Campo Usuario */}
                 <div>
                   <label
-                    className='block text-sm font-semibold text-gray-700 mb-2'
+                    className='block text-xs font-bold text-slate-600 mb-2 uppercase tracking-widest'
                     htmlFor='username'
                   >
-                    Nombre de usuario o Email
+                    Usuario / Email
                   </label>
-                  <div className='relative'>
+                  <div className='relative group'>
                     <div className='absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none'>
-                      <User className='h-5 w-5 text-gray-400' />
+                      <User className='h-5 w-5 text-slate-400 group-focus-within:text-emerald-600 transition-colors' />
                     </div>
                     <input
                       id='username'
@@ -123,7 +126,7 @@ export function PrivateClientsPage() {
                       required
                       value={username}
                       onChange={(e) => setUsername(e.target.value)}
-                      className='block w-full pl-11 pr-4 py-3.5 bg-gray-50 border border-gray-200 rounded-xl text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all duration-200'
+                      className='block w-full pl-12 pr-4 py-4 bg-slate-50 border border-slate-200 rounded-2xl text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-500/30 focus:border-emerald-500 transition-all duration-300'
                       placeholder='usuario@empresa.com'
                     />
                   </div>
@@ -133,21 +136,21 @@ export function PrivateClientsPage() {
                 <div>
                   <div className='flex items-center justify-between mb-2'>
                     <label
-                      className='block text-sm font-semibold text-gray-700'
+                      className='block text-xs font-bold text-slate-600 uppercase tracking-widest'
                       htmlFor='password'
                     >
                       Contraseña
                     </label>
                     <a
                       href='#'
-                      className='text-sm font-medium text-green-600 hover:text-green-500 transition-colors'
+                      className='text-xs font-bold text-emerald-600 hover:text-emerald-700 transition-colors'
                     >
-                      ¿Olvidó su contraseña?
+                      ¿Olvidó la clave?
                     </a>
                   </div>
-                  <div className='relative'>
+                  <div className='relative group'>
                     <div className='absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none'>
-                      <KeyRound className='h-5 w-5 text-gray-400' />
+                      <KeyRound className='h-5 w-5 text-slate-400 group-focus-within:text-emerald-600 transition-colors' />
                     </div>
                     <input
                       id='password'
@@ -155,7 +158,7 @@ export function PrivateClientsPage() {
                       required
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}
-                      className='block w-full pl-11 pr-4 py-3.5 bg-gray-50 border border-gray-200 rounded-xl text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all duration-200'
+                      className='block w-full pl-12 pr-4 py-4 bg-slate-50 border border-slate-200 rounded-2xl text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-500/30 focus:border-emerald-500 transition-all duration-300'
                       placeholder='••••••••'
                     />
                   </div>
@@ -164,15 +167,15 @@ export function PrivateClientsPage() {
                 {/* Botón Entrar */}
                 <button
                   type='submit'
-                  className='w-full flex justify-center items-center py-4 px-4 border border-transparent rounded-xl shadow-md text-base font-bold text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 transition-all duration-200 mt-8 group'
+                  className='w-full flex justify-center items-center py-4 px-4 border border-emerald-600 rounded-2xl shadow-md text-sm uppercase tracking-widest font-bold text-white bg-emerald-600 hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-emerald-600 transition-all duration-300 mt-8 group'
                 >
                   Acceder al Portal
-                  <ArrowRight className='ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform' />
+                  <ArrowRight className='ml-3 w-5 h-5 group-hover:translate-x-1 transition-transform' />
                 </button>
               </form>
 
-              <div className='mt-10 pt-6 border-t border-gray-100 flex items-center justify-center text-sm text-gray-500'>
-                <Lock className='w-4 h-4 mr-2 text-gray-400' />
+              <div className='mt-10 pt-6 border-t border-slate-200 flex items-center justify-center text-xs font-medium tracking-wide text-slate-500 relative z-10'>
+                <Lock className='w-4 h-4 mr-2 text-emerald-600/50' />
                 Conexión cifrada de extremo a extremo
               </div>
             </div>

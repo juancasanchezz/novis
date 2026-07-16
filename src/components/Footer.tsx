@@ -65,15 +65,17 @@ export function Footer() {
     }
   }
 
-  // Clases compartidas para asegurar que el verde y los grises son exactos
-  const textColor = 'text-[#8c9c81]' // Gris verdoso de la captura
-  const hoverTextColor = 'hover:text-white'
-  const iconGreen = 'text-[#6BA641]'
-  const socialBg = 'bg-[#6BA641] text-white hover:bg-[#5A8C37]'
+  const textColor = 'text-slate-600'
+  const hoverTextColor = 'hover:text-emerald-600'
+  const iconColor = 'text-emerald-500'
+  const socialBg = 'bg-white border border-slate-200 text-slate-500 hover:bg-emerald-50 hover:text-emerald-600 hover:border-emerald-200'
 
   return (
-    <footer className='bg-[#0D0D0D] pt-16 pb-12 border-t border-[#1a1a1a] font-sans mt-auto'>
-      <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
+    <footer className='bg-slate-50 pt-20 pb-12 border-t border-slate-200 font-sans mt-auto relative overflow-hidden'>
+      {/* Resplandor sutil en el fondo */}
+      <div className='absolute bottom-0 left-1/2 -translate-x-1/2 w-3/4 h-32 bg-emerald-500/5 blur-[100px] pointer-events-none'></div>
+
+      <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10'>
         <div className='grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-24 mb-16'>
           {/* Columna 1: Marca y Redes Sociales */}
           <div>
@@ -81,14 +83,13 @@ export function Footer() {
               <img
                 src={logoNovis}
                 alt='Logo de Novis Software'
-                className='h-16 w-auto object-contain'
+                className='h-12 w-auto object-contain'
               />
             </Link>
             <p
-              className={`${textColor} leading-relaxed max-w-sm mb-8 text-[15px]`}
+              className={`${textColor} leading-relaxed max-w-sm mb-10 text-sm font-light`}
             >
-              NOVIS Software, se crea para ejercer labores de consultoría y
-              desarrollo de proyectos de nuevas tecnologías.
+              NOVIS Software, consultoría de élite y desarrollo de proyectos de nuevas tecnologías para empresas e instituciones.
             </p>
 
             <div className='flex flex-wrap items-center gap-3'>
@@ -96,46 +97,46 @@ export function Footer() {
                 href='https://www.facebook.com/noviselearning'
                 target='_blank'
                 rel='noopener noreferrer'
-                className={`w-10 h-10 flex items-center justify-center rounded-full transition-all shadow-sm ${socialBg}`}
+                className={`w-10 h-10 flex items-center justify-center rounded-xl transition-all shadow-sm ${socialBg}`}
               >
-                <Facebook className='w-5 h-5' />
+                <Facebook className='w-4 h-4' />
               </a>
 
               <a
                 href='https://x.com/noviselearning'
                 target='_blank'
                 rel='noopener noreferrer'
-                className={`w-10 h-10 flex items-center justify-center rounded-full transition-all shadow-sm ${socialBg}`}
+                className={`w-10 h-10 flex items-center justify-center rounded-xl transition-all shadow-sm ${socialBg}`}
               >
-                <XLogo className='w-4 h-4' />
+                <XLogo className='w-3.5 h-3.5' />
               </a>
 
               <a
                 href='https://www.instagram.com/noviselearning/'
                 target='_blank'
                 rel='noopener noreferrer'
-                className={`w-10 h-10 flex items-center justify-center rounded-full transition-all shadow-sm ${socialBg}`}
+                className={`w-10 h-10 flex items-center justify-center rounded-xl transition-all shadow-sm ${socialBg}`}
               >
-                <Instagram className='w-5 h-5' />
+                <Instagram className='w-4 h-4' />
               </a>
 
               <a
                 href='https://es.linkedin.com/company/novis-s-l'
                 target='_blank'
                 rel='noopener noreferrer'
-                className={`w-10 h-10 flex items-center justify-center rounded-full transition-all shadow-sm ${socialBg}`}
+                className={`w-10 h-10 flex items-center justify-center rounded-xl transition-all shadow-sm ${socialBg}`}
               >
-                <Linkedin className='w-5 h-5' />
+                <Linkedin className='w-4 h-4' />
               </a>
 
               <button
                 onClick={(e) =>
                   handleExternalLink(e, 'WhatsApp', 'https://wa.me/34600000000')
                 }
-                className={`w-10 h-10 flex items-center justify-center rounded-full transition-all shadow-sm ${socialBg}`}
+                className={`w-10 h-10 flex items-center justify-center rounded-xl transition-all shadow-sm ${socialBg}`}
                 aria-label='WhatsApp'
               >
-                <WhatsAppLogo className='w-5 h-5' />
+                <WhatsAppLogo className='w-4 h-4' />
               </button>
 
               <button
@@ -146,59 +147,42 @@ export function Footer() {
                     'https://t.me/NovisSoftware',
                   )
                 }
-                className={`w-10 h-10 flex items-center justify-center rounded-full transition-all shadow-sm ${socialBg}`}
+                className={`w-10 h-10 flex items-center justify-center rounded-xl transition-all shadow-sm ${socialBg}`}
                 aria-label='Telegram'
               >
-                <TelegramLogo className='w-5 h-5 -ml-1 mt-0.5' />
+                <TelegramLogo className='w-4 h-4 -ml-0.5 mt-0.5' />
               </button>
             </div>
           </div>
 
-          {/* Columna 2: Enlaces Rápidos (Rutas Corregidas) */}
+          {/* Columna 2: Enlaces Rápidos */}
           <div>
-            <h3 className='text-white text-lg font-bold mb-8'>
+            <h3 className='text-slate-800 text-base font-bold tracking-wide uppercase mb-8'>
               Enlaces Rápidos
             </h3>
             <ul className='space-y-4'>
-              <li>
-                <Link
-                  to='/servicios'
-                  className={`${textColor} ${hoverTextColor} transition-colors text-[15px]`}
-                >
-                  Nuestros Servicios
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to='/clientes/instituciones'
-                  className={`${textColor} ${hoverTextColor} transition-colors text-[15px]`}
-                >
-                  Nuestros Clientes
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to='/actualidad'
-                  className={`${textColor} ${hoverTextColor} transition-colors text-[15px]`}
-                >
-                  Blog y Actualidad
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to='/novis'
-                  className={`${textColor} ${hoverTextColor} transition-colors text-[15px]`}
-                >
-                  Sobre Novis
-                </Link>
-              </li>
+              {[
+                { name: 'Nuestros Servicios', path: '/servicios' },
+                { name: 'Nuestros Clientes', path: '/clientes/instituciones' },
+                { name: 'Blog y Actualidad', path: '/actualidad' },
+                { name: 'Sobre Novis', path: '/novis' },
+              ].map((link) => (
+                <li key={link.name}>
+                  <Link
+                    to={link.path}
+                    className={`${textColor} ${hoverTextColor} transition-colors text-sm font-medium`}
+                  >
+                    {link.name}
+                  </Link>
+                </li>
+              ))}
               <li>
                 <Link
                   to='/contacto'
                   state={{ tab: 'cv' }}
-                  className={`${textColor} ${hoverTextColor} transition-colors text-[15px]`}
+                  className={`${textColor} ${hoverTextColor} transition-colors text-sm font-medium`}
                 >
-                  Trabaja con nosotros (CV)
+                  Trabaja con nosotros
                 </Link>
               </li>
             </ul>
@@ -206,29 +190,31 @@ export function Footer() {
 
           {/* Columna 3: Contacto */}
           <div>
-            <h3 className='text-white text-lg font-bold mb-8'>Contacto</h3>
+            <h3 className='text-slate-800 text-base font-bold tracking-wide uppercase mb-8'>
+              Contacto
+            </h3>
             <ul className='space-y-6'>
               <li className='flex items-start gap-4'>
-                <MapPin className={`w-5 h-5 shrink-0 mt-0.5 ${iconGreen}`} />
-                <span className={`${textColor} text-[15px] leading-relaxed`}>
+                <MapPin className={`w-5 h-5 shrink-0 mt-0.5 ${iconColor}`} strokeWidth={1.5} />
+                <span className={`${textColor} text-sm font-medium leading-relaxed`}>
                   Calle Hernando de Soto, 10, Local 1<br />
                   10002 Cáceres
                 </span>
               </li>
               <li className='flex items-center gap-4'>
-                <Phone className={`w-5 h-5 shrink-0 ${iconGreen}`} />
+                <Phone className={`w-5 h-5 shrink-0 ${iconColor}`} strokeWidth={1.5} />
                 <a
                   href='tel:927222778'
-                  className={`${textColor} ${hoverTextColor} transition-colors text-[15px]`}
+                  className={`${textColor} ${hoverTextColor} transition-colors text-sm font-medium`}
                 >
                   927 22 27 78
                 </a>
               </li>
               <li className='flex items-center gap-4'>
-                <Mail className={`w-5 h-5 shrink-0 ${iconGreen}`} />
+                <Mail className={`w-5 h-5 shrink-0 ${iconColor}`} strokeWidth={1.5} />
                 <a
                   href='mailto:soporte@novis.es'
-                  className={`${textColor} ${hoverTextColor} transition-colors text-[15px]`}
+                  className={`${textColor} ${hoverTextColor} transition-colors text-sm font-medium`}
                 >
                   soporte@novis.es
                 </a>
@@ -239,9 +225,14 @@ export function Footer() {
 
         {/* Copyright y Legal */}
         <div
-          className={`border-t border-[#1a1a1a] pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm ${textColor}`}
+          className={`border-t border-slate-200 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs font-medium tracking-wide ${textColor}`}
         >
           <p>© {currentYear} Novis Software. Todos los derechos reservados.</p>
+          <div className='flex items-center gap-6'>
+            <a href='#' className={`${hoverTextColor} transition-colors`}>Aviso Legal</a>
+            <a href='#' className={`${hoverTextColor} transition-colors`}>Política de Privacidad</a>
+            <a href='#' className={`${hoverTextColor} transition-colors`}>Cookies</a>
+          </div>
         </div>
       </div>
     </footer>

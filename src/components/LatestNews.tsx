@@ -8,95 +8,84 @@ export function LatestNews() {
   const latestArticles = newsArticles.slice(0, 3)
 
   return (
-    <section className='py-24 bg-white border-t border-gray-100 relative overflow-hidden'>
-      {/* Fondo decorativo muy sutil */}
-      <div className='absolute top-0 right-0 w-1/2 h-full opacity-30 bg-[radial-gradient(#e5e7eb_1.5px,transparent_1.5px)] [background-size:24px_24px] pointer-events-none'></div>
-
+    <section className='py-32 bg-white relative overflow-hidden border-b border-slate-200'>
       <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10'>
         {/* Cabecera de la sección */}
-        <div className='flex flex-col md:flex-row md:items-end justify-between mb-12 lg:mb-16 gap-6'>
+        <div className='flex flex-col md:flex-row md:items-end justify-between mb-20 gap-8'>
           <motion.div
-            initial={{ opacity: 0, x: -20 }}
+            initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             className='max-w-2xl'
           >
-            <span className='inline-block py-1 px-3 rounded-full bg-green-50 text-green-700 text-sm font-bold tracking-widest uppercase mb-4 border border-green-100'>
-              Blog Corporativo
+            <span className='inline-block py-1.5 px-4 rounded-full bg-slate-50 text-slate-500 text-xs font-bold tracking-[0.2em] uppercase mb-6 border border-slate-200 shadow-sm'>
+              Insights & Actualidad
             </span>
-            <h2 className='text-3xl md:text-4xl font-extrabold text-gray-900 tracking-tight'>
-              Actualidad NOVIS
+            <h2 className='text-4xl md:text-5xl font-black text-slate-900 tracking-tighter'>
+              Nuestras últimas publicaciones
             </h2>
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, x: 20 }}
+            initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
           >
             <Link
               to='/actualidad'
-              className='inline-flex items-center px-6 py-3 bg-gray-50 hover:bg-green-50 text-gray-700 hover:text-green-700 font-bold rounded-xl transition-colors border border-gray-200 hover:border-green-200 group'
+              className='inline-flex items-center text-emerald-600 font-bold text-lg hover:text-emerald-500 transition-colors group'
             >
-              Ver todos los artículos
-              <ArrowRight className='ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform' />
+              Ver todo el blog
+              <ArrowRight className='ml-2 w-5 h-5 group-hover:translate-x-1.5 transition-transform' />
             </Link>
           </motion.div>
         </div>
 
         {/* Cuadrícula de 3 Noticias */}
-        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8'>
+        <div className='grid grid-cols-1 lg:grid-cols-3 gap-10 lg:gap-12'>
           {latestArticles.map((article, index) => (
             <motion.article
               key={article.id}
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.15 }}
-              className='bg-white rounded-2xl shadow-sm hover:shadow-xl border border-gray-100 overflow-hidden group flex flex-col h-full transition-all duration-300 hover:-translate-y-2'
+              transition={{ duration: 0.7, delay: index * 0.15 }}
+              className='group flex flex-col h-full cursor-pointer'
             >
-              {/* Imagen con categoría flotante */}
+              {/* Imagen Editorial */}
               <Link
                 to={`/actualidad/${article.slug}`}
-                className='relative h-56 overflow-hidden block'
+                className='relative h-64 md:h-72 w-full overflow-hidden rounded-2xl mb-8 block shadow-md group-hover:shadow-xl transition-shadow duration-500'
               >
-                <div className='absolute top-4 left-4 z-10'>
-                  <span className='bg-white/90 backdrop-blur-sm text-green-700 text-xs font-extrabold uppercase tracking-wider py-1.5 px-3 rounded-lg shadow-sm'>
+                <div className='absolute inset-0 bg-slate-900/10 group-hover:bg-transparent transition-colors duration-500 z-10'></div>
+                <div className='absolute top-4 left-4 z-20'>
+                  <span className='bg-white/90 backdrop-blur-md text-emerald-700 text-xs font-bold uppercase tracking-widest py-1.5 px-4 rounded-full shadow-sm'>
                     {article.category}
                   </span>
                 </div>
                 <img
                   src={article.image}
                   alt={article.title}
-                  className='w-full h-full object-cover group-hover:scale-105 transition-transform duration-500'
+                  className='w-full h-full object-cover transform scale-100 group-hover:scale-105 transition-transform duration-700 ease-out'
                 />
               </Link>
 
-              {/* Contenido de la tarjeta */}
-              <div className='p-6 flex flex-col flex-grow'>
-                <div className='flex items-center text-xs text-gray-500 mb-4 font-medium'>
-                  <Calendar className='w-4 h-4 mr-1.5 text-green-500' />
+              {/* Contenido Editorial */}
+              <div className='flex flex-col flex-grow px-2'>
+                <div className='flex items-center text-xs text-slate-400 mb-4 font-medium tracking-wide uppercase'>
+                  <Calendar className='w-4 h-4 mr-2 text-emerald-500' />
                   {article.date}
                 </div>
 
-                <h3 className='text-xl font-bold text-gray-900 mb-3 group-hover:text-green-600 transition-colors line-clamp-2 leading-tight'>
+                <h3 className='text-2xl font-bold text-slate-900 mb-4 group-hover:text-emerald-600 transition-colors leading-snug'>
                   <Link to={`/actualidad/${article.slug}`}>
                     {article.title}
                   </Link>
                 </h3>
 
-                <p className='text-gray-600 text-sm mb-6 line-clamp-3 leading-relaxed'>
+                <p className='text-slate-500 text-base mb-6 leading-relaxed font-light'>
                   {article.excerpt}
                 </p>
-
-                {/* Botón de leer más empujado al fondo */}
-                <Link
-                  to={`/actualidad/${article.slug}`}
-                  className='mt-auto inline-flex items-center text-green-600 font-bold text-sm hover:text-green-800 transition-colors group/link'
-                >
-                  Leer artículo
-                  <ArrowRight className='ml-1 w-4 h-4 transform group-hover/link:translate-x-1 transition-transform' />
-                </Link>
               </div>
             </motion.article>
           ))}
@@ -105,3 +94,4 @@ export function LatestNews() {
     </section>
   )
 }
+

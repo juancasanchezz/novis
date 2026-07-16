@@ -47,11 +47,11 @@ export function DynamicHero() {
   }, [text, isDeleting, wordIndex])
 
   return (
-    // PUNTO INTERMEDIO: Cambiado a py-24 md:py-28 para darle un respiro más amplio sin ocupar toda la pantalla
-    <section className='relative bg-gray-900 py-24 md:py-28 overflow-hidden border-b-4 border-green-600'>
+    // PUNTO INTERMEDIO: Cambiado a py-24 md:py-32 para darle un respiro más amplio (Light Theme)
+    <section className='relative bg-sky-50 py-24 md:py-32 overflow-hidden border-b border-slate-200'>
       {/* Imagen de fondo */}
       <div
-        className='absolute inset-0 z-0 opacity-50 bg-cover bg-center'
+        className='absolute inset-0 z-0 opacity-10 bg-cover bg-center mix-blend-luminosity'
         style={{
           backgroundImage:
             "url('https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=2070&auto=format&fit=crop')",
@@ -59,7 +59,7 @@ export function DynamicHero() {
       ></div>
 
       {/* Degradado superpuesto para asegurar lectura del texto */}
-      <div className='absolute inset-0 z-0 bg-gradient-to-r from-gray-900 via-gray-900/90 to-gray-900/60'></div>
+      <div className='absolute inset-0 z-0 bg-gradient-to-br from-white via-sky-50/95 to-white/40'></div>
 
       {/* --- INICIO ZONA DE ICONOS FLOTANTES --- */}
 
@@ -69,7 +69,7 @@ export function DynamicHero() {
         transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
         className='absolute top-10 right-[10%] opacity-20 hidden lg:block'
       >
-        <Cloud className='w-20 h-20 text-green-400' />
+        <Cloud className='w-20 h-20 text-sky-400' />
       </motion.div>
 
       {/* 2. Escudo original (Abajo derecha centro) */}
@@ -87,7 +87,7 @@ export function DynamicHero() {
         transition={{ duration: 7, repeat: Infinity, ease: 'easeInOut' }}
         className='absolute top-24 right-[35%] opacity-10 hidden lg:block'
       >
-        <Code2 className='w-24 h-24 text-white' />
+        <Code2 className='w-24 h-24 text-slate-400' />
       </motion.div>
 
       {/* 4. NUEVO: Base de datos (Medio derecha, más pegado al borde) */}
@@ -97,7 +97,7 @@ export function DynamicHero() {
         // La clase right-[5%] y top-40 lo coloca independientemente del resto
         className='absolute top-40 right-[5%] opacity-15 hidden lg:block'
       >
-        <Database className='w-16 h-16 text-emerald-300' />
+        <Database className='w-16 h-16 text-sky-300' />
       </motion.div>
 
       {/* 5. NUEVO: Smartphone (Abajo más a la derecha) */}
@@ -106,7 +106,7 @@ export function DynamicHero() {
         transition={{ duration: 6.5, repeat: Infinity, ease: 'easeInOut' }}
         className='absolute bottom-12 right-[8%] opacity-20 hidden lg:block'
       >
-        <Smartphone className='w-14 h-14 text-green-500' />
+        <Smartphone className='w-14 h-14 text-blue-500' />
       </motion.div>
 
       {/* 6. NUEVO: Globo terráqueo (Arriba, entre el código y la nube) */}
@@ -115,7 +115,7 @@ export function DynamicHero() {
         transition={{ duration: 9, repeat: Infinity, ease: 'easeInOut' }}
         className='absolute top-16 right-[25%] opacity-10 hidden lg:block'
       >
-        <Globe className='w-20 h-20 text-blue-300' />
+        <Globe className='w-20 h-20 text-sky-300' />
       </motion.div>
 
       {/* --- FIN ZONA DE ICONOS FLOTANTES --- */}
@@ -127,24 +127,24 @@ export function DynamicHero() {
           transition={{ duration: 0.8 }}
           className='max-w-4xl'
         >
-          <span className='inline-flex items-center px-3 py-1 rounded-full bg-green-600/10 border border-green-500/20 text-green-400 text-xs font-semibold tracking-wide mb-5 shadow-sm'>
+          <span className='inline-flex items-center px-4 py-1.5 rounded-full bg-emerald-50/80 border border-emerald-200 text-emerald-600 text-xs font-bold tracking-widest uppercase mb-6 shadow-sm backdrop-blur-sm'>
             Innovación Tecnológica en Extremadura
           </span>
 
-          <h1 className='text-2xl md:text-3xl lg:text-5xl font-extrabold text-white mb-5 tracking-tight leading-tight min-h-[110px] md:min-h-[130px]'>
+          <h1 className='text-4xl md:text-5xl lg:text-7xl font-black text-slate-900 mb-6 tracking-tighter leading-[1.1] min-h-[150px] md:min-h-[170px] drop-shadow-sm'>
             Desarrollamos soluciones avanzadas y a medida para{' '}
-            <span className='text-green-500 inline-block mt-2'>
+            <span className='bg-clip-text text-transparent bg-gradient-to-r from-emerald-500 to-green-500 inline-block mt-2 pb-2'>
               {text}
               {/* Cursor parpadeante */}
               <motion.span
                 animate={{ opacity: [1, 0, 1] }}
                 transition={{ duration: 0.8, repeat: Infinity }}
-                className='inline-block w-[3px] h-[40px] md:h-[60px] bg-green-500 ml-1.5 align-middle -mt-1.5 shadow-md'
+                className='inline-block w-[4px] h-[45px] md:h-[65px] bg-emerald-500 ml-2 align-middle -mt-2 shadow-[0_0_10px_rgba(16,185,129,0.5)]'
               ></motion.span>
             </span>
           </h1>
 
-          <p className='text-lg md:text-xl text-gray-300 mb-10 leading-relaxed max-w-2xl font-medium'>
+          <p className='text-lg md:text-2xl text-slate-600 mb-12 leading-relaxed max-w-2xl font-light'>
             En NOVIS Software transformamos ideas en plataformas robustas,
             escalables y orientadas a resultados.
           </p>
@@ -152,10 +152,10 @@ export function DynamicHero() {
           <div className='flex flex-col sm:flex-row gap-5'>
             <Link
               to='/contacto'
-              className='inline-flex items-center justify-center px-7 py-3.5 bg-green-600 hover:bg-green-700 text-white font-bold rounded-xl transition-all shadow-lg shadow-green-600/30 hover:shadow-green-600/50 text-lg group'
+              className='inline-flex items-center justify-center px-8 py-4 bg-gradient-to-r from-emerald-500 to-green-500 hover:from-emerald-400 hover:to-green-400 text-white font-bold rounded-full transition-all duration-300 shadow-[0_8px_30px_rgba(16,185,129,0.3)] hover:shadow-[0_8px_30px_rgba(16,185,129,0.5)] hover:-translate-y-1 text-lg group'
             >
               Inicia tu proyecto{' '}
-              <ArrowRight className='ml-3 w-5 h-5 group-hover:translate-x-1 transition-transform' />
+              <ArrowRight className='ml-3 w-5 h-5 group-hover:translate-x-1.5 transition-transform' />
             </Link>
           </div>
         </motion.div>
