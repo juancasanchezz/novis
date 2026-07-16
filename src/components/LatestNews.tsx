@@ -8,7 +8,10 @@ export function LatestNews() {
   const latestArticles = newsArticles.slice(0, 3)
 
   return (
-    <section className='py-32 bg-white relative overflow-hidden border-b border-slate-200'>
+    <section className='py-32 bg-slate-50 relative overflow-hidden border-b border-slate-200'>
+      {/* Patrón de puntos sutil para textura */}
+      <div className="absolute inset-0 bg-[radial-gradient(#cbd5e1_1px,transparent_1px)] [background-size:24px_24px] opacity-30"></div>
+      
       <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10'>
         {/* Cabecera de la sección */}
         <div className='flex flex-col md:flex-row md:items-end justify-between mb-20 gap-8'>

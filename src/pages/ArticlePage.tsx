@@ -50,7 +50,7 @@ export function ArticlePage() {
             >
               <Link
                 to='/actualidad'
-                className='inline-flex items-center text-xs font-bold text-slate-600 hover:text-emerald-600 transition-colors mb-8 uppercase tracking-widest bg-white/80 px-4 py-2 rounded-full border border-slate-200 backdrop-blur-md shadow-sm'
+                className='inline-flex items-center text-xs font-bold text-slate-600 hover:text-emerald-600 transition-colors mb-8 uppercase tracking-widest bg-slate-50/95 px-4 py-2 rounded-full border border-slate-200 backdrop-blur-xl shadow-sm'
               >
                 <ArrowLeft className='w-4 h-4 mr-2' /> Volver al blog
               </Link>
@@ -112,7 +112,7 @@ export function ArticlePage() {
               {/* COLUMNA DERECHA: SIDEBAR */}
               <aside className='w-full lg:w-1/3 space-y-10'>
                 {/* Widget: Entradas Recientes */}
-                <div className='bg-white p-8 rounded-3xl border border-slate-200 shadow-sm'>
+                <div className='bg-slate-50 p-8 rounded-3xl border border-slate-200 shadow-sm'>
                   <h4 className='text-lg font-bold text-slate-900 mb-6 flex items-center'>
                     <span className="w-1.5 h-6 bg-emerald-500 rounded-full mr-3"></span>
                     Te puede interesar
@@ -146,7 +146,7 @@ export function ArticlePage() {
                 </div>
 
                 {/* Widget: Categorías */}
-                <div className='bg-white p-8 rounded-3xl border border-slate-200 shadow-sm'>
+                <div className='bg-slate-50 p-8 rounded-3xl border border-slate-200 shadow-sm'>
                   <h4 className='text-lg font-bold text-slate-900 mb-6 flex items-center'>
                     <Folder className='w-5 h-5 mr-3 text-emerald-500' />
                     Explorar Temas

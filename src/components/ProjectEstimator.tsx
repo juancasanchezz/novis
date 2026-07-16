@@ -113,25 +113,27 @@ export function ProjectEstimator() {
     : null
 
   return (
-    <section className='py-24 bg-slate-50 border-t border-slate-200 overflow-hidden'>
-      <div className='max-w-5xl mx-auto px-4 sm:px-6 lg:px-8'>
+    <section className='py-24 bg-slate-950 border-t border-slate-800 overflow-hidden relative'>
+      {/* Resplandor decorativo */}
+      <div className='absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-4xl h-64 bg-emerald-400/5 blur-[120px] pointer-events-none'></div>
+      <div className='max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10'>
         <div className='text-center mb-12'>
-          <span className='inline-block py-1 px-3 rounded-full bg-emerald-100 text-emerald-700 text-xs font-bold tracking-wider uppercase mb-3 border border-emerald-200 shadow-sm'>
+          <span className='inline-block py-1 px-3 rounded-full bg-emerald-950/50 text-emerald-400 text-xs font-bold tracking-wider uppercase mb-3 border border-emerald-800/50 shadow-sm'>
             Asesor Virtual
           </span>
-          <h2 className='text-3xl md:text-4xl font-bold text-slate-900 mb-4 tracking-tight drop-shadow-sm'>
+          <h2 className='text-3xl md:text-4xl font-bold text-white mb-4 tracking-tight drop-shadow-sm'>
             Calcula tu proyecto en 3 pasos
           </h2>
-          <p className='text-xl text-slate-600 max-w-2xl mx-auto'>
+          <p className='text-xl text-slate-300 max-w-2xl mx-auto'>
             Cuéntanos qué necesitas y nuestro sistema te recomendará la mejor
             arquitectura y te enviará una estimación.
           </p>
         </div>
 
-        <div className='bg-white rounded-3xl shadow-xl border border-slate-200 p-6 md:p-12 min-h-[450px] flex flex-col justify-center relative'>
+        <div className='bg-slate-900 rounded-3xl shadow-xl border border-slate-800 p-6 md:p-12 min-h-[450px] flex flex-col justify-center relative'>
           {/* Barra de progreso (Solo visible en las preguntas) */}
           {step <= 3 && (
-            <div className='absolute top-0 left-0 w-full h-1.5 bg-slate-100 rounded-t-3xl overflow-hidden'>
+            <div className='absolute top-0 left-0 w-full h-1.5 bg-slate-800 rounded-t-3xl overflow-hidden'>
               <motion.div
                 className='h-full bg-emerald-500'
                 initial={{ width: '0%' }}
@@ -151,7 +153,7 @@ export function ProjectEstimator() {
                 exit={{ opacity: 0, x: -50 }}
                 className='w-full'
               >
-                <h3 className='text-2xl font-bold text-slate-800 mb-8 text-center'>
+                <h3 className='text-2xl font-bold text-white mb-8 text-center'>
                   1. ¿Qué tipo de solución buscas?
                 </h3>
                 <div className='grid grid-cols-1 md:grid-cols-3 gap-6'>
@@ -159,12 +161,12 @@ export function ProjectEstimator() {
                     <button
                       key={key}
                       onClick={() => handleNext('type', key)}
-                      className='flex flex-col items-center p-8 bg-white rounded-2xl border-2 border-slate-100 hover:border-emerald-500 hover:bg-emerald-50 hover:shadow-lg transition-all group'
+                      className='flex flex-col items-center p-8 bg-slate-950 rounded-2xl border-2 border-slate-800 hover:border-emerald-500 hover:bg-emerald-950/20 hover:shadow-lg transition-all group'
                     >
-                      <div className='w-16 h-16 bg-slate-50 rounded-full flex items-center justify-center mb-4 group-hover:bg-emerald-100 transition-colors shadow-sm'>
+                      <div className='w-16 h-16 bg-slate-900 rounded-full flex items-center justify-center mb-4 group-hover:bg-emerald-900/50 transition-colors shadow-sm'>
                         <item.icon className='w-8 h-8 text-slate-500 group-hover:text-emerald-600 transition-colors' />
                       </div>
-                      <span className='font-bold text-slate-800 group-hover:text-emerald-700 text-lg'>
+                      <span className='font-bold text-white group-hover:text-emerald-400 text-lg'>
                         {item.title}
                       </span>
                     </button>
@@ -182,7 +184,7 @@ export function ProjectEstimator() {
                 exit={{ opacity: 0, x: -50 }}
                 className='w-full'
               >
-                <h3 className='text-2xl font-bold text-slate-800 mb-8 text-center'>
+                <h3 className='text-2xl font-bold text-white mb-8 text-center'>
                   2. ¿En qué estado se encuentra?
                 </h3>
                 <div className='grid grid-cols-1 md:grid-cols-3 gap-6'>
@@ -190,13 +192,13 @@ export function ProjectEstimator() {
                     <button
                       key={key}
                       onClick={() => handleNext('phase', key)}
-                      className='flex flex-col items-start p-6 bg-white rounded-2xl border-2 border-slate-100 hover:border-emerald-500 hover:bg-emerald-50 transition-all text-left group hover:shadow-lg'
+                      className='flex flex-col items-start p-6 bg-slate-950 rounded-2xl border-2 border-slate-800 hover:border-emerald-500 hover:bg-emerald-950/20 transition-all text-left group hover:shadow-lg'
                     >
                       <item.icon className='w-8 h-8 text-slate-400 group-hover:text-emerald-600 mb-4 transition-colors' />
-                      <span className='font-bold text-slate-800 text-lg mb-2 group-hover:text-emerald-700'>
+                      <span className='font-bold text-white text-lg mb-2 group-hover:text-emerald-400'>
                         {item.title}
                       </span>
-                      <span className='text-slate-500 text-sm leading-relaxed'>
+                      <span className='text-slate-400 text-sm leading-relaxed'>
                         {item.desc}
                       </span>
                     </button>
@@ -214,7 +216,7 @@ export function ProjectEstimator() {
                 exit={{ opacity: 0, x: -50 }}
                 className='w-full'
               >
-                <h3 className='text-2xl font-bold text-slate-800 mb-8 text-center'>
+                <h3 className='text-2xl font-bold text-white mb-8 text-center'>
                   3. ¿Cuál es la urgencia del proyecto?
                 </h3>
                 <div className='grid grid-cols-1 md:grid-cols-3 gap-6'>
@@ -222,13 +224,13 @@ export function ProjectEstimator() {
                     <button
                       key={key}
                       onClick={() => handleNext('timeline', key)}
-                      className='flex flex-col items-start p-6 bg-white rounded-2xl border-2 border-slate-100 hover:border-emerald-500 hover:bg-emerald-50 transition-all text-left group hover:shadow-lg'
+                      className='flex flex-col items-start p-6 bg-slate-950 rounded-2xl border-2 border-slate-800 hover:border-emerald-500 hover:bg-emerald-950/20 transition-all text-left group hover:shadow-lg'
                     >
                       <item.icon className='w-8 h-8 text-slate-400 group-hover:text-emerald-600 mb-4 transition-colors' />
-                      <span className='font-bold text-slate-800 text-lg mb-2 group-hover:text-emerald-700'>
+                      <span className='font-bold text-white text-lg mb-2 group-hover:text-emerald-400'>
                         {item.title}
                       </span>
-                      <span className='text-slate-500 text-sm leading-relaxed'>
+                      <span className='text-slate-400 text-sm leading-relaxed'>
                         {item.desc}
                       </span>
                     </button>
@@ -268,10 +270,10 @@ export function ProjectEstimator() {
                   ></motion.div>
                   <Cpu className='absolute inset-0 m-auto w-8 h-8 text-emerald-600 animate-pulse' />
                 </div>
-                <h3 className='text-2xl font-bold text-slate-800 mb-2'>
+                <h3 className='text-2xl font-bold text-white mb-2'>
                   Analizando requerimientos...
                 </h3>
-                <p className='text-slate-500'>
+                <p className='text-slate-400'>
                   Buscando la mejor arquitectura para tu proyecto
                 </p>
               </motion.div>
@@ -287,35 +289,35 @@ export function ProjectEstimator() {
               >
                 <div className='grid lg:grid-cols-2 gap-10 items-center'>
                   {/* Resumen dinámico basado en sus respuestas */}
-                  <div className='bg-slate-50 p-8 rounded-2xl border border-slate-200 shadow-sm'>
+                  <div className='bg-slate-950 p-8 rounded-2xl border border-slate-800 shadow-sm'>
                     <div className='flex items-center gap-3 mb-6'>
                       <CheckCircle2 className='w-8 h-8 text-emerald-500' />
-                      <h3 className='text-2xl font-bold text-slate-900'>
+                      <h3 className='text-2xl font-bold text-white'>
                         Análisis Completado
                       </h3>
                     </div>
 
-                    <p className='text-slate-700 mb-6 leading-relaxed'>
+                    <p className='text-slate-300 mb-6 leading-relaxed'>
                       Para tu proyecto de{' '}
-                      <strong className='text-slate-900'>
+                      <strong className='text-emerald-400'>
                         {selectedType.title.toLowerCase()}
                       </strong>{' '}
                       en fase de{' '}
-                      <strong className='text-slate-900'>
+                      <strong className='text-emerald-400'>
                         {selectedPhase.title.toLowerCase()}
                       </strong>
                       , recomendamos utilizar tecnologías robustas y modernas:
                     </p>
 
                     <div className='mb-6'>
-                      <span className='block text-xs font-bold text-slate-500 uppercase tracking-wider mb-3'>
+                      <span className='block text-xs font-bold text-slate-400 uppercase tracking-wider mb-3'>
                         Stack Tecnológico Sugerido
                       </span>
                       <div className='flex flex-wrap gap-2'>
                         {selectedType.stack.map((tech, i) => (
                           <span
                             key={i}
-                            className='px-3 py-1.5 bg-emerald-100 text-emerald-700 rounded-md text-sm font-bold border border-emerald-200'
+                            className='px-3 py-1.5 bg-emerald-950/50 text-emerald-400 rounded-md text-sm font-bold border border-emerald-800/50'
                           >
                             {tech}
                           </span>
@@ -326,10 +328,10 @@ export function ProjectEstimator() {
 
                   {/* Formulario de captura */}
                   <div>
-                    <h4 className='text-xl font-bold text-slate-900 mb-3'>
+                    <h4 className='text-xl font-bold text-white mb-3'>
                       Obtén tu presupuesto
                     </h4>
-                    <p className='text-slate-600 text-sm mb-6'>
+                    <p className='text-slate-300 text-sm mb-6'>
                       Déjanos tu email y te enviaremos de inmediato una
                       estimación económica inicial basada en esta configuración
                       tecnológica.
@@ -341,7 +343,7 @@ export function ProjectEstimator() {
                         placeholder='tu@correoprofesional.com'
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
-                        className='w-full px-5 py-3.5 rounded-xl border border-slate-200 outline-none focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200 transition-all bg-white shadow-sm'
+                        className='w-full px-5 py-3.5 rounded-xl border border-slate-700 outline-none focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200 transition-all bg-slate-950 text-white placeholder-slate-500 shadow-sm'
                       />
                       <button
                         onClick={() => setStep(6)}
@@ -368,13 +370,13 @@ export function ProjectEstimator() {
                 animate={{ opacity: 1 }}
                 className='w-full text-center py-10'
               >
-                <div className='w-20 h-20 bg-emerald-50 rounded-full flex items-center justify-center mx-auto mb-6 shadow-inner border border-emerald-100'>
+                <div className='w-20 h-20 bg-emerald-950/30 rounded-full flex items-center justify-center mx-auto mb-6 shadow-inner border border-emerald-800/50'>
                   <CheckCircle2 className='w-10 h-10 text-emerald-600' />
                 </div>
-                <h3 className='text-3xl font-bold text-slate-900 mb-4'>
+                <h3 className='text-3xl font-bold text-white mb-4'>
                   ¡Solicitud enviada!
                 </h3>
-                <p className='text-lg text-slate-600 max-w-lg mx-auto'>
+                <p className='text-lg text-slate-300 max-w-lg mx-auto'>
                   Revisa tu bandeja de entrada en los próximos minutos. Nuestro
                   equipo de ingeniería ya está revisando tu perfil para agendar
                   una llamada si lo necesitas.
@@ -389,7 +391,7 @@ export function ProjectEstimator() {
                     })
                     setEmail('')
                   }}
-                  className='mt-10 px-6 py-2 bg-white border border-slate-200 text-slate-600 font-bold rounded-lg hover:bg-slate-50 transition-colors inline-block shadow-sm'
+                  className='mt-10 px-6 py-2 bg-slate-800 border border-slate-700 text-slate-300 font-bold rounded-lg hover:bg-slate-700 transition-colors inline-block shadow-sm'
                 >
                   Volver a calcular
                 </button>

@@ -96,7 +96,7 @@ export function Clients() {
 
       <div className='max-w-[100vw] mx-auto relative z-10'>
         <div className='text-center mb-16 md:mb-24 px-4'>
-          <span className='inline-flex items-center px-4 py-1.5 rounded-full bg-white border border-emerald-200 text-emerald-600 text-xs font-bold tracking-widest uppercase mb-6 shadow-sm'>
+          <span className='inline-flex items-center px-4 py-1.5 rounded-full bg-slate-50 border border-emerald-200 text-emerald-600 text-xs font-bold tracking-widest uppercase mb-6 shadow-sm'>
             Confianza y Excelencia
           </span>
           <h2 className='text-4xl md:text-5xl lg:text-6xl font-black text-slate-900 mb-6 drop-shadow-sm tracking-tight leading-tight'>
@@ -120,7 +120,7 @@ export function Clients() {
           {/* Flecha Izquierda */}
           <button 
             onClick={() => handleScroll('left')}
-            className='absolute left-2 md:left-8 top-1/2 -translate-y-1/2 z-20 w-12 h-12 md:w-16 md:h-16 rounded-full bg-white/80 border border-slate-200 text-emerald-600 flex items-center justify-center backdrop-blur-md opacity-0 group-hover:opacity-100 hover:bg-emerald-500 hover:text-white hover:border-emerald-500 hover:scale-110 transition-all duration-300 shadow-sm hover:shadow-lg'
+            className='absolute left-2 md:left-8 top-1/2 -translate-y-1/2 z-20 w-12 h-12 md:w-16 md:h-16 rounded-full bg-slate-50/90 border border-slate-200 text-emerald-600 flex items-center justify-center backdrop-blur-md opacity-0 group-hover:opacity-100 hover:bg-emerald-500 hover:text-white hover:border-emerald-500 hover:scale-110 transition-all duration-300 shadow-sm hover:shadow-lg'
             aria-label="Anterior cliente"
           >
             <ChevronLeft className='w-6 h-6 md:w-8 md:h-8' />
@@ -129,7 +129,7 @@ export function Clients() {
           {/* Flecha Derecha */}
           <button 
             onClick={() => handleScroll('right')}
-            className='absolute right-2 md:right-8 top-1/2 -translate-y-1/2 z-20 w-12 h-12 md:w-16 md:h-16 rounded-full bg-white/80 border border-slate-200 text-emerald-600 flex items-center justify-center backdrop-blur-md opacity-0 group-hover:opacity-100 hover:bg-emerald-500 hover:text-white hover:border-emerald-500 hover:scale-110 transition-all duration-300 shadow-sm hover:shadow-lg'
+            className='absolute right-2 md:right-8 top-1/2 -translate-y-1/2 z-20 w-12 h-12 md:w-16 md:h-16 rounded-full bg-slate-50/90 border border-slate-200 text-emerald-600 flex items-center justify-center backdrop-blur-md opacity-0 group-hover:opacity-100 hover:bg-emerald-500 hover:text-white hover:border-emerald-500 hover:scale-110 transition-all duration-300 shadow-sm hover:shadow-lg'
             aria-label="Siguiente cliente"
           >
             <ChevronRight className='w-6 h-6 md:w-8 md:h-8' />
@@ -147,7 +147,7 @@ export function Clients() {
                 to={logo.link}
                 // Reducimos el padding para que la imagen ocupe más espacio real en la tarjeta
                 // Cambiamos el fondo a blanco para que el logo resalte perfectamente y se fusione si tiene fondo blanco
-                className='flex-shrink-0 w-48 md:w-64 h-28 md:h-36 relative flex items-center justify-center group/logo cursor-pointer bg-white rounded-2xl border border-slate-200 hover:border-emerald-300 transition-all duration-500 p-2 md:p-4 shadow-sm hover:shadow-[0_8px_30px_rgba(16,185,129,0.15)] snap-center overflow-hidden'
+                className='flex-shrink-0 w-48 md:w-64 h-28 md:h-36 relative flex items-center justify-center group/logo cursor-pointer bg-slate-50 rounded-2xl border border-slate-200 hover:border-emerald-300 transition-all duration-500 p-2 md:p-4 shadow-sm hover:shadow-[0_8px_30px_rgba(16,185,129,0.15)] snap-center overflow-hidden'
                 title={`Ver proyecto de ${logo.alt}`}
               >
                 <img

@@ -26,7 +26,7 @@ export function NotFoundPage() {
           <motion.div
             animate={{ rotate: [0, -5, 5, -5, 0], y: [0, -10, 0] }}
             transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
-            className='w-24 h-24 bg-white rounded-3xl flex items-center justify-center mb-8 shadow-xl border border-slate-200 relative'
+            className='w-24 h-24 bg-slate-50 rounded-3xl flex items-center justify-center mb-8 shadow-xl border border-slate-200 relative'
           >
             <div className='absolute -top-2 -right-2 w-6 h-6 bg-red-500 rounded-full border-4 border-white animate-pulse shadow-sm'></div>
             <ServerCrash className='w-12 h-12 text-emerald-600' />
@@ -59,7 +59,7 @@ export function NotFoundPage() {
 
             <Link
               to='/contacto'
-              className='inline-flex items-center justify-center px-8 py-4 bg-white hover:bg-slate-50 text-slate-800 font-bold rounded-xl transition-all border border-slate-300 shadow-sm group'
+              className='inline-flex items-center justify-center px-8 py-4 bg-slate-50 hover:bg-slate-100 text-slate-800 font-bold rounded-xl transition-all border border-slate-300 shadow-sm group'
             >
               Contactar soporte
               <ArrowRight className='ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform' />

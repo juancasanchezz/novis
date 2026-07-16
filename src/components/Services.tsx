@@ -28,18 +28,18 @@ const services = [
 
 export function Services() {
   return (
-    <section className='relative py-24 md:py-32 overflow-hidden bg-slate-950 border-b border-white/5'>
-      {/* 1. IMAGEN DE FONDO */}
+    <section className='relative py-24 md:py-32 overflow-hidden bg-gradient-to-br from-slate-100 via-sky-50 to-white border-b border-slate-200'>
+      {/* 1. IMAGEN DE FONDO (Opcional, muy sutil) */}
       <div
-        className='absolute inset-0 z-0 opacity-20 mix-blend-luminosity bg-cover bg-center bg-fixed'
+        className='absolute inset-0 z-0 opacity-[0.03] mix-blend-multiply bg-cover bg-center bg-fixed'
         style={{
           backgroundImage:
             "url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=2070&auto=format&fit=crop')",
         }}
       ></div>
 
-      {/* 2. OVERLAY */}
-      <div className='absolute inset-0 z-0 bg-gradient-to-t from-slate-950 via-slate-950/90 to-slate-900/50'></div>
+      {/* 2. OVERLAY PARA SUAVIZAR */}
+      <div className='absolute inset-0 z-0 bg-gradient-to-t from-white via-transparent to-transparent'></div>
 
       <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10'>
         {/* Cabecera de la sección */}
@@ -48,7 +48,7 @@ export function Services() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className='text-3xl md:text-5xl font-black text-white mb-6 tracking-tight'
+            className='text-4xl md:text-5xl font-black text-slate-900 mb-6 tracking-tight drop-shadow-sm'
           >
             Nuestros Servicios
           </motion.h2>
@@ -56,14 +56,14 @@ export function Services() {
             initial={{ opacity: 0, width: 0 }}
             whileInView={{ opacity: 1, width: '4rem' }}
             viewport={{ once: true }}
-            className='h-1.5 bg-emerald-500 mx-auto rounded-full mb-8 shadow-[0_0_15px_rgba(16,185,129,0.5)]'
+            className='h-1.5 bg-emerald-500 mx-auto rounded-full mb-8 shadow-sm'
           ></motion.div>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className='text-lg md:text-xl text-slate-300 leading-relaxed font-light'
+            className='text-lg md:text-xl text-slate-600 leading-relaxed font-light'
           >
             Acompañamos a instituciones y empresas en su transformación digital
             mediante soluciones tecnológicas robustas, escalables y seguras.
@@ -86,21 +86,21 @@ export function Services() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: index * 0.15 }}
-                className={`bg-white/[0.03] backdrop-blur-xl border border-white/10 rounded-3xl p-8 md:p-10 hover:bg-white/[0.06] transition-all duration-500 group relative overflow-hidden ${spanClasses}`}
+                className={`bg-white/80 backdrop-blur-xl border border-white rounded-3xl p-8 md:p-10 hover:bg-white transition-all duration-500 group relative overflow-hidden shadow-sm hover:shadow-xl ${spanClasses}`}
               >
                 {/* Resplandor hover */}
-                <div className='absolute -inset-px bg-gradient-to-r from-emerald-500/0 via-emerald-500/10 to-emerald-500/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-3xl pointer-events-none'></div>
+                <div className='absolute -inset-px bg-gradient-to-r from-emerald-500/0 via-emerald-100/50 to-emerald-500/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-3xl pointer-events-none'></div>
 
-                <div className='w-14 h-14 bg-emerald-500/10 rounded-2xl flex items-center justify-center mb-8 border border-emerald-500/20 group-hover:scale-110 transition-transform duration-500'>
+                <div className='w-14 h-14 bg-emerald-50 rounded-2xl flex items-center justify-center mb-8 border border-emerald-100 group-hover:scale-110 group-hover:bg-emerald-100 transition-transform duration-500 shadow-sm'>
                   <service.icon
-                    className='w-7 h-7 text-emerald-400'
+                    className='w-7 h-7 text-emerald-600'
                     strokeWidth={1.5}
                   />
                 </div>
-                <h3 className='text-2xl font-bold text-white mb-4 tracking-tight group-hover:text-emerald-300 transition-colors'>
+                <h3 className='text-2xl font-bold text-slate-900 mb-4 tracking-tight group-hover:text-emerald-700 transition-colors'>
                   {service.title}
                 </h3>
-                <p className='text-slate-400 leading-relaxed text-base md:text-lg font-light'>
+                <p className='text-slate-600 leading-relaxed text-base md:text-lg font-light'>
                   {service.description}
                 </p>
               </motion.div>

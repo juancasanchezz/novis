@@ -32,7 +32,7 @@ export function PrivateClientsPage() {
       
       <div className='flex flex-col lg:flex-row min-h-[calc(100vh-5rem)] bg-slate-50 w-full overflow-hidden'>
         {/* PANEL IZQUIERDO: Branding y Propuesta de Valor */}
-        <div className='lg:w-5/12 relative p-12 lg:p-20 flex flex-col justify-center overflow-hidden border-b lg:border-b-0 lg:border-r border-slate-200'>
+        <div className='lg:w-5/12 relative p-12 lg:p-20 flex flex-col justify-center overflow-hidden bg-slate-950 border-b lg:border-b-0 lg:border-r border-slate-800'>
           {/* Imagen de fondo sutil */}
           <div
             className='absolute inset-0 z-0 opacity-10 bg-cover bg-center'
@@ -41,7 +41,7 @@ export function PrivateClientsPage() {
                 "url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2070&auto=format&fit=crop')",
             }}
           ></div>
-          <div className='absolute inset-0 z-0 bg-[radial-gradient(ellipse_at_bottom_left,_var(--tw-gradient-stops))] from-emerald-100/50 via-slate-50 to-slate-50'></div>
+          <div className='absolute inset-0 z-0 bg-[radial-gradient(ellipse_at_bottom_left,_var(--tw-gradient-stops))] from-emerald-900/40 via-slate-950 to-slate-950'></div>
 
           <div className='relative z-10'>
             <motion.div
@@ -49,16 +49,16 @@ export function PrivateClientsPage() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
             >
-              <div className='w-16 h-16 bg-emerald-50 rounded-2xl flex items-center justify-center mb-8 border border-emerald-200 shadow-sm'>
+              <div className='w-16 h-16 bg-emerald-950/50 rounded-2xl flex items-center justify-center mb-8 border border-emerald-800/50 shadow-sm'>
                 <ShieldCheck
-                  className='w-8 h-8 text-emerald-600'
+                  className='w-8 h-8 text-emerald-400'
                   strokeWidth={1.5}
                 />
               </div>
-              <h1 className='text-3xl md:text-5xl font-black text-slate-900 mb-6 tracking-tight'>
+              <h1 className='text-3xl md:text-5xl font-black text-white mb-6 tracking-tight'>
                 Área de <span className='text-transparent bg-clip-text bg-gradient-to-r from-emerald-500 to-green-500'>Clientes Privados</span>
               </h1>
-              <p className='text-lg text-slate-600 mb-12 leading-relaxed'>
+              <p className='text-lg text-slate-300 mb-12 leading-relaxed'>
                 Acceso exclusivo al entorno seguro de NOVIS Software. Gestione
                 sus proyectos, consulte documentación y contacte con su equipo
                 asignado en tiempo real.
@@ -66,16 +66,16 @@ export function PrivateClientsPage() {
 
               {/* Ventajas del portal */}
               <div className='space-y-6'>
-                <div className='flex items-center text-slate-700 bg-white p-4 rounded-2xl border border-slate-200 shadow-sm'>
-                  <FileText className='w-6 h-6 text-emerald-600 mr-4 flex-shrink-0' />
+                <div className='flex items-center text-slate-300 bg-slate-900 p-4 rounded-2xl border border-slate-800 shadow-sm'>
+                  <FileText className='w-6 h-6 text-emerald-400 mr-4 flex-shrink-0' />
                   <span className='font-medium'>Gestión documental y seguimiento de hitos.</span>
                 </div>
-                <div className='flex items-center text-slate-700 bg-white p-4 rounded-2xl border border-slate-200 shadow-sm'>
-                  <Lock className='w-6 h-6 text-emerald-600 mr-4 flex-shrink-0' />
+                <div className='flex items-center text-slate-300 bg-slate-900 p-4 rounded-2xl border border-slate-800 shadow-sm'>
+                  <Lock className='w-6 h-6 text-emerald-400 mr-4 flex-shrink-0' />
                   <span className='font-medium'>Entorno cifrado de alta seguridad (End-to-End).</span>
                 </div>
-                <div className='flex items-center text-slate-700 bg-white p-4 rounded-2xl border border-slate-200 shadow-sm'>
-                  <HeadphonesIcon className='w-6 h-6 text-emerald-600 mr-4 flex-shrink-0' />
+                <div className='flex items-center text-slate-300 bg-slate-900 p-4 rounded-2xl border border-slate-800 shadow-sm'>
+                  <HeadphonesIcon className='w-6 h-6 text-emerald-400 mr-4 flex-shrink-0' />
                   <span className='font-medium'>Soporte técnico prioritario (SLA garantizado).</span>
                 </div>
               </div>
@@ -93,7 +93,7 @@ export function PrivateClientsPage() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className='w-full max-w-md relative z-10'
           >
-            <div className='bg-white p-10 md:p-12 rounded-[2rem] shadow-xl shadow-slate-200 border border-slate-200 relative overflow-hidden'>
+            <div className='bg-slate-50 p-10 md:p-12 rounded-[2rem] shadow-xl shadow-slate-200 border border-slate-200 relative overflow-hidden'>
               
               {/* Brillo decorativo */}
               <div className="absolute -top-24 -right-24 w-48 h-48 bg-emerald-400 rounded-full blur-[100px] opacity-10 pointer-events-none"></div>

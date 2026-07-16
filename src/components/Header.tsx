@@ -68,33 +68,33 @@ export function Header() {
         transition={{ duration: 0.35, ease: "easeInOut" }}
         className='w-full flex flex-col z-50 fixed top-0'
       >
-        {/* 1. TOP BAR (Enterprise Mode - Light) */}
-        <div className='bg-slate-50 text-slate-500 py-1.5 hidden md:block border-b border-slate-200'>
+        {/* 1. TOP BAR (Enterprise Mode - Color Corporativo) */}
+        <div className='bg-emerald-600 text-white py-1.5 hidden md:block'>
           <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center text-xs font-medium tracking-wide'>
             <div className='flex items-center space-x-6'>
               <a
                 href='tel:927222778'
-                className='flex items-center hover:text-emerald-600 transition-colors'
+                className='flex items-center hover:text-emerald-100 transition-colors'
               >
-                <Phone className='w-3.5 h-3.5 mr-2 text-emerald-500' />
+                <Phone className='w-3.5 h-3.5 mr-2 text-emerald-200' />
                 927 22 27 78
               </a>
               <a
                 href='mailto:soporte@novis.es'
-                className='flex items-center hover:text-emerald-600 transition-colors'
+                className='flex items-center hover:text-emerald-100 transition-colors'
               >
-                <Mail className='w-3.5 h-3.5 mr-2 text-emerald-500' />
+                <Mail className='w-3.5 h-3.5 mr-2 text-emerald-200' />
                 soporte@novis.es
               </a>
             </div>
-            <div className='text-emerald-600/80 uppercase tracking-widest text-[10px]'>
+            <div className='text-emerald-100 uppercase tracking-widest text-[10px] font-bold'>
               Consultoría Tecnológica de Élite
             </div>
           </div>
         </div>
 
-        {/* 2. MAIN NAV (FLOATING GLASSMORPHISM - Light) */}
-        <div className='relative z-50 bg-white border-b border-slate-200 shadow-sm'>
+        {/* 2. MAIN NAV (Fondo claro formal sin ser blanco puro) */}
+        <div className='relative z-50 bg-gradient-to-r from-slate-100 via-sky-50/50 to-slate-100 border-b border-slate-200 shadow-sm'>
           <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
             <div className='flex justify-between items-center h-20'>
               <Link

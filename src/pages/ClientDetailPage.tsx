@@ -128,7 +128,7 @@ export function ClientDetailPage() {
       </Helmet>
       <div className='bg-slate-50 flex flex-col w-full min-h-screen'>
         {/* 1. NAVEGACIÓN (Migas de pan) */}
-        <div className='bg-white border-b border-slate-200 py-4'>
+        <div className='bg-slate-50 border-b border-slate-200 py-4'>
           <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
             <nav className='flex items-center text-sm font-medium text-slate-500'>
               <Link
@@ -155,7 +155,7 @@ export function ClientDetailPage() {
         </div>
 
         {/* 2. CABECERA DEL PROYECTO */}
-        <section className='py-16 md:py-24 bg-white'>
+        <section className='py-16 md:py-24 bg-slate-50'>
           <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
             <div className='flex flex-col lg:flex-row items-center lg:items-start gap-16 lg:gap-24'>
               {/* Logo a la Izquierda */}
@@ -224,7 +224,7 @@ export function ClientDetailPage() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.1 }}
-                  className='w-full rounded-[2rem] overflow-hidden shadow-md hover:shadow-xl border border-slate-200 bg-white group transition-all duration-300 p-2'
+                  className='w-full rounded-[2rem] overflow-hidden shadow-md hover:shadow-xl border border-slate-200 bg-slate-50 group transition-all duration-300 p-2'
                 >
                   <div className="rounded-[1.5rem] overflow-hidden">
                     <img
@@ -243,7 +243,7 @@ export function ClientDetailPage() {
         <div className='pb-20 flex justify-center bg-slate-50'>
           <Link
             to='/clientes/instituciones'
-            className='inline-flex items-center px-8 py-4 bg-white border border-slate-200 hover:border-emerald-500 hover:text-emerald-700 text-slate-700 font-bold rounded-2xl transition-all shadow-sm hover:shadow-md'
+            className='inline-flex items-center px-8 py-4 bg-slate-50 border border-slate-200 hover:border-emerald-500 hover:text-emerald-700 text-slate-700 font-bold rounded-2xl transition-all shadow-sm hover:shadow-md'
           >
             <ArrowLeft className='w-5 h-5 mr-3' /> Volver al listado de clientes
           </Link>

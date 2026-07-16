@@ -14,7 +14,7 @@ export function ClientsMainPage() {
       </Helmet>
       <div className='bg-slate-50 flex flex-col w-full min-h-screen'>
         {/* 1. HERO SECTION */}
-        <section className='relative pt-32 pb-32 md:pt-40 md:pb-48 border-b border-slate-200 overflow-hidden'>
+        <section className='relative pt-32 pb-32 md:pt-40 md:pb-48 bg-slate-950 border-b border-slate-800 overflow-hidden'>
           {/* Imagen de fondo nítida y clara */}
           <div
             className='absolute inset-0 z-0 bg-cover bg-center'
@@ -24,7 +24,7 @@ export function ClientsMainPage() {
             }}
           ></div>
           {/* Overlay claro para que el texto resalte pero la imagen se vea */}
-          <div className='absolute inset-0 z-0 bg-gradient-to-b from-white/70 via-white/80 to-slate-50'></div>
+          <div className='absolute inset-0 z-0 bg-gradient-to-b from-slate-950/70 via-slate-950/80 to-slate-950'></div>
 
           <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center'>
             <motion.div
@@ -32,13 +32,13 @@ export function ClientsMainPage() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
             >
-              <span className='inline-block py-1.5 px-4 rounded-full bg-emerald-50 text-emerald-700 text-sm font-bold tracking-[0.2em] uppercase mb-6 border border-emerald-200 shadow-sm'>
+              <span className='inline-block py-1.5 px-4 rounded-full bg-emerald-950/50 text-emerald-400 text-sm font-bold tracking-[0.2em] uppercase mb-6 border border-emerald-800/50 shadow-sm'>
                 Conoce a quiénes ayudamos
               </span>
-              <h1 className='text-4xl md:text-5xl lg:text-7xl font-black text-slate-900 mb-8 tracking-tight'>
+              <h1 className='text-4xl md:text-5xl lg:text-7xl font-black text-white mb-8 tracking-tight'>
                 Nuestros <span className='text-transparent bg-clip-text bg-gradient-to-r from-emerald-500 to-green-500'>Clientes</span>
               </h1>
-              <p className='text-lg md:text-xl text-slate-700 max-w-2xl mx-auto font-medium leading-relaxed'>
+              <p className='text-lg md:text-xl text-slate-300 max-w-2xl mx-auto font-medium leading-relaxed'>
                 Tu éxito es nuestro éxito, y juntos podemos lograr cosas
                 extraordinarias en el ecosistema digital.
               </p>
@@ -53,7 +53,7 @@ export function ClientsMainPage() {
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.2 }}
-              className='bg-white rounded-[2rem] shadow-xl border border-slate-200 p-8 md:p-12 flex flex-col lg:flex-row gap-12 items-center relative overflow-hidden'
+              className='bg-slate-50 rounded-[2rem] shadow-xl border border-slate-200 p-8 md:p-12 flex flex-col lg:flex-row gap-12 items-center relative overflow-hidden'
             >
               {/* Columna Izquierda: Imagen */}
               <div className='w-full lg:w-1/2 relative'>
@@ -110,7 +110,7 @@ export function ClientsMainPage() {
               viewport={{ once: true }}
               className='mb-20 flex flex-col md:flex-row gap-6 md:gap-10 items-start'
             >
-              <div className='w-16 h-16 bg-white rounded-2xl shadow-sm border border-slate-200 flex items-center justify-center flex-shrink-0'>
+              <div className='w-16 h-16 bg-slate-50 rounded-2xl shadow-sm border border-slate-200 flex items-center justify-center flex-shrink-0'>
                 <Target className='w-8 h-8 text-emerald-600' />
               </div>
               <div>
@@ -167,7 +167,7 @@ export function ClientsMainPage() {
             <div className='flex flex-col sm:flex-row justify-center gap-6'>
               <Link
                 to='/clientes/instituciones'
-                className='flex items-center justify-center px-8 py-5 bg-white border border-slate-200 text-slate-800 font-bold rounded-2xl hover:bg-slate-50 transition-all shadow-sm hover:shadow-md group'
+                className='flex items-center justify-center px-8 py-5 bg-slate-50 border border-slate-200 text-slate-800 font-bold rounded-2xl hover:bg-slate-100 transition-all shadow-sm hover:shadow-md group'
               >
                 <div className='w-10 h-10 rounded-full bg-emerald-50 flex items-center justify-center mr-4 group-hover:bg-emerald-100 transition-colors'>
                   <Building2 className='w-5 h-5 text-emerald-600' />

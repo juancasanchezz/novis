@@ -57,9 +57,9 @@ export function ContactPage() {
       <div className='flex flex-col lg:flex-row w-full min-h-screen bg-slate-50'>
         
         {/* PANEL IZQUIERDO: FIJO EN ESCRITORIO (Visual / Branding / Contact Info) */}
-        <div className='lg:w-5/12 lg:fixed lg:h-screen lg:top-0 lg:left-0 relative p-8 md:p-12 lg:p-16 flex flex-col justify-between overflow-hidden border-b lg:border-b-0 lg:border-r border-slate-200'>
+        <div className='lg:w-5/12 lg:fixed lg:h-screen lg:top-0 lg:left-0 relative p-8 md:p-12 lg:p-16 flex flex-col justify-between overflow-hidden border-b lg:border-b-0 lg:border-r border-slate-800 bg-slate-950'>
           {/* Fondo Abstracto y Mapa */}
-          <div className='absolute inset-0 z-0 bg-[radial-gradient(ellipse_at_bottom_left,_var(--tw-gradient-stops))] from-sky-100 via-slate-50 to-emerald-50/30'></div>
+          <div className='absolute inset-0 z-0 bg-[radial-gradient(ellipse_at_bottom_left,_var(--tw-gradient-stops))] from-emerald-900/20 via-slate-950 to-slate-950'></div>
           <div className='absolute inset-0 z-0 opacity-[0.03] bg-cover bg-center' style={{ backgroundImage: "url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2070&auto=format&fit=crop')" }}></div>
           
           <div className='relative z-10 mt-16 md:mt-20 lg:mt-24'>
@@ -68,10 +68,10 @@ export function ContactPage() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
             >
-              <h1 className='text-4xl md:text-5xl font-black text-slate-900 mb-6 tracking-tight leading-tight'>
+              <h1 className='text-4xl md:text-5xl font-black text-white mb-6 tracking-tight leading-tight'>
                 ¿En qué podemos <span className='text-transparent bg-clip-text bg-gradient-to-r from-emerald-500 to-green-500'>ayudarte?</span>
               </h1>
-              <p className='text-lg text-slate-600 max-w-md font-medium leading-relaxed mb-12'>
+              <p className='text-lg text-slate-300 max-w-md font-medium leading-relaxed mb-12'>
                 Hablemos sobre tu proyecto o descubre cómo impulsar tu carrera en el mundo de la consultoría de élite.
               </p>
             </motion.div>
@@ -86,16 +86,16 @@ export function ContactPage() {
                 href='http://googleusercontent.com/maps.google.com/6'
                 target='_blank'
                 rel='noopener noreferrer'
-                className='flex items-center p-4 bg-white/60 backdrop-blur-md border border-slate-200 rounded-2xl hover:bg-white hover:border-emerald-300 hover:shadow-md transition-all duration-300 group shadow-sm'
+                className='flex items-center p-4 bg-slate-900/95 backdrop-blur-xl border border-slate-800 rounded-2xl hover:bg-slate-800 hover:border-emerald-300 hover:shadow-md transition-all duration-300 group shadow-sm'
               >
-                <div className='w-12 h-12 bg-emerald-50 rounded-xl flex items-center justify-center mr-5 flex-shrink-0 group-hover:scale-110 transition-transform shadow-sm'>
+                <div className='w-12 h-12 bg-emerald-950/50 border border-emerald-800/50 rounded-xl flex items-center justify-center mr-5 flex-shrink-0 group-hover:scale-110 transition-transform shadow-sm'>
                   <MapPin className='w-5 h-5 text-emerald-600' />
                 </div>
                 <div>
-                  <p className='text-emerald-600 text-[10px] font-bold uppercase tracking-[0.2em] mb-1'>
+                  <p className='text-emerald-400 text-[10px] font-bold uppercase tracking-[0.2em] mb-1'>
                     Visítanos
                   </p>
-                  <p className='text-slate-800 text-sm font-medium leading-snug'>
+                  <p className='text-slate-200 text-sm font-medium leading-snug'>
                     C/ Hernando de Soto, 10, Local 1<br />
                     10002 Cáceres
                   </p>
@@ -104,16 +104,16 @@ export function ContactPage() {
 
               <a
                 href='mailto:soporte@novis.es'
-                className='flex items-center p-4 bg-white/60 backdrop-blur-md border border-slate-200 rounded-2xl hover:bg-white hover:border-emerald-300 hover:shadow-md transition-all duration-300 group shadow-sm'
+                className='flex items-center p-4 bg-slate-900/95 backdrop-blur-xl border border-slate-800 rounded-2xl hover:bg-slate-800 hover:border-emerald-300 hover:shadow-md transition-all duration-300 group shadow-sm'
               >
-                <div className='w-12 h-12 bg-emerald-50 rounded-xl flex items-center justify-center mr-5 flex-shrink-0 group-hover:scale-110 transition-transform shadow-sm'>
+                <div className='w-12 h-12 bg-emerald-950/50 border border-emerald-800/50 rounded-xl flex items-center justify-center mr-5 flex-shrink-0 group-hover:scale-110 transition-transform shadow-sm'>
                   <Mail className='w-5 h-5 text-emerald-600' />
                 </div>
                 <div>
-                  <p className='text-emerald-600 text-[10px] font-bold uppercase tracking-[0.2em] mb-1'>
+                  <p className='text-emerald-400 text-[10px] font-bold uppercase tracking-[0.2em] mb-1'>
                     Escríbenos
                   </p>
-                  <p className='text-slate-800 text-sm font-medium'>
+                  <p className='text-slate-200 text-sm font-medium'>
                     soporte@novis.es
                   </p>
                 </div>
@@ -121,16 +121,16 @@ export function ContactPage() {
 
               <a
                 href='tel:927222778'
-                className='flex items-center p-4 bg-white/60 backdrop-blur-md border border-slate-200 rounded-2xl hover:bg-white hover:border-emerald-300 hover:shadow-md transition-all duration-300 group shadow-sm'
+                className='flex items-center p-4 bg-slate-900/95 backdrop-blur-xl border border-slate-800 rounded-2xl hover:bg-slate-800 hover:border-emerald-300 hover:shadow-md transition-all duration-300 group shadow-sm'
               >
-                <div className='w-12 h-12 bg-emerald-50 rounded-xl flex items-center justify-center mr-5 flex-shrink-0 group-hover:scale-110 transition-transform shadow-sm'>
+                <div className='w-12 h-12 bg-emerald-950/50 border border-emerald-800/50 rounded-xl flex items-center justify-center mr-5 flex-shrink-0 group-hover:scale-110 transition-transform shadow-sm'>
                   <Phone className='w-5 h-5 text-emerald-600' />
                 </div>
                 <div>
-                  <p className='text-emerald-600 text-[10px] font-bold uppercase tracking-[0.2em] mb-1'>
+                  <p className='text-emerald-400 text-[10px] font-bold uppercase tracking-[0.2em] mb-1'>
                     Llámanos
                   </p>
-                  <p className='text-slate-800 text-sm font-medium'>
+                  <p className='text-slate-200 text-sm font-medium'>
                     927 22 27 78
                   </p>
                 </div>
@@ -138,7 +138,7 @@ export function ContactPage() {
             </motion.div>
           </div>
           
-          <div className="hidden lg:block relative z-10 w-full h-32 rounded-2xl overflow-hidden border border-slate-200 mt-12 opacity-80 hover:opacity-100 transition-all duration-500 shadow-inner">
+          <div className="hidden lg:block relative z-10 w-full h-32 rounded-2xl overflow-hidden border border-slate-800 mt-12 opacity-80 hover:opacity-100 transition-all duration-500 shadow-inner">
              <iframe
                 src='https://maps.google.com/maps?q=Calle%20Hernando%20de%20Soto,%2010,%20Caceres&t=&z=16&ie=UTF8&iwloc=&output=embed'
                 width='100%'
@@ -159,13 +159,13 @@ export function ContactPage() {
           <div className='flex bg-slate-100 p-2 rounded-2xl mb-10 border border-slate-200 shadow-inner max-w-xl'>
             <button
               onClick={() => setContactMode('general')}
-              className={`flex-1 flex items-center justify-center py-3 text-sm font-bold rounded-xl transition-all ${contactMode === 'general' ? 'bg-white text-emerald-600 border border-slate-200 shadow-sm' : 'text-slate-500 hover:text-slate-700 hover:bg-slate-50'}`}
+              className={`flex-1 flex items-center justify-center py-3 text-sm font-bold rounded-xl transition-all ${contactMode === 'general' ? 'bg-slate-50 text-emerald-600 border border-slate-200 shadow-sm' : 'text-slate-500 hover:text-slate-700 hover:bg-slate-50'}`}
             >
               <MessageSquare className='w-4 h-4 mr-2' /> Consultas
             </button>
             <button
               onClick={() => setContactMode('empleo')}
-              className={`flex-1 flex items-center justify-center py-3 text-sm font-bold rounded-xl transition-all ${contactMode === 'empleo' ? 'bg-white text-emerald-600 border border-slate-200 shadow-sm' : 'text-slate-500 hover:text-slate-700 hover:bg-slate-50'}`}
+              className={`flex-1 flex items-center justify-center py-3 text-sm font-bold rounded-xl transition-all ${contactMode === 'empleo' ? 'bg-slate-50 text-emerald-600 border border-slate-200 shadow-sm' : 'text-slate-500 hover:text-slate-700 hover:bg-slate-50'}`}
             >
               <Briefcase className='w-4 h-4 mr-2' /> Empleo
             </button>
@@ -176,7 +176,7 @@ export function ContactPage() {
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.1, duration: 0.6 }}
-            className='bg-white/80 backdrop-blur-xl rounded-[2rem] shadow-xl border border-slate-200 p-8 md:p-12 relative overflow-hidden'
+            className='bg-slate-50/95 backdrop-blur-xl rounded-[2rem] shadow-xl border border-slate-200 p-8 md:p-12 relative overflow-hidden'
           >
             {/* Brillo decorativo */}
             <div className="absolute top-0 right-0 w-64 h-64 bg-emerald-100 rounded-full blur-[100px] opacity-60 pointer-events-none"></div>
@@ -213,7 +213,7 @@ export function ContactPage() {
                     <input
                       type='text'
                       required
-                      className='w-full px-5 py-4 rounded-2xl border border-slate-200 bg-white text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-500/30 focus:border-emerald-500 transition-all duration-300 shadow-sm'
+                      className='w-full px-5 py-4 rounded-2xl border border-slate-200 bg-slate-50 text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-500/30 focus:border-emerald-500 transition-all duration-300 shadow-sm'
                       placeholder='Ej. Juan Pérez'
                     />
                   </div>
@@ -223,7 +223,7 @@ export function ContactPage() {
                     </label>
                     <input
                       type='tel'
-                      className='w-full px-5 py-4 rounded-2xl border border-slate-200 bg-white text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-500/30 focus:border-emerald-500 transition-all duration-300 shadow-sm'
+                      className='w-full px-5 py-4 rounded-2xl border border-slate-200 bg-slate-50 text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-500/30 focus:border-emerald-500 transition-all duration-300 shadow-sm'
                       placeholder='+34'
                     />
                   </div>
@@ -237,7 +237,7 @@ export function ContactPage() {
                     <input
                       type='email'
                       required
-                      className='w-full px-5 py-4 rounded-2xl border border-slate-200 bg-white text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-500/30 focus:border-emerald-500 transition-all duration-300 shadow-sm'
+                      className='w-full px-5 py-4 rounded-2xl border border-slate-200 bg-slate-50 text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-500/30 focus:border-emerald-500 transition-all duration-300 shadow-sm'
                       placeholder='hola@empresa.com'
                     />
                   </div>
@@ -249,7 +249,7 @@ export function ContactPage() {
                       </label>
                       <input
                         type='text'
-                        className='w-full px-5 py-4 rounded-2xl border border-slate-200 bg-white text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-500/30 focus:border-emerald-500 transition-all duration-300 shadow-sm'
+                        className='w-full px-5 py-4 rounded-2xl border border-slate-200 bg-slate-50 text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-500/30 focus:border-emerald-500 transition-all duration-300 shadow-sm'
                         placeholder='¿Cómo podemos ayudar?'
                       />
                     </div>
@@ -308,7 +308,7 @@ export function ContactPage() {
 
           {/* SECCIÓN ADICIONAL BAJO EL FORMULARIO */}
           <div className='mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>
-            <div className='p-6 rounded-3xl bg-white border border-slate-200 hover:border-emerald-300 hover:shadow-md transition-all shadow-sm'>
+            <div className='p-6 rounded-3xl bg-slate-50 border border-slate-200 hover:border-emerald-300 hover:shadow-md transition-all shadow-sm'>
               <div className='w-12 h-12 bg-emerald-50 rounded-xl flex items-center justify-center mb-5 border border-emerald-100'>
                 <Clock className='w-6 h-6 text-emerald-600' />
               </div>
@@ -320,7 +320,7 @@ export function ContactPage() {
               </p>
             </div>
 
-            <div className='p-6 rounded-3xl bg-white border border-slate-200 hover:border-emerald-300 hover:shadow-md transition-all shadow-sm'>
+            <div className='p-6 rounded-3xl bg-slate-50 border border-slate-200 hover:border-emerald-300 hover:shadow-md transition-all shadow-sm'>
               <div className='w-12 h-12 bg-emerald-50 rounded-xl flex items-center justify-center mb-5 border border-emerald-100'>
                 <HeadphonesIcon className='w-6 h-6 text-emerald-600' />
               </div>
@@ -332,7 +332,7 @@ export function ContactPage() {
               </p>
             </div>
 
-            <div className='p-6 rounded-3xl bg-white border border-slate-200 hover:border-emerald-300 hover:shadow-md transition-all shadow-sm md:col-span-2 lg:col-span-1'>
+            <div className='p-6 rounded-3xl bg-slate-50 border border-slate-200 hover:border-emerald-300 hover:shadow-md transition-all shadow-sm md:col-span-2 lg:col-span-1'>
               <div className='w-12 h-12 bg-emerald-50 rounded-xl flex items-center justify-center mb-5 border border-emerald-100'>
                 <ShieldCheck className='w-6 h-6 text-emerald-600' />
               </div>

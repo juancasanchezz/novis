@@ -48,7 +48,7 @@ export function DynamicHero() {
 
   return (
     // PUNTO INTERMEDIO: Cambiado a py-24 md:py-32 para darle un respiro más amplio (Light Theme)
-    <section className='relative bg-sky-50 py-24 md:py-32 overflow-hidden border-b border-slate-200'>
+    <section className='relative bg-slate-950 py-24 md:py-32 overflow-hidden border-b border-slate-800'>
       {/* Imagen de fondo */}
       <div
         className='absolute inset-0 z-0 opacity-10 bg-cover bg-center mix-blend-luminosity'
@@ -59,7 +59,7 @@ export function DynamicHero() {
       ></div>
 
       {/* Degradado superpuesto para asegurar lectura del texto */}
-      <div className='absolute inset-0 z-0 bg-gradient-to-br from-white via-sky-50/95 to-white/40'></div>
+      <div className='absolute inset-0 z-0 bg-gradient-to-br from-slate-950 via-slate-900/95 to-slate-800/40'></div>
 
       {/* --- INICIO ZONA DE ICONOS FLOTANTES --- */}
 
@@ -127,11 +127,11 @@ export function DynamicHero() {
           transition={{ duration: 0.8 }}
           className='max-w-4xl'
         >
-          <span className='inline-flex items-center px-4 py-1.5 rounded-full bg-emerald-50/80 border border-emerald-200 text-emerald-600 text-xs font-bold tracking-widest uppercase mb-6 shadow-sm backdrop-blur-sm'>
+          <span className='inline-flex items-center px-4 py-1.5 rounded-full bg-emerald-950/50 border border-emerald-800/50 text-emerald-400 text-xs font-bold tracking-widest uppercase mb-6 shadow-sm backdrop-blur-sm'>
             Innovación Tecnológica en Extremadura
           </span>
 
-          <h1 className='text-4xl md:text-5xl lg:text-7xl font-black text-slate-900 mb-6 tracking-tighter leading-[1.1] min-h-[150px] md:min-h-[170px] drop-shadow-sm'>
+          <h1 className='text-4xl md:text-5xl lg:text-7xl font-black text-white mb-6 tracking-tighter leading-[1.1] min-h-[150px] md:min-h-[170px] drop-shadow-sm'>
             Desarrollamos soluciones avanzadas y a medida para{' '}
             <span className='bg-clip-text text-transparent bg-gradient-to-r from-emerald-500 to-green-500 inline-block mt-2 pb-2'>
               {text}
@@ -144,7 +144,7 @@ export function DynamicHero() {
             </span>
           </h1>
 
-          <p className='text-lg md:text-2xl text-slate-600 mb-12 leading-relaxed max-w-2xl font-light'>
+          <p className='text-lg md:text-2xl text-slate-300 mb-12 leading-relaxed max-w-2xl font-light'>
             En NOVIS Software transformamos ideas en plataformas robustas,
             escalables y orientadas a resultados.
           </p>

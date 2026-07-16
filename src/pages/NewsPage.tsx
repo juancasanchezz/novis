@@ -34,8 +34,8 @@ export function NewsPage() {
       
       <div className='bg-slate-50 flex flex-col w-full min-h-screen pb-24'>
         {/* HERO EDITORIAL PREMIUM */}
-        <section className='relative bg-slate-50 pt-32 pb-16 lg:pt-40 lg:pb-24 overflow-hidden border-b border-slate-200'>
-          <div className="absolute inset-0 z-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-sky-100 via-slate-50 to-emerald-50/50"></div>
+        <section className='relative bg-slate-950 pt-32 pb-16 lg:pt-40 lg:pb-24 overflow-hidden border-b border-slate-800'>
+          <div className="absolute inset-0 z-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-emerald-900/20 via-slate-950 to-slate-950"></div>
           
           <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10'>
             <motion.div
@@ -44,14 +44,14 @@ export function NewsPage() {
               transition={{ duration: 0.6 }}
               className='max-w-3xl'
             >
-              <div className='inline-flex items-center space-x-2 bg-emerald-50 border border-emerald-200 px-3 py-1 rounded-full mb-6 shadow-sm'>
+              <div className='inline-flex items-center space-x-2 bg-emerald-950/50 border border-emerald-800/50 px-3 py-1 rounded-full mb-6 shadow-sm'>
                 <span className='w-2 h-2 rounded-full bg-emerald-500 animate-pulse'></span>
-                <span className='text-xs font-bold uppercase tracking-widest text-emerald-700'>Intelligence & Insights</span>
+                <span className='text-xs font-bold uppercase tracking-widest text-emerald-400'>Intelligence & Insights</span>
               </div>
-              <h1 className='text-5xl md:text-6xl lg:text-7xl font-black text-slate-900 mb-6 tracking-tight leading-[1.1]'>
+              <h1 className='text-5xl md:text-6xl lg:text-7xl font-black text-white mb-6 tracking-tight leading-[1.1]'>
                 Actualidad <span className='text-transparent bg-clip-text bg-gradient-to-r from-emerald-500 to-green-500'>NOVIS</span>
               </h1>
-              <p className='text-lg md:text-xl text-slate-600 leading-relaxed font-medium'>
+              <p className='text-lg md:text-xl text-slate-300 leading-relaxed font-medium'>
                 Explora nuestras últimas noticias, análisis técnicos profundos, casos de éxito y las tendencias que están redefiniendo el sector del desarrollo de software.
               </p>
             </motion.div>
@@ -59,7 +59,7 @@ export function NewsPage() {
         </section>
 
         {/* CONTROLES DE FILTRADO (Solid) */}
-        <section className='sticky top-20 md:top-24 [.header-hidden_&]:!top-0 z-40 bg-white border-b border-slate-200 py-4 transition-all duration-300 shadow-sm'>
+        <section className='sticky top-20 md:top-24 [.header-hidden_&]:!top-0 z-40 bg-slate-50 border-b border-slate-200 py-4 transition-all duration-300 shadow-sm'>
           <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row md:items-center justify-between gap-4'>
             
             {/* Buscador Integrado */}
@@ -85,7 +85,7 @@ export function NewsPage() {
                 className={`flex-shrink-0 px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider transition-all duration-300 shadow-sm ${
                   selectedCategory === null
                     ? 'bg-emerald-600 text-white shadow-[0_0_15px_rgba(16,185,129,0.3)]'
-                    : 'bg-white text-slate-600 border border-slate-200 hover:bg-slate-50 hover:text-slate-900'
+                    : 'bg-slate-50 text-slate-600 border border-slate-200 hover:bg-slate-100 hover:text-slate-900'
                 }`}
               >
                 Todos
@@ -97,7 +97,7 @@ export function NewsPage() {
                   className={`flex-shrink-0 px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider transition-all duration-300 shadow-sm ${
                     selectedCategory === cat
                       ? 'bg-emerald-600 text-white shadow-[0_0_15px_rgba(16,185,129,0.3)]'
-                      : 'bg-white text-slate-600 border border-slate-200 hover:bg-slate-50 hover:text-slate-900'
+                      : 'bg-slate-50 text-slate-600 border border-slate-200 hover:bg-slate-100 hover:text-slate-900'
                   }`}
                 >
                   {cat}
@@ -114,7 +114,7 @@ export function NewsPage() {
             {filteredArticles.length === 0 ? (
               <motion.div 
                 initial={{ opacity: 0 }} animate={{ opacity: 1 }}
-                className='text-center py-32 bg-white rounded-[2rem] border border-slate-200 shadow-sm'
+                className='text-center py-32 bg-slate-50 rounded-[2rem] border border-slate-200 shadow-sm'
               >
                 <Search className='w-16 h-16 text-slate-300 mx-auto mb-6' />
                 <h3 className='text-2xl font-bold text-slate-900 mb-2'>
@@ -145,7 +145,7 @@ export function NewsPage() {
                         animate={{ opacity: 1, scale: 1 }}
                         exit={{ opacity: 0, scale: 0.95 }}
                         transition={{ duration: 0.5 }}
-                        className={`group relative rounded-[2rem] overflow-hidden bg-white border border-slate-200 shadow-md hover:shadow-xl transition-shadow duration-500 flex flex-col ${
+                        className={`group relative rounded-[2rem] overflow-hidden bg-slate-50 border border-slate-200 shadow-md hover:shadow-xl transition-shadow duration-500 flex flex-col ${
                           isFeatured ? 'md:col-span-2 md:flex-row' : 'col-span-1'
                         }`}
                       >
@@ -161,14 +161,14 @@ export function NewsPage() {
                             className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                           />
                           <div className='absolute top-4 left-4 z-10'>
-                            <span className='bg-white/90 backdrop-blur-md text-emerald-700 text-xs font-bold uppercase tracking-widest py-1.5 px-4 rounded-full shadow-sm'>
+                            <span className='bg-slate-50/95 backdrop-blur-xl text-emerald-700 text-xs font-bold uppercase tracking-widest py-1.5 px-4 rounded-full shadow-sm'>
                               {article.category}
                             </span>
                           </div>
                         </div>
 
                         {/* Contenido */}
-                        <div className={`relative z-10 flex flex-col justify-center p-8 bg-white ${isFeatured ? 'md:w-1/2' : 'flex-grow'}`}>
+                        <div className={`relative z-10 flex flex-col justify-center p-8 bg-slate-50 ${isFeatured ? 'md:w-1/2' : 'flex-grow'}`}>
                           <div className='flex items-center gap-3 mb-4'>
                             <span className='flex items-center text-slate-500 text-xs font-medium uppercase tracking-widest'>
                               <Calendar className='w-4 h-4 mr-2 text-emerald-500' />

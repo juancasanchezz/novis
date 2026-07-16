@@ -79,8 +79,8 @@ export function InstitutionsPage() {
 
       <div className='bg-slate-50 flex flex-col w-full min-h-screen text-slate-600'>
         {/* 1. HERO LUMINOSO */}
-        <section className='pt-32 pb-16 md:pt-40 md:pb-24 relative overflow-hidden'>
-          <div className='absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-emerald-100/50 via-slate-50 to-slate-50 z-0'></div>
+        <section className='pt-32 pb-16 md:pt-40 md:pb-24 bg-slate-900 border-b border-slate-800 relative overflow-hidden'>
+          <div className='absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-emerald-900/40 via-slate-900 to-slate-900 z-0'></div>
           
           <div className='max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center'>
             <motion.div
@@ -88,19 +88,19 @@ export function InstitutionsPage() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
             >
-              <span className='inline-flex items-center py-1.5 px-4 rounded-full bg-emerald-100 border border-emerald-200 text-emerald-700 text-xs font-bold tracking-[0.2em] uppercase mb-8 shadow-sm backdrop-blur-sm'>
+              <span className='inline-flex items-center py-1.5 px-4 rounded-full bg-emerald-950/50 border border-emerald-800/50 text-emerald-400 text-xs font-bold tracking-[0.2em] uppercase mb-8 shadow-sm backdrop-blur-sm'>
                 <Building2 className="w-3.5 h-3.5 mr-2" />
                 Sector Público
               </span>
 
-              <h1 className='text-4xl md:text-6xl font-black text-slate-900 mb-8 tracking-tight'>
+              <h1 className='text-4xl md:text-6xl font-black text-white mb-8 tracking-tight'>
                 Colaboración con{' '}
                 <span className='text-transparent bg-clip-text bg-gradient-to-r from-emerald-500 to-green-500'>
                   Instituciones
                 </span>
               </h1>
 
-              <p className='text-lg md:text-xl text-slate-600 leading-relaxed font-medium max-w-3xl mx-auto'>
+              <p className='text-lg md:text-xl text-slate-300 leading-relaxed font-medium max-w-3xl mx-auto'>
                 Proporcionamos soluciones tecnológicas robustas y seguras para
                 la administración pública, adaptándonos a los estándares
                 oficiales más exigentes.
@@ -122,7 +122,7 @@ export function InstitutionsPage() {
                   transition={{ delay: index * 0.1 }}
                   onHoverStart={() => setHoveredCard(inst.id)}
                   onHoverEnd={() => setHoveredCard(null)}
-                  className={`group relative h-[400px] rounded-3xl bg-white border border-slate-200 shadow-sm overflow-hidden flex flex-col justify-center items-center cursor-pointer transition-all duration-500 hover:border-emerald-300 hover:shadow-xl hover:shadow-emerald-100 ${inst.colSpan}`}
+                  className={`group relative h-[400px] rounded-3xl bg-slate-50 border border-slate-200 shadow-sm overflow-hidden flex flex-col justify-center items-center cursor-pointer transition-all duration-500 hover:border-emerald-300 hover:shadow-xl hover:shadow-emerald-100 ${inst.colSpan}`}
                 >
                   {/* Gradiente de fondo en hover */}
                   <div className='absolute inset-0 bg-gradient-to-b from-transparent via-white/90 to-white opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-0'></div>
@@ -188,7 +188,7 @@ export function InstitutionsPage() {
 
           <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10'>
             <div className='grid md:grid-cols-2 gap-8 md:gap-12'>
-              <div className='p-10 md:p-12 bg-white rounded-[2rem] border border-slate-200 hover:border-emerald-300 transition-colors shadow-lg hover:shadow-xl'>
+              <div className='p-10 md:p-12 bg-slate-50 rounded-[2rem] border border-slate-200 hover:border-emerald-300 transition-colors shadow-lg hover:shadow-xl'>
                 <Landmark className='w-12 h-12 text-emerald-600 mb-6' />
                 <h3 className='text-2xl font-bold mb-4 tracking-tight text-slate-900'>
                   Administración Pública
@@ -198,7 +198,7 @@ export function InstitutionsPage() {
                   transparencia, accesibilidad y eficiencia para el ciudadano.
                 </p>
               </div>
-              <div className='p-10 md:p-12 bg-white rounded-[2rem] border border-slate-200 hover:border-emerald-300 transition-colors shadow-lg hover:shadow-xl'>
+              <div className='p-10 md:p-12 bg-slate-50 rounded-[2rem] border border-slate-200 hover:border-emerald-300 transition-colors shadow-lg hover:shadow-xl'>
                 <ShieldCheck className='w-12 h-12 text-emerald-600 mb-6' />
                 <h3 className='text-2xl font-bold mb-4 tracking-tight text-slate-900'>
                   Seguridad Estatal

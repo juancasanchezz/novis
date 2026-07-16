@@ -149,25 +149,25 @@ export function ServicesPage() {
         />
       </Helmet>
 
-      <div className='bg-gradient-to-br from-sky-50 via-white to-emerald-50/30 flex flex-col w-full min-h-screen'>
+      <div className='bg-slate-50 flex flex-col w-full min-h-screen'>
         {/* 1. HERO LUMINOSO Y DIRECTO */}
-        <section className='pt-32 pb-20 md:pt-40 md:pb-24 border-b border-slate-200 text-center px-4 relative overflow-hidden'>
+        <section className='pt-32 pb-20 md:pt-40 md:pb-24 bg-slate-900 border-b border-slate-800 text-center px-4 relative overflow-hidden'>
           <div className='absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-emerald-500/10 rounded-full blur-[120px] pointer-events-none'></div>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             className='max-w-4xl mx-auto relative z-10'
           >
-            <span className='inline-block py-1.5 px-4 rounded-full bg-emerald-50 text-emerald-600 text-xs font-bold tracking-[0.2em] uppercase mb-6 border border-emerald-200 backdrop-blur-md shadow-sm'>
+            <span className='inline-block py-1.5 px-4 rounded-full bg-emerald-950/50 text-emerald-400 text-xs font-bold tracking-[0.2em] uppercase mb-6 border border-emerald-800/50 backdrop-blur-md shadow-sm'>
               Nuestras Especialidades
             </span>
-            <h1 className='text-5xl md:text-6xl lg:text-7xl font-black text-slate-900 mb-6 tracking-tighter drop-shadow-sm'>
+            <h1 className='text-5xl md:text-6xl lg:text-7xl font-black text-white mb-6 tracking-tighter drop-shadow-sm'>
               Soluciones tecnológicas{' '}
               <span className='text-transparent bg-clip-text bg-gradient-to-r from-emerald-500 to-green-500'>
                 integrales
               </span>
             </h1>
-            <p className='text-lg md:text-xl text-slate-600 font-light max-w-2xl mx-auto leading-relaxed'>
+            <p className='text-lg md:text-xl text-slate-300 font-light max-w-2xl mx-auto leading-relaxed'>
               Explora nuestras áreas de especialización. Construimos software robusto y escalable para que tu empresa lidere en la era digital.
             </p>
           </motion.div>
@@ -218,7 +218,7 @@ export function ServicesPage() {
                     <div className='absolute inset-0 flex flex-col justify-end p-6 md:p-8 xl:p-10'>
                       <div className='flex items-center gap-4 xl:gap-6'>
                         {/* Icono */}
-                        <div className={`flex items-center justify-center rounded-2xl bg-white/80 backdrop-blur-md border border-emerald-100 shadow-sm transition-all duration-500 flex-shrink-0
+                        <div className={`flex items-center justify-center rounded-2xl bg-slate-50/95 backdrop-blur-xl border border-emerald-100 shadow-sm transition-all duration-500 flex-shrink-0
                           ${isHovered ? 'w-14 h-14' : 'w-12 h-12 xl:w-14 xl:h-14'}
                         `}>
                           <service.icon 
@@ -288,11 +288,11 @@ export function ServicesPage() {
                   animate={{ opacity: 1, scale: 1, y: 0 }}
                   exit={{ opacity: 0, scale: 0.95, y: 20 }}
                   onClick={(e) => e.stopPropagation()}
-                  className='bg-white border border-slate-200 w-full max-w-4xl max-h-[90vh] rounded-[2rem] shadow-2xl overflow-hidden flex flex-col relative'
+                  className='bg-slate-50 border border-slate-200 w-full max-w-4xl max-h-[90vh] rounded-[2rem] shadow-2xl overflow-hidden flex flex-col relative'
                 >
                   <button
                     onClick={() => setSelectedService(null)}
-                    className='absolute top-4 right-4 z-20 w-10 h-10 bg-white/80 hover:bg-white border border-slate-200 backdrop-blur-md text-slate-800 rounded-full flex items-center justify-center transition-colors shadow-sm'
+                    className='absolute top-4 right-4 z-20 w-10 h-10 bg-slate-100/90 hover:bg-slate-100 border border-slate-200 backdrop-blur-md text-slate-800 rounded-full flex items-center justify-center transition-colors shadow-sm'
                   >
                     <X className='w-5 h-5' />
                   </button>
@@ -306,7 +306,7 @@ export function ServicesPage() {
                         className='w-full h-full object-cover'
                       />
                       <div className='absolute bottom-0 left-0 p-8 sm:p-10 z-20 flex items-end'>
-                        <div className='w-16 h-16 bg-white border border-emerald-100 shadow-sm rounded-2xl flex items-center justify-center mr-6 hidden sm:flex'>
+                        <div className='w-16 h-16 bg-slate-50 border border-emerald-100 shadow-sm rounded-2xl flex items-center justify-center mr-6 hidden sm:flex'>
                           {selectedService.icon && (
                             <selectedService.icon className='w-8 h-8 text-emerald-600' strokeWidth={2} />
                           )}
@@ -351,13 +351,13 @@ export function ServicesPage() {
         </AnimatePresence>
 
         {/* 4. CTA FINAL */}
-        <section className='py-32 bg-transparent border-t border-slate-200 text-center px-4 mt-auto relative overflow-hidden'>
-          <div className='absolute inset-0 bg-gradient-to-t from-emerald-50/50 to-transparent pointer-events-none'></div>
+        <section className='py-32 bg-slate-950 border-t border-slate-800 text-center px-4 mt-auto relative overflow-hidden'>
+          <div className='absolute inset-0 bg-gradient-to-t from-emerald-900/20 to-transparent pointer-events-none'></div>
           <div className='max-w-3xl mx-auto relative z-10'>
-            <h2 className='text-4xl md:text-5xl font-black text-slate-900 mb-6 tracking-tighter'>
+            <h2 className='text-4xl md:text-5xl font-black text-white mb-6 tracking-tighter'>
               ¿Dudas sobre qué <span className='text-emerald-500'>tecnología</span> implementar?
             </h2>
-            <p className='text-slate-600 mb-10 text-xl font-light leading-relaxed'>
+            <p className='text-slate-300 mb-10 text-xl font-light leading-relaxed'>
               Nuestro equipo de ingenieros está a tu disposición para auditar tu caso sin
               compromiso y trazar una hoja de ruta.
             </p>
