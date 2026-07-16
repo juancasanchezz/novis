@@ -49,7 +49,7 @@ export function Header() {
 
   // Clases refinadas para el Navbar B2B Light Sky Blue + Green
   const navLinkClasses = ({ isActive }: { isActive: boolean }) =>
-    `px-4 py-2 font-medium transition-colors uppercase text-xs tracking-widest ${isActive ? 'text-emerald-600' : 'text-slate-600 hover:text-emerald-600'}`
+    `px-4 py-2 font-medium transition-colors uppercase text-xs tracking-widest ${isActive ? 'text-white font-bold drop-shadow-md' : 'text-emerald-50 hover:text-white'}`
 
   const mobileMainLinkClasses = ({ isActive }: { isActive: boolean }) =>
     `text-2xl font-black uppercase tracking-wider transition-colors ${isActive ? 'text-emerald-600' : 'text-slate-800 hover:text-emerald-600'}`
@@ -94,7 +94,7 @@ export function Header() {
         </div>
 
         {/* 2. MAIN NAV (Fondo claro formal sin ser blanco puro) */}
-        <div className='relative z-50 bg-gradient-to-r from-slate-100 via-sky-50/50 to-slate-100 border-b border-slate-200 shadow-sm'>
+        <div className='relative z-50 bg-emerald-600/95 backdrop-blur-lg border-b border-emerald-500 shadow-sm'>
           <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
             <div className='flex justify-between items-center h-20'>
               <Link
@@ -105,7 +105,7 @@ export function Header() {
                 <img
                   src={logoNovis}
                   alt='NOVIS Logo'
-                  className='h-12 w-auto'
+                  className='h-12 w-auto brightness-0 invert drop-shadow-sm'
                 />
               </Link>
 
@@ -123,10 +123,10 @@ export function Header() {
                 <div className='relative group px-2 py-6'>
                   <Link
                     to='/clientes'
-                    className={`flex items-center font-medium transition-colors uppercase text-xs tracking-widest ${location.pathname.startsWith('/clientes') ? 'text-emerald-600' : 'text-slate-600 group-hover:text-emerald-600'}`}
+                    className={`flex items-center font-medium transition-colors uppercase text-xs tracking-widest ${location.pathname.startsWith('/clientes') ? 'text-white font-bold drop-shadow-md' : 'text-emerald-50 group-hover:text-white'}`}
                   >
                     Clientes
-                    <ChevronDown className='w-4 h-4 ml-1 group-hover:rotate-180 transition-transform duration-300 text-emerald-500/50' />
+                    <ChevronDown className='w-4 h-4 ml-1 group-hover:rotate-180 transition-transform duration-300 text-emerald-200' />
                   </Link>
 
                   <div className='absolute top-full left-1/2 -translate-x-1/2 mt-0 w-80 bg-white/95 backdrop-blur-xl shadow-xl shadow-emerald-900/5 rounded-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform origin-top translate-y-4 group-hover:translate-y-0 overflow-hidden border border-slate-100 z-50'>
@@ -179,18 +179,17 @@ export function Header() {
                 <div className='pl-6 ml-2'>
                   <Link
                     to='/contacto'
-                    className='inline-flex items-center justify-center px-6 py-2.5 bg-emerald-500 hover:bg-emerald-600 border border-emerald-500 hover:border-emerald-600 text-white font-bold rounded-full transition-all duration-300 shadow-md hover:shadow-lg hover:shadow-emerald-500/30 text-xs tracking-widest'
+                    className='inline-flex items-center justify-center px-6 py-2.5 bg-white hover:bg-emerald-50 border border-white text-emerald-700 font-bold rounded-full transition-all duration-300 shadow-md hover:shadow-lg text-xs tracking-widest'
                   >
                     CONTACTAR
                   </Link>
                 </div>
               </nav>
 
-              {/* Botón Hamburguesa Móvil */}
               <div className='md:hidden flex items-center'>
                 <button
                   onClick={() => setIsMobileMenuOpen(true)}
-                  className='text-slate-800 p-2 rounded-lg hover:bg-slate-100 focus:outline-none transition-colors'
+                  className='text-white p-2 rounded-lg hover:bg-emerald-500 focus:outline-none transition-colors'
                   aria-label='Abrir menú'
                 >
                   <Menu className='w-7 h-7' />
