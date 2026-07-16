@@ -108,11 +108,7 @@ export function Clients() {
         </div>
 
         {/* Contenedor Principal del Carrusel */}
-        <div 
-          className='relative group w-full'
-          onMouseEnter={() => setIsHovering(true)}
-          onMouseLeave={() => setIsHovering(false)}
-        >
+        <div className='relative group w-full'>
           {/* Sombras en los bordes para desvanecimiento superpuestas a las flechas */}
           <div className="absolute top-0 left-0 w-16 md:w-48 h-full bg-gradient-to-r from-white to-transparent z-10 pointer-events-none"></div>
           <div className="absolute top-0 right-0 w-16 md:w-48 h-full bg-gradient-to-l from-white to-transparent z-10 pointer-events-none"></div>
@@ -138,7 +134,9 @@ export function Clients() {
           {/* Carrusel Scrollable */}
           <div 
             ref={scrollRef}
-            className='flex items-center space-x-12 md:space-x-20 overflow-x-auto hide-scrollbar w-full px-8 md:px-24 snap-x snap-mandatory'
+            onMouseEnter={() => setIsHovering(true)}
+            onMouseLeave={() => setIsHovering(false)}
+            className='flex items-center space-x-12 md:space-x-20 overflow-x-auto hide-scrollbar w-full px-8 md:px-24'
             style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
           >
             {infiniteLogos.map((logo, index) => (
@@ -147,7 +145,7 @@ export function Clients() {
                 to={logo.link}
                 // Reducimos el padding para que la imagen ocupe más espacio real en la tarjeta
                 // Cambiamos el fondo a blanco para que el logo resalte perfectamente y se fusione si tiene fondo blanco
-                className='flex-shrink-0 w-48 md:w-64 h-28 md:h-36 relative flex items-center justify-center group/logo cursor-pointer bg-slate-50 rounded-2xl border border-slate-200 hover:border-emerald-300 transition-all duration-500 p-2 md:p-4 shadow-sm hover:shadow-[0_8px_30px_rgba(16,185,129,0.15)] snap-center overflow-hidden'
+                className='flex-shrink-0 w-48 md:w-64 h-28 md:h-36 relative flex items-center justify-center group/logo cursor-pointer bg-slate-50 rounded-2xl border border-slate-200 hover:border-emerald-300 transition-all duration-500 p-2 md:p-4 shadow-sm hover:shadow-[0_8px_30px_rgba(16,185,129,0.15)] overflow-hidden'
                 title={`Ver proyecto de ${logo.alt}`}
               >
                 <img

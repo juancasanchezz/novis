@@ -110,7 +110,7 @@ export function InstitutionsPage() {
         </section>
 
         {/* 2. BENTO GRID INTERACTIVO (Casos de Éxito) */}
-        <section className='pb-24 relative z-10'>
+        <section className='pt-16 pb-24 relative z-10'>
           <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>
               {institutionsData.map((inst, index) => (
@@ -122,19 +122,19 @@ export function InstitutionsPage() {
                   transition={{ delay: index * 0.1 }}
                   onHoverStart={() => setHoveredCard(inst.id)}
                   onHoverEnd={() => setHoveredCard(null)}
-                  className={`group relative h-[400px] rounded-3xl bg-slate-50 border border-slate-200 shadow-sm overflow-hidden flex flex-col justify-center items-center cursor-pointer transition-all duration-500 hover:border-emerald-300 hover:shadow-xl hover:shadow-emerald-100 ${inst.colSpan}`}
+                  className={`group relative h-[420px] rounded-3xl bg-gradient-to-br from-sky-950/90 to-slate-900/90 backdrop-blur-xl border border-sky-800 shadow-sm overflow-hidden flex flex-col justify-center items-center cursor-pointer transition-all duration-500 hover:border-sky-400 hover:shadow-xl hover:shadow-sky-500/20 ${inst.colSpan}`}
                 >
                   {/* Gradiente de fondo en hover */}
-                  <div className='absolute inset-0 bg-gradient-to-b from-transparent via-white/90 to-white opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-0'></div>
+                  <div className='absolute inset-0 bg-gradient-to-b from-transparent via-sky-950/95 to-slate-950 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-0'></div>
 
                   {/* Logo Center (Escala y sube en hover) */}
                   <motion.div
                     animate={{
-                      y: hoveredCard === inst.id ? -100 : 0,
-                      scale: hoveredCard === inst.id ? 0.6 : 1,
+                      y: hoveredCard === inst.id ? -120 : 0,
+                      scale: hoveredCard === inst.id ? 0.5 : 1,
                     }}
                     transition={{ duration: 0.4, ease: "easeInOut" }}
-                    className='relative z-10 w-48 h-48 flex items-center justify-center p-6 bg-slate-50 rounded-full border border-slate-100 shadow-lg group-hover:bg-emerald-50 group-hover:border-emerald-100'
+                    className='relative z-10 w-48 h-48 flex items-center justify-center p-4 bg-white rounded-[2rem] overflow-hidden border-4 border-sky-800/50 shadow-2xl group-hover:border-sky-500/50 transition-colors duration-500'
                   >
                     <img
                       src={inst.logo}
@@ -151,24 +151,24 @@ export function InstitutionsPage() {
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: 20 }}
                         transition={{ duration: 0.3, delay: 0.1 }}
-                        className='absolute bottom-0 left-0 w-full p-8 z-20 flex flex-col'
+                        className='absolute bottom-0 left-0 w-full p-8 pt-12 z-20 flex flex-col bg-gradient-to-t from-slate-950 via-sky-950/90 to-transparent'
                       >
-                        <h3 className='text-2xl font-bold text-slate-900 mb-3 tracking-tight'>
+                        <h3 className='text-2xl font-bold text-white mb-3 tracking-tight'>
                           {inst.title}
                         </h3>
-                        <p className='text-sm text-slate-600 mb-4 line-clamp-2'>
+                        <p className='text-sm text-slate-300 mb-4 line-clamp-2'>
                           {inst.description}
                         </p>
                         <div className='flex flex-wrap gap-2 mb-6'>
                           {inst.points.map((point, i) => (
-                            <span key={i} className='text-[10px] uppercase tracking-wider font-bold bg-emerald-50 text-emerald-700 py-1 px-2.5 rounded-full border border-emerald-200'>
+                            <span key={i} className='text-[10px] uppercase tracking-wider font-bold bg-sky-900/50 text-sky-300 py-1 px-2.5 rounded-full border border-sky-800'>
                               {point}
                             </span>
                           ))}
                         </div>
                         <a
                           href={inst.link}
-                          className='inline-flex items-center justify-center w-full py-3 bg-slate-900 hover:bg-emerald-600 text-white font-bold rounded-xl transition-colors shadow-md'
+                          className='inline-flex items-center justify-center w-full py-3 bg-sky-600 hover:bg-sky-500 text-white font-bold rounded-xl transition-colors shadow-md'
                         >
                           {inst.buttonText}
                           <ExternalLink className='ml-2 w-4 h-4' />

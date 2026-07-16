@@ -69,7 +69,7 @@ export function Header() {
         className='w-full flex flex-col z-50 fixed top-0'
       >
         {/* 1. TOP BAR (Enterprise Mode - Color Corporativo) */}
-        <div className='bg-emerald-50 border-b border-emerald-100/50 text-slate-600 py-1.5 hidden md:block'>
+        <div className='bg-gradient-to-r from-emerald-100 via-emerald-50 to-emerald-100 border-b border-emerald-200/50 text-slate-700 py-1.5 hidden md:block'>
           <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center text-xs font-medium tracking-wide'>
             <div className='flex items-center space-x-6'>
               <a
@@ -87,14 +87,14 @@ export function Header() {
                 <span className='hover:text-emerald-700 transition-colors'>soporte@novis.es</span>
               </a>
             </div>
-            <div className='text-emerald-700/70 uppercase tracking-widest text-[10px] font-bold'>
+            <div className='text-emerald-800/70 uppercase tracking-widest text-[10px] font-bold'>
               Consultoría Tecnológica de Élite
             </div>
           </div>
         </div>
 
         {/* 2. MAIN NAV (Fondo claro formal sin ser blanco puro) */}
-        <div className='relative z-50 bg-emerald-50/95 backdrop-blur-xl border-b border-emerald-100 shadow-sm'>
+        <div className='relative z-50 bg-gradient-to-r from-emerald-100/95 via-emerald-50/95 to-emerald-100/95 backdrop-blur-xl border-b border-emerald-200/50 shadow-sm'>
           <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
             <div className='flex justify-between items-center h-20'>
               <Link
