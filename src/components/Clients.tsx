@@ -8,6 +8,8 @@ import logo2 from '../assets/logo2-150x150.png'
 import logo3 from '../assets/logo3-150x150.png'
 import logo4 from '../assets/logo4-150x150.png'
 import logo5 from '../assets/logo-infoex.png'
+import logo6 from '../assets/transformacion.png'
+import logo7 from '../assets/logo avanza blanco.png'
 
 const institutions = [
   {
@@ -35,12 +37,14 @@ const institutions = [
     link: '/clientes/instituciones/escuela-de-administracion-publica',
   },
   { id: 5, src: logo5, alt: 'INFOEX', link: '/clientes/instituciones/infoex' },
+  { id: 6, src: logo6, alt: 'Trans-Formación', link: '/clientes/empresas/cistus' },
+  { id: 7, src: logo7, alt: 'Avanza', link: '/clientes/empresas/avanza' },
 ]
 
-export function Clients() {
+export function Clients () {
   // Array super duplicado para garantizar el scroll infinito visualmente
   const infiniteLogos = [...institutions, ...institutions, ...institutions, ...institutions, ...institutions, ...institutions]
-  
+
   const scrollRef = useRef<HTMLDivElement>(null)
   const [isHovering, setIsHovering] = useState(false)
   const [isInteracting, setIsInteracting] = useState(false) // Para pausar un momento cuando el usuario hace click
@@ -73,7 +77,7 @@ export function Clients() {
     if (scrollRef.current) {
       setIsInteracting(true)
       const scrollAmount = 400 // Cantidad de px a desplazar por click
-      
+
       scrollRef.current.scrollBy({
         left: direction === 'right' ? scrollAmount : -scrollAmount,
         behavior: 'smooth'
@@ -114,7 +118,7 @@ export function Clients() {
           <div className="absolute top-0 right-0 w-16 md:w-48 h-full bg-gradient-to-l from-white to-transparent z-10 pointer-events-none"></div>
 
           {/* Flecha Izquierda */}
-          <button 
+          <button
             onClick={() => handleScroll('left')}
             className='absolute left-2 md:left-8 top-1/2 -translate-y-1/2 z-20 w-12 h-12 md:w-16 md:h-16 rounded-full bg-slate-50/90 border border-slate-200 text-emerald-600 flex items-center justify-center backdrop-blur-md opacity-0 group-hover:opacity-100 hover:bg-emerald-500 hover:text-white hover:border-emerald-500 hover:scale-110 transition-all duration-300 shadow-sm hover:shadow-lg'
             aria-label="Anterior cliente"
@@ -123,7 +127,7 @@ export function Clients() {
           </button>
 
           {/* Flecha Derecha */}
-          <button 
+          <button
             onClick={() => handleScroll('right')}
             className='absolute right-2 md:right-8 top-1/2 -translate-y-1/2 z-20 w-12 h-12 md:w-16 md:h-16 rounded-full bg-slate-50/90 border border-slate-200 text-emerald-600 flex items-center justify-center backdrop-blur-md opacity-0 group-hover:opacity-100 hover:bg-emerald-500 hover:text-white hover:border-emerald-500 hover:scale-110 transition-all duration-300 shadow-sm hover:shadow-lg'
             aria-label="Siguiente cliente"
@@ -132,7 +136,7 @@ export function Clients() {
           </button>
 
           {/* Carrusel Scrollable */}
-          <div 
+          <div
             ref={scrollRef}
             onMouseEnter={() => setIsHovering(true)}
             onMouseLeave={() => setIsHovering(false)}
