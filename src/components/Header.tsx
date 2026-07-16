@@ -49,7 +49,7 @@ export function Header() {
 
   // Clases refinadas para el Navbar B2B Light Sky Blue + Green
   const navLinkClasses = ({ isActive }: { isActive: boolean }) =>
-    `px-4 py-2 font-medium transition-colors uppercase text-xs tracking-widest ${isActive ? 'text-emerald-400 font-bold drop-shadow-md' : 'text-slate-300 hover:text-white'}`
+    `px-4 py-2 font-medium transition-colors uppercase text-xs tracking-widest ${isActive ? 'text-emerald-700 font-bold' : 'text-slate-700 hover:text-emerald-600'}`
 
   const mobileMainLinkClasses = ({ isActive }: { isActive: boolean }) =>
     `text-2xl font-black uppercase tracking-wider transition-colors ${isActive ? 'text-emerald-600' : 'text-slate-800 hover:text-emerald-600'}`
@@ -69,32 +69,32 @@ export function Header() {
         className='w-full flex flex-col z-50 fixed top-0'
       >
         {/* 1. TOP BAR (Enterprise Mode - Color Corporativo) */}
-        <div className='bg-slate-950 border-b border-slate-800 text-slate-300 py-1.5 hidden md:block'>
+        <div className='bg-emerald-50 border-b border-emerald-100/50 text-slate-600 py-1.5 hidden md:block'>
           <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center text-xs font-medium tracking-wide'>
             <div className='flex items-center space-x-6'>
               <a
                 href='tel:927222778'
                 className='flex items-center hover:text-emerald-100 transition-colors'
               >
-                <Phone className='w-3.5 h-3.5 mr-2 text-emerald-400' />
-                <span className='hover:text-white transition-colors'>927 22 27 78</span>
+                <Phone className='w-3.5 h-3.5 mr-2 text-emerald-600' />
+                <span className='hover:text-emerald-700 transition-colors'>927 22 27 78</span>
               </a>
               <a
                 href='mailto:soporte@novis.es'
                 className='flex items-center hover:text-emerald-100 transition-colors'
               >
-                <Mail className='w-3.5 h-3.5 mr-2 text-emerald-400' />
-                <span className='hover:text-white transition-colors'>soporte@novis.es</span>
+                <Mail className='w-3.5 h-3.5 mr-2 text-emerald-600' />
+                <span className='hover:text-emerald-700 transition-colors'>soporte@novis.es</span>
               </a>
             </div>
-            <div className='text-slate-400 uppercase tracking-widest text-[10px] font-bold'>
+            <div className='text-emerald-700/70 uppercase tracking-widest text-[10px] font-bold'>
               Consultoría Tecnológica de Élite
             </div>
           </div>
         </div>
 
         {/* 2. MAIN NAV (Fondo claro formal sin ser blanco puro) */}
-        <div className='relative z-50 bg-slate-950/95 backdrop-blur-lg border-b border-slate-800 shadow-sm'>
+        <div className='relative z-50 bg-emerald-50/95 backdrop-blur-xl border-b border-emerald-100 shadow-sm'>
           <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
             <div className='flex justify-between items-center h-20'>
               <Link
@@ -123,10 +123,10 @@ export function Header() {
                 <div className='relative group px-2 py-6'>
                   <Link
                     to='/clientes'
-                    className={`flex items-center font-medium transition-colors uppercase text-xs tracking-widest ${location.pathname.startsWith('/clientes') ? 'text-emerald-400 font-bold drop-shadow-md' : 'text-slate-300 group-hover:text-white'}`}
+                    className={`flex items-center font-medium transition-colors uppercase text-xs tracking-widest ${location.pathname.startsWith('/clientes') ? 'text-emerald-700 font-bold' : 'text-slate-700 group-hover:text-emerald-600'}`}
                   >
                     Clientes
-                    <ChevronDown className='w-4 h-4 ml-1 group-hover:rotate-180 transition-transform duration-300 text-slate-400' />
+                    <ChevronDown className='w-4 h-4 ml-1 group-hover:rotate-180 transition-transform duration-300 text-emerald-600/50' />
                   </Link>
 
                   <div className='absolute top-full left-1/2 -translate-x-1/2 mt-0 w-80 bg-white/95 backdrop-blur-xl shadow-xl shadow-emerald-900/5 rounded-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform origin-top translate-y-4 group-hover:translate-y-0 overflow-hidden border border-slate-100 z-50'>
@@ -179,7 +179,7 @@ export function Header() {
                 <div className='pl-6 ml-2'>
                   <Link
                     to='/contacto'
-                    className='inline-flex items-center justify-center px-6 py-2.5 bg-emerald-600 hover:bg-emerald-500 border border-emerald-500 text-white font-bold rounded-full transition-all duration-300 shadow-md hover:shadow-lg hover:shadow-emerald-500/20 text-xs tracking-widest'
+                    className='inline-flex items-center justify-center px-6 py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded-full transition-all duration-300 shadow-md hover:shadow-lg text-xs tracking-widest'
                   >
                     CONTACTAR
                   </Link>
@@ -189,7 +189,7 @@ export function Header() {
               <div className='md:hidden flex items-center'>
                 <button
                   onClick={() => setIsMobileMenuOpen(true)}
-                  className='text-white p-2 rounded-lg hover:bg-slate-800 focus:outline-none transition-colors'
+                  className='text-slate-800 p-2 rounded-lg hover:bg-emerald-100 focus:outline-none transition-colors'
                   aria-label='Abrir menú'
                 >
                   <Menu className='w-7 h-7' />
