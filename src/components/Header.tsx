@@ -69,25 +69,25 @@ export function Header() {
         className='w-full flex flex-col z-50 fixed top-0'
       >
         {/* 1. TOP BAR (Enterprise Mode - Color Corporativo) */}
-        <div className='bg-emerald-600 text-white py-1.5 hidden md:block'>
+        <div className='bg-slate-950 border-b border-slate-800 text-slate-300 py-1.5 hidden md:block'>
           <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center text-xs font-medium tracking-wide'>
             <div className='flex items-center space-x-6'>
               <a
                 href='tel:927222778'
                 className='flex items-center hover:text-emerald-100 transition-colors'
               >
-                <Phone className='w-3.5 h-3.5 mr-2 text-emerald-200' />
-                927 22 27 78
+                <Phone className='w-3.5 h-3.5 mr-2 text-emerald-400' />
+                <span className='hover:text-white transition-colors'>927 22 27 78</span>
               </a>
               <a
                 href='mailto:soporte@novis.es'
                 className='flex items-center hover:text-emerald-100 transition-colors'
               >
-                <Mail className='w-3.5 h-3.5 mr-2 text-emerald-200' />
-                soporte@novis.es
+                <Mail className='w-3.5 h-3.5 mr-2 text-emerald-400' />
+                <span className='hover:text-white transition-colors'>soporte@novis.es</span>
               </a>
             </div>
-            <div className='text-emerald-100 uppercase tracking-widest text-[10px] font-bold'>
+            <div className='text-slate-400 uppercase tracking-widest text-[10px] font-bold'>
               Consultoría Tecnológica de Élite
             </div>
           </div>
