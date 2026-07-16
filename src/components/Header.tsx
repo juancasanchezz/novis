@@ -105,7 +105,7 @@ export function Header() {
                 <img
                   src={logoNovis}
                   alt='NOVIS Logo'
-                  className='h-12 w-auto brightness-0 invert drop-shadow-sm'
+                  className='h-12 w-auto'
                 />
               </Link>
 
