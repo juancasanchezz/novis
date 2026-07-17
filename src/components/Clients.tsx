@@ -4,7 +4,7 @@ import { motion } from 'framer-motion'
 
 // Importación de logos
 import logo1 from '../assets/logo1-150x150.png'
-import logo2 from '../assets/logo2-150x150.png'
+import logo2 from '../assets/logo2-1.jpg'
 import logo3 from '../assets/logo3-150x150.png'
 import logo4 from '../assets/logo4-150x150.png'
 import logo5 from '../assets/logo-infoex.png'
@@ -21,7 +21,7 @@ const institutions = [
   { id: 7, src: logo7, alt: 'Avanza', link: '/clientes/empresas/avanza' },
 ]
 
-export function Clients() {
+export function Clients () {
   // Array duplicado para scroll infinito
   const infiniteLogos = [
     ...institutions,
@@ -41,7 +41,7 @@ export function Clients() {
 
     const scroll = () => {
       if (scrollRef.current && !isHovering) {
-        scrollRef.current.scrollLeft += 0.8
+        scrollRef.current.scrollLeft += 2.0
 
         const maxScroll = scrollRef.current.scrollWidth / 2
         if (scrollRef.current.scrollLeft >= maxScroll) {
@@ -56,93 +56,85 @@ export function Clients() {
   }, [isHovering])
 
   return (
-    <section className='relative py-24 md:py-32 bg-slate-950 overflow-hidden'>
-      {/* Fondo con malla de puntos */}
-      <div className='absolute inset-0 bg-dots-dark opacity-40' />
+    <section className='relative py-12 md:py-20 bg-transparent overflow-hidden'>
+      <div className='max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10'>
+        {/* Contenedor tipo Card con fondo azul cielo y sombras */}
+        <div className='relative rounded-[2.5rem] bg-sky-50 border border-sky-100 shadow-xl shadow-sky-900/5 overflow-hidden py-16 md:py-24'>
+          {/* Fondo con malla de puntos interna a la card */}
+          <div className='absolute inset-0 bg-dots-light opacity-50' />
 
-      {/* Línea superior decorativa */}
-      <div className='absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/8 to-transparent' />
+          {/* Orb de fondo */}
+          <div className='absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-sky-400/10 rounded-full blur-[100px] pointer-events-none' />
 
-      {/* Orb de fondo */}
-      <div className='absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-emerald-500/4 rounded-full blur-[100px] pointer-events-none' />
+          <div className='relative z-10 mb-12'>
+            {/* Cabecera */}
+            <div className='text-center mb-16 px-4'>
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+              >
+                <span className='inline-flex items-center px-5 py-2 rounded-full bg-white border border-sky-200 text-sky-700 text-xs font-bold tracking-widest uppercase mb-6 shadow-sm'>
+                  Confianza y Excelencia
+                </span>
+              </motion.div>
 
-      <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 mb-16'>
-        {/* Cabecera */}
-        <div className='text-center mb-16'>
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-          >
-            <span className='inline-flex items-center px-4 py-1.5 rounded-full bg-white/5 border border-white/10 text-emerald-400 text-xs font-bold tracking-widest uppercase mb-6 backdrop-blur-sm'>
-              Confianza y Excelencia
-            </span>
-          </motion.div>
+              <motion.h2
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.1 }}
+                className='text-4xl md:text-5xl lg:text-6xl font-black text-slate-900 mb-5 tracking-tighter leading-tight'
+              >
+                Nuestros clientes nos{' '}
+                <span className='bg-clip-text text-transparent bg-gradient-to-r from-sky-600 to-sky-400'>
+                  avalan
+                </span>
+              </motion.h2>
 
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
-            className='text-4xl md:text-5xl lg:text-6xl font-black text-white mb-5 tracking-tighter leading-tight'
-          >
-            Nuestros clientes nos{' '}
-            <span className='bg-clip-text text-transparent bg-gradient-to-r from-emerald-400 to-cyan-400'>
-              avalan
-            </span>
-          </motion.h2>
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.2 }}
+                className='text-slate-600 text-lg md:text-xl font-light max-w-2xl mx-auto'
+              >
+                Instituciones públicas y empresas privadas líderes confían en nuestra
+                experiencia para impulsar su transformación digital.
+              </motion.p>
+            </div>
+          </div>
 
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.2 }}
-            className='text-slate-400 text-lg md:text-xl font-light max-w-2xl mx-auto'
-          >
-            Instituciones públicas y empresas privadas líderes confían en nuestra
-            experiencia para impulsar su transformación digital.
-          </motion.p>
-        </div>
-      </div>
+          {/* Carrusel */}
+          <div className='relative w-full overflow-hidden'>
+            {/* Fade bordes usando color sky-50 */}
+            <div className='absolute top-0 left-0 w-24 md:w-48 h-full bg-gradient-to-r from-sky-50 to-transparent z-10 pointer-events-none' />
+            <div className='absolute top-0 right-0 w-24 md:w-48 h-full bg-gradient-to-l from-sky-50 to-transparent z-10 pointer-events-none' />
 
-      {/* Carrusel */}
-      <div className='relative w-full'>
-        {/* Fade bordes */}
-        <div className='absolute top-0 left-0 w-32 md:w-48 h-full bg-gradient-to-r from-slate-950 to-transparent z-10 pointer-events-none' />
-        <div className='absolute top-0 right-0 w-32 md:w-48 h-full bg-gradient-to-l from-slate-950 to-transparent z-10 pointer-events-none' />
-
-        {/* Track del carrusel */}
-        <div
-          ref={scrollRef}
-          onMouseEnter={() => setIsHovering(true)}
-          onMouseLeave={() => setIsHovering(false)}
-          className='flex items-center gap-5 md:gap-6 overflow-x-auto hide-scrollbar w-full px-8 md:px-24 py-4'
-          style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
-        >
-          {infiniteLogos.map((logo, index) => (
-            <Link
-              key={`${logo.id}-${index}`}
-              to={logo.link}
-              className='flex-shrink-0 w-44 md:w-56 h-24 md:h-28 relative flex items-center justify-center glass-dark glass-dark-hover rounded-2xl transition-all duration-500 p-3 md:p-5 group/logo overflow-hidden'
-              title={`Ver proyecto de ${logo.alt}`}
+            {/* Track del carrusel */}
+            <div
+              ref={scrollRef}
+              onMouseEnter={() => setIsHovering(true)}
+              onMouseLeave={() => setIsHovering(false)}
+              className='flex items-center gap-5 md:gap-6 overflow-x-auto hide-scrollbar w-full px-8 md:px-24 py-4'
+              style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
             >
-              {/* Glow en hover */}
-              <div className='absolute inset-0 opacity-0 group-hover/logo:opacity-100 transition-opacity duration-500 bg-gradient-to-br from-emerald-500/5 to-transparent rounded-2xl pointer-events-none' />
-
-              <img
-                src={logo.src}
-                alt={logo.alt}
-                className='max-h-full max-w-full object-contain scale-[1.1] group-hover/logo:scale-[1.25] transition-transform duration-500 filter brightness-75 group-hover/logo:brightness-100'
-                style={{ filter: 'brightness(0.7) saturate(0.5)' }}
-                onMouseEnter={(e) => {
-                  (e.currentTarget as HTMLImageElement).style.filter = 'brightness(1) saturate(1)'
-                }}
-                onMouseLeave={(e) => {
-                  (e.currentTarget as HTMLImageElement).style.filter = 'brightness(0.7) saturate(0.5)'
-                }}
-              />
-            </Link>
-          ))}
+              {infiniteLogos.map((logo, index) => (
+                <Link
+                  key={`${logo.id}-${index}`}
+                  to={logo.link}
+                  className='flex-shrink-0 w-74 md:w-56 h-24 md:h-28 relative flex items-center justify-center rounded-2xl transition-all duration-500 p-3 md:p-5 group/logo'
+                  title={`Ver proyecto de ${logo.alt}`}
+                >
+                  <img
+                    src={logo.src}
+                    alt={logo.alt}
+                    className='max-h-full max-w-full object-contain scale-[1.1] group-hover/logo:scale-[1.2] transition-transform duration-500 filter grayscale opacity-60 group-hover/logo:grayscale-0 group-hover/logo:opacity-100 mix-blend-multiply'
+                  />
+                </Link>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </section>

@@ -26,15 +26,15 @@ export function TechOrbit() {
   }
 
   return (
-    <section className='relative py-24 md:py-32 bg-slate-950 overflow-hidden'>
+    <section className='relative py-24 md:py-32 bg-slate-50 overflow-hidden'>
       {/* Malla de cuadrícula */}
-      <div className='absolute inset-0 bg-grid-dark opacity-60 [mask-image:radial-gradient(ellipse_70%_70%_at_50%_50%,#000_50%,transparent_100%)]' />
+      <div className='absolute inset-0 bg-grid-light opacity-60 [mask-image:radial-gradient(ellipse_70%_70%_at_50%_50%,#000_50%,transparent_100%)]' />
 
       {/* Orb de fondo */}
       <div className='absolute right-0 top-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-emerald-500/5 rounded-full blur-[120px] pointer-events-none' />
 
       {/* Línea superior */}
-      <div className='absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/8 to-transparent' />
+      <div className='absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-slate-200 to-transparent' />
 
       <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10'>
         <div className='grid lg:grid-cols-2 gap-16 lg:gap-24 items-center'>
@@ -50,14 +50,14 @@ export function TechOrbit() {
               Arquitectura Enterprise
             </span>
 
-            <h2 className='text-4xl md:text-5xl lg:text-6xl font-black text-white mb-6 tracking-tighter leading-tight'>
+            <h2 className='text-4xl md:text-5xl lg:text-6xl font-black text-slate-900 mb-6 tracking-tighter leading-tight'>
               Stack tecnológico de{' '}
-              <span className='bg-clip-text text-transparent bg-gradient-to-r from-emerald-400 to-cyan-400'>
+              <span className='bg-clip-text text-transparent bg-gradient-to-r from-emerald-600 to-emerald-400'>
                 vanguardia
               </span>
             </h2>
 
-            <p className='text-lg md:text-xl text-slate-400 leading-relaxed font-light mb-10'>
+            <p className='text-lg md:text-xl text-slate-600 leading-relaxed font-light mb-10'>
               Implementamos arquitecturas modernas, seguras y altamente escalables. Seleccionamos las herramientas que garantizan el mejor rendimiento para entornos críticos.
             </p>
 
@@ -76,10 +76,10 @@ export function TechOrbit() {
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.08 }}
-                  className='flex items-center glass-dark rounded-xl px-4 py-3 group hover:border-emerald-500/30 transition-all duration-300'
+                  className='flex items-center bg-white shadow-sm border border-slate-200 rounded-xl px-4 py-3 group hover:border-emerald-500/30 transition-all duration-300'
                 >
                   <div className='w-1.5 h-1.5 bg-emerald-500 rounded-full mr-3 group-hover:shadow-[0_0_6px_rgba(16,185,129,0.8)] transition-shadow' />
-                  <span className='text-sm text-slate-400 group-hover:text-slate-200 transition-colors'>{item}</span>
+                  <span className='text-sm text-slate-600 group-hover:text-slate-900 transition-colors'>{item}</span>
                 </motion.div>
               ))}
             </div>
@@ -145,8 +145,8 @@ export function TechOrbit() {
             <motion.div
               animate={{ scale: [1, 1.04, 1] }}
               transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
-              className='absolute z-30 w-28 h-28 glass-dark rounded-2xl shadow-2xl flex items-center justify-center border border-emerald-500/20'
-              style={{ boxShadow: '0 0 40px rgba(16,185,129,0.15), 0 0 80px rgba(16,185,129,0.05)' }}
+              className='absolute z-30 w-28 h-28 bg-white rounded-2xl shadow-xl flex items-center justify-center border border-slate-200'
+              style={{ boxShadow: '0 0 40px rgba(16,185,129,0.1), 0 0 80px rgba(16,185,129,0.05)' }}
             >
               <img src={logoNovis} alt='NOVIS' className='w-16 h-auto' />
             </motion.div>
@@ -157,7 +157,7 @@ export function TechOrbit() {
               return (
                 <motion.div
                   key={tech.name}
-                  className='absolute z-20 w-14 h-14 glass-dark rounded-xl shadow-lg flex items-center justify-center p-2.5 hover:scale-125 hover:border-emerald-500/40 transition-all duration-300 cursor-pointer group/tech'
+                  className='absolute z-20 w-14 h-14 bg-white rounded-xl shadow-md border border-slate-200 flex items-center justify-center p-2.5 hover:scale-125 hover:border-emerald-500/40 transition-all duration-300 cursor-pointer group/tech'
                   style={{
                     left: `calc(50% + ${pos.x}px - 28px)`,
                     top: `calc(50% + ${pos.y}px - 28px)`,
@@ -185,7 +185,7 @@ export function TechOrbit() {
               return (
                 <motion.div
                   key={tech.name}
-                  className='absolute z-20 w-12 h-12 glass-dark rounded-xl shadow-lg flex items-center justify-center p-2 hover:scale-125 hover:border-emerald-500/40 transition-all duration-300 cursor-pointer group/tech'
+                  className='absolute z-20 w-12 h-12 bg-white rounded-xl shadow-md border border-slate-200 flex items-center justify-center p-2 hover:scale-125 hover:border-emerald-500/40 transition-all duration-300 cursor-pointer group/tech'
                   style={{
                     left: `calc(50% + ${pos.x}px - 24px)`,
                     top: `calc(50% + ${pos.y}px - 24px)`,

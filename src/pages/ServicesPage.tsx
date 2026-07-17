@@ -233,12 +233,12 @@ export function ServicesPage() {
                         <div className={`overflow-hidden transition-all duration-700 ease-in-out whitespace-nowrap xl:whitespace-normal
                           ${isHovered ? 'w-full opacity-100 translate-x-0' : 'w-full xl:w-0 opacity-100 xl:opacity-0 xl:-translate-x-4'}
                         `}>
-                          <h3 className='text-2xl md:text-3xl font-bold text-slate-900 tracking-tight mb-2'>
+                          <h3 className='text-2xl md:text-3xl font-bold text-slate-900 tracking-tight mb-2 xl:whitespace-nowrap'>
                             {service.title}
                           </h3>
                           
                           {/* Texto corto animado (solo visible en hover desktop o siempre en móvil si hay espacio) */}
-                          <div className={`hidden xl:block transition-all duration-700 delay-100
+                          <div className={`hidden xl:block transition-all duration-700 delay-100 overflow-hidden
                             ${isHovered ? 'opacity-100 translate-y-0 max-h-40' : 'opacity-0 translate-y-4 max-h-0'}
                           `}>
                             <p className='text-slate-600 font-light leading-relaxed mb-4 line-clamp-2'>

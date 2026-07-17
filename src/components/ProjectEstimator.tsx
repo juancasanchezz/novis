@@ -36,8 +36,8 @@ const projectData = {
       title: 'Software a Medida / ERP',
       icon: Database,
       stack: ['PostgreSQL', 'Node.js', 'Docker'],
-      color: 'from-emerald-500/20 to-green-500/10 border-emerald-500/30',
-      iconColor: 'text-emerald-400',
+      color: 'from-lime-500/20 to-green-500/10 border-lime-500/30',
+      iconColor: 'text-lime-400',
     },
   },
   phase: {
@@ -110,15 +110,15 @@ export function ProjectEstimator() {
   const selectedPhase = selection.phase ? projectData.phase[selection.phase] : null
 
   return (
-    <section className='relative py-24 md:py-32 bg-slate-950 overflow-hidden'>
+    <section className='relative py-24 md:py-32 bg-slate-50 overflow-hidden'>
       {/* Orb central */}
-      <div className='absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-3xl h-64 bg-emerald-400/4 blur-[140px] pointer-events-none rounded-full' />
+      <div className='absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-3xl h-64 bg-lime-400/4 blur-[140px] pointer-events-none rounded-full' />
 
       {/* Malla */}
-      <div className='absolute inset-0 bg-dots-dark opacity-30' />
+      <div className='absolute inset-0 bg-dots-light opacity-60' />
 
       {/* Línea superior */}
-      <div className='absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-emerald-500/30 to-transparent' />
+      <div className='absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-lime-500/30 to-transparent' />
 
       <div className='max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10'>
         {/* Cabecera */}
@@ -128,7 +128,7 @@ export function ProjectEstimator() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <span className='inline-flex items-center gap-2 py-1 px-3 rounded-full bg-emerald-500/10 text-emerald-400 text-xs font-bold tracking-wider uppercase mb-4 border border-emerald-500/20'>
+            <span className='inline-flex items-center gap-2 py-1 px-3 rounded-full bg-lime-500/10 text-lime-400 text-xs font-bold tracking-wider uppercase mb-4 border border-lime-500/20'>
               <Zap className='w-3 h-3' />
               Asesor Virtual
             </span>
@@ -138,17 +138,17 @@ export function ProjectEstimator() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className='text-3xl md:text-5xl font-black text-white mb-4 tracking-tight'
+            className='text-3xl md:text-5xl font-black text-slate-900 mb-4 tracking-tight'
           >
             Calcula tu proyecto en{' '}
-            <span className='bg-clip-text text-transparent bg-gradient-to-r from-emerald-400 to-cyan-400'>3 pasos</span>
+            <span className='bg-clip-text text-transparent bg-gradient-to-r from-lime-600 to-lime-400'>3 pasos</span>
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
-            className='text-lg text-slate-400 max-w-2xl mx-auto font-light'
+            className='text-lg text-slate-600 max-w-2xl mx-auto font-light'
           >
             Cuéntanos qué necesitas y nuestro sistema te recomendará la mejor arquitectura.
           </motion.p>
@@ -160,13 +160,13 @@ export function ProjectEstimator() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.3 }}
-          className='glass-dark rounded-3xl shadow-2xl shadow-black/50 p-6 md:p-12 min-h-[420px] flex flex-col justify-center relative overflow-hidden'
+          className='bg-white border border-slate-200 rounded-3xl shadow-xl shadow-slate-200/50 p-6 md:p-12 min-h-[420px] flex flex-col justify-center relative overflow-hidden'
         >
           {/* Barra de progreso */}
           {step <= 3 && (
-            <div className='absolute top-0 left-0 w-full h-1 bg-white/5 rounded-t-3xl overflow-hidden'>
+            <div className='absolute top-0 left-0 w-full h-1 bg-slate-100 rounded-t-3xl overflow-hidden'>
               <motion.div
-                className='h-full bg-gradient-to-r from-emerald-500 to-cyan-400 rounded-full'
+                className='h-full bg-gradient-to-r from-lime-500 to-cyan-400 rounded-full'
                 initial={{ width: '0%' }}
                 animate={{ width: `${(step / 3) * 100}%` }}
                 transition={{ duration: 0.6, ease: 'easeInOut' }}
@@ -181,7 +181,7 @@ export function ProjectEstimator() {
                 <div
                   key={s}
                   className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                    s <= step ? 'bg-emerald-400 shadow-[0_0_6px_rgba(52,211,153,0.6)]' : 'bg-white/10'
+                    s <= step ? 'bg-lime-500 shadow-[0_0_6px_rgba(16,185,129,0.4)]' : 'bg-slate-200'
                   }`}
                 />
               ))}
@@ -199,7 +199,7 @@ export function ProjectEstimator() {
                 transition={{ duration: 0.3 }}
                 className='w-full'
               >
-                <h3 className='text-xl md:text-2xl font-bold text-white mb-8 text-center'>
+                <h3 className='text-xl md:text-2xl font-bold text-slate-900 mb-8 text-center'>
                   1. ¿Qué tipo de solución buscas?
                 </h3>
                 <div className='grid grid-cols-1 md:grid-cols-3 gap-4'>
@@ -207,12 +207,12 @@ export function ProjectEstimator() {
                     <button
                       key={key}
                       onClick={() => handleNext('type', key)}
-                      className={`flex flex-col items-center p-7 rounded-2xl border-2 border-white/8 hover:border-emerald-500/50 bg-white/3 hover:bg-gradient-to-br ${item.color} transition-all duration-300 group hover:-translate-y-0.5`}
+                      className={`flex flex-col items-center p-7 rounded-2xl border-2 border-slate-100 hover:border-lime-500/30 bg-slate-50 hover:bg-gradient-to-br ${item.color} transition-all duration-300 group hover:-translate-y-0.5 shadow-sm hover:shadow`}
                     >
-                      <div className='w-14 h-14 rounded-xl bg-white/5 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300'>
-                        <item.icon className={`w-7 h-7 text-slate-500 group-hover:${item.iconColor} transition-colors`} />
+                      <div className='w-14 h-14 rounded-xl bg-white border border-slate-200 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300'>
+                        <item.icon className={`w-7 h-7 text-slate-500 group-hover:${item.iconColor.replace('400', '600')} transition-colors`} />
                       </div>
-                      <span className='font-bold text-slate-300 group-hover:text-white text-base transition-colors'>
+                      <span className='font-bold text-slate-700 group-hover:text-slate-900 text-base transition-colors'>
                         {item.title}
                       </span>
                     </button>
@@ -231,7 +231,7 @@ export function ProjectEstimator() {
                 transition={{ duration: 0.3 }}
                 className='w-full'
               >
-                <h3 className='text-xl md:text-2xl font-bold text-white mb-8 text-center'>
+                <h3 className='text-xl md:text-2xl font-bold text-slate-900 mb-8 text-center'>
                   2. ¿En qué estado se encuentra?
                 </h3>
                 <div className='grid grid-cols-1 md:grid-cols-3 gap-4'>
@@ -239,11 +239,11 @@ export function ProjectEstimator() {
                     <button
                       key={key}
                       onClick={() => handleNext('phase', key)}
-                      className='flex flex-col items-start p-6 bg-white/3 rounded-2xl border-2 border-white/8 hover:border-emerald-500/50 hover:bg-emerald-950/20 transition-all duration-300 text-left group hover:-translate-y-0.5'
+                      className='flex flex-col items-start p-6 bg-slate-50 rounded-2xl border-2 border-slate-100 hover:border-lime-500/30 hover:bg-lime-50/50 transition-all duration-300 text-left group hover:-translate-y-0.5 shadow-sm hover:shadow'
                     >
-                      <item.icon className='w-7 h-7 text-slate-500 group-hover:text-emerald-400 mb-4 transition-colors' />
-                      <span className='font-bold text-slate-200 text-base mb-2 group-hover:text-white transition-colors'>{item.title}</span>
-                      <span className='text-slate-500 text-sm leading-relaxed group-hover:text-slate-400 transition-colors'>{item.desc}</span>
+                      <item.icon className='w-7 h-7 text-slate-500 group-hover:text-lime-600 mb-4 transition-colors' />
+                      <span className='font-bold text-slate-800 text-base mb-2 group-hover:text-slate-900 transition-colors'>{item.title}</span>
+                      <span className='text-slate-500 text-sm leading-relaxed group-hover:text-slate-600 transition-colors'>{item.desc}</span>
                     </button>
                   ))}
                 </div>
@@ -260,7 +260,7 @@ export function ProjectEstimator() {
                 transition={{ duration: 0.3 }}
                 className='w-full'
               >
-                <h3 className='text-xl md:text-2xl font-bold text-white mb-8 text-center'>
+                <h3 className='text-xl md:text-2xl font-bold text-slate-900 mb-8 text-center'>
                   3. ¿Cuál es la urgencia del proyecto?
                 </h3>
                 <div className='grid grid-cols-1 md:grid-cols-3 gap-4'>
@@ -268,11 +268,11 @@ export function ProjectEstimator() {
                     <button
                       key={key}
                       onClick={() => handleNext('timeline', key)}
-                      className='flex flex-col items-start p-6 bg-white/3 rounded-2xl border-2 border-white/8 hover:border-emerald-500/50 hover:bg-emerald-950/20 transition-all duration-300 text-left group hover:-translate-y-0.5'
+                      className='flex flex-col items-start p-6 bg-slate-50 rounded-2xl border-2 border-slate-100 hover:border-lime-500/30 hover:bg-lime-50/50 transition-all duration-300 text-left group hover:-translate-y-0.5 shadow-sm hover:shadow'
                     >
-                      <item.icon className='w-7 h-7 text-slate-500 group-hover:text-emerald-400 mb-4 transition-colors' />
-                      <span className='font-bold text-slate-200 text-base mb-2 group-hover:text-white transition-colors'>{item.title}</span>
-                      <span className='text-slate-500 text-sm leading-relaxed group-hover:text-slate-400 transition-colors'>{item.desc}</span>
+                      <item.icon className='w-7 h-7 text-slate-500 group-hover:text-lime-600 mb-4 transition-colors' />
+                      <span className='font-bold text-slate-800 text-base mb-2 group-hover:text-slate-900 transition-colors'>{item.title}</span>
+                      <span className='text-slate-500 text-sm leading-relaxed group-hover:text-slate-600 transition-colors'>{item.desc}</span>
                     </button>
                   ))}
                 </div>
@@ -293,23 +293,23 @@ export function ProjectEstimator() {
                   {[0, 1, 2].map((i) => (
                     <motion.div
                       key={i}
-                      className='absolute rounded-full border border-emerald-500/40'
+                      className='absolute rounded-full border border-lime-500/40'
                       style={{ inset: i * 8 }}
                       animate={{ opacity: [0.2, 0.8, 0.2], scale: [0.95, 1.05, 0.95] }}
                       transition={{ duration: 2, repeat: Infinity, delay: i * 0.3, ease: 'easeInOut' }}
                     />
                   ))}
                   <div className='absolute inset-0 flex items-center justify-center'>
-                    <Cpu className='w-10 h-10 text-emerald-400 animate-pulse' />
+                    <Cpu className='w-10 h-10 text-lime-500 animate-pulse' />
                   </div>
                 </div>
-                <h3 className='text-2xl font-bold text-white mb-2'>Analizando requerimientos...</h3>
-                <p className='text-slate-400'>Buscando la mejor arquitectura para tu proyecto</p>
+                <h3 className='text-2xl font-bold text-slate-900 mb-2'>Analizando requerimientos...</h3>
+                <p className='text-slate-600'>Buscando la mejor arquitectura para tu proyecto</p>
 
                 {/* Barra de carga animada */}
-                <div className='mt-8 w-64 h-1 bg-white/5 rounded-full overflow-hidden'>
+                <div className='mt-8 w-64 h-1 bg-slate-100 rounded-full overflow-hidden'>
                   <motion.div
-                    className='h-full bg-gradient-to-r from-emerald-500 to-cyan-400 rounded-full'
+                    className='h-full bg-gradient-to-r from-lime-500 to-cyan-400 rounded-full'
                     initial={{ width: '0%' }}
                     animate={{ width: '100%' }}
                     transition={{ duration: 2.2, ease: 'easeInOut' }}
@@ -328,19 +328,19 @@ export function ProjectEstimator() {
               >
                 <div className='grid lg:grid-cols-2 gap-8 items-start'>
                   {/* Resumen */}
-                  <div className='bg-white/3 p-7 rounded-2xl border border-white/8'>
+                  <div className='bg-slate-50 p-7 rounded-2xl border border-slate-200 shadow-sm'>
                     <div className='flex items-center gap-3 mb-5'>
-                      <div className='w-8 h-8 rounded-full bg-emerald-500/15 border border-emerald-500/30 flex items-center justify-center'>
-                        <CheckCircle2 className='w-4 h-4 text-emerald-400' />
+                      <div className='w-8 h-8 rounded-full bg-lime-500/15 border border-lime-500/30 flex items-center justify-center'>
+                        <CheckCircle2 className='w-4 h-4 text-lime-600' />
                       </div>
-                      <h3 className='text-lg font-bold text-white'>Análisis Completado</h3>
+                      <h3 className='text-lg font-bold text-slate-900'>Análisis Completado</h3>
                     </div>
 
-                    <p className='text-slate-400 mb-6 leading-relaxed text-sm'>
+                    <p className='text-slate-600 mb-6 leading-relaxed text-sm'>
                       Para tu proyecto de{' '}
-                      <strong className='text-emerald-400'>{selectedType.title.toLowerCase()}</strong>{' '}
+                      <strong className='text-lime-600'>{selectedType.title.toLowerCase()}</strong>{' '}
                       en fase de{' '}
-                      <strong className='text-emerald-400'>{selectedPhase.title.toLowerCase()}</strong>,
+                      <strong className='text-lime-600'>{selectedPhase.title.toLowerCase()}</strong>,
                       recomendamos:
                     </p>
 
@@ -351,7 +351,7 @@ export function ProjectEstimator() {
                       {selectedType.stack.map((tech, i) => (
                         <span
                           key={i}
-                          className='px-3 py-1.5 bg-emerald-500/10 text-emerald-400 rounded-lg text-sm font-bold border border-emerald-500/20'
+                          className='px-3 py-1.5 bg-lime-50 text-lime-700 rounded-lg text-sm font-bold border border-lime-200'
                         >
                           {tech}
                         </span>
@@ -361,8 +361,8 @@ export function ProjectEstimator() {
 
                   {/* Formulario */}
                   <div>
-                    <h4 className='text-xl font-bold text-white mb-2'>Obtén tu presupuesto</h4>
-                    <p className='text-slate-400 text-sm mb-6 leading-relaxed'>
+                    <h4 className='text-xl font-bold text-slate-900 mb-2'>Obtén tu presupuesto</h4>
+                    <p className='text-slate-600 text-sm mb-6 leading-relaxed'>
                       Déjanos tu email y te enviaremos una estimación económica inicial basada en esta configuración.
                     </p>
 
@@ -372,12 +372,12 @@ export function ProjectEstimator() {
                         placeholder='tu@correoprofesional.com'
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
-                        className='w-full px-5 py-3.5 rounded-xl border border-white/10 outline-none focus:border-emerald-500/60 focus:ring-1 focus:ring-emerald-500/20 transition-all bg-white/5 text-white placeholder-slate-600 text-sm'
+                        className='w-full px-5 py-3.5 rounded-xl border border-slate-200 outline-none focus:border-lime-500 focus:ring-1 focus:ring-lime-500 transition-all bg-white text-slate-900 placeholder-slate-400 text-sm shadow-sm'
                       />
                       <button
                         onClick={() => setStep(6)}
                         disabled={!email.includes('@')}
-                        className='w-full px-6 py-3.5 bg-emerald-500 hover:bg-emerald-400 disabled:opacity-30 disabled:cursor-not-allowed text-slate-950 font-bold rounded-xl transition-all flex items-center justify-center gap-2 group shadow-lg shadow-emerald-500/20'
+                        className='w-full px-6 py-3.5 bg-lime-600 hover:bg-lime-500 disabled:opacity-30 disabled:cursor-not-allowed text-white font-bold rounded-xl transition-all flex items-center justify-center gap-2 group shadow-lg shadow-lime-500/20'
                       >
                         Recibir estimación
                         <Send className='w-4 h-4 group-hover:translate-x-0.5 transition-transform' />
@@ -402,12 +402,12 @@ export function ProjectEstimator() {
                 <motion.div
                   animate={{ scale: [1, 1.1, 1] }}
                   transition={{ duration: 0.6, ease: 'easeOut' }}
-                  className='w-20 h-20 bg-emerald-500/15 rounded-full flex items-center justify-center mx-auto mb-6 border border-emerald-500/30 shadow-[0_0_30px_rgba(16,185,129,0.2)]'
+                  className='w-20 h-20 bg-lime-50 rounded-full flex items-center justify-center mx-auto mb-6 border border-lime-200 shadow-[0_0_30px_rgba(16,185,129,0.1)]'
                 >
-                  <CheckCircle2 className='w-10 h-10 text-emerald-400' />
+                  <CheckCircle2 className='w-10 h-10 text-lime-500' />
                 </motion.div>
-                <h3 className='text-3xl font-black text-white mb-4'>¡Solicitud enviada!</h3>
-                <p className='text-lg text-slate-400 max-w-lg mx-auto mb-10 font-light'>
+                <h3 className='text-3xl font-black text-slate-900 mb-4'>¡Solicitud enviada!</h3>
+                <p className='text-lg text-slate-600 max-w-lg mx-auto mb-10 font-light'>
                   Revisa tu bandeja de entrada en los próximos minutos. Nuestro equipo ya está revisando tu perfil.
                 </p>
                 <button
@@ -420,7 +420,7 @@ export function ProjectEstimator() {
                     })
                     setEmail('')
                   }}
-                  className='px-6 py-2.5 glass-dark border border-white/10 text-slate-400 hover:text-white font-semibold rounded-xl hover:border-white/20 transition-all text-sm'
+                  className='px-6 py-2.5 bg-white border border-slate-200 text-slate-600 hover:text-slate-900 hover:border-slate-300 font-semibold rounded-xl transition-all text-sm shadow-sm'
                 >
                   Volver a calcular
                 </button>

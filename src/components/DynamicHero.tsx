@@ -49,11 +49,11 @@ function useCounter (target: number, duration = 2000, start = false) {
 function StatItem ({ value, suffix, label, start }: { value: number; suffix: string; label: string; start: boolean }) {
   const count = useCounter(value, 1800, start)
   return (
-    <div className='flex flex-col items-center sm:items-start'>
-      <span className='text-3xl md:text-4xl font-black text-white tabular-nums'>
-        {count}<span className='text-emerald-400'>{suffix}</span>
+    <div className='bg-white rounded-3xl p-8 shadow-2xl shadow-black/10 border border-slate-100 flex flex-col items-start min-h-[140px] justify-center'>
+      <span className='text-4xl md:text-5xl font-light text-slate-900 tabular-nums'>
+        {count}<span className='text-lime-500 font-medium ml-1'>{suffix}</span>
       </span>
-      <span className='text-slate-500 text-sm mt-1 font-medium'>{label}</span>
+      <span className='text-slate-600 text-sm mt-2 font-medium'>{label}</span>
     </div>
   )
 }
@@ -120,26 +120,26 @@ export function DynamicHero () {
   return (
     <section
       ref={sectionRef}
-      className='relative min-h-screen flex flex-col justify-center overflow-hidden bg-slate-950'
+      className='relative bg-slate-950 pb-16 pt-28 lg:pt-32 rounded-b-[2.5rem] border-b border-slate-800/50 shadow-2xl'
     >
       {/* ---- CAPAS DE FONDO ---- */}
+      <div className='absolute inset-0 overflow-hidden pointer-events-none rounded-b-[2.5rem]'>
+        {/* Gradiente radial principal */}
+        <div className='absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_-10%,rgba(132,204,22,0.15),transparent)]' />
 
-      {/* Gradiente radial principal */}
-      <div className='absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_-10%,rgba(16,185,129,0.12),transparent)]' />
+      {/* Malla de puntos dark */}
+      <div className='absolute inset-0 bg-grid-dark opacity-30' />
 
-      {/* Malla de puntos */}
-      <div className='absolute inset-0 bg-dots-dark opacity-60' />
-
-      {/* Orb 1 — verde */}
+      {/* Orb 1 — lime */}
       <motion.div
         style={{ x: orb1X, y: orb1Y }}
-        className='absolute top-[-10%] right-[5%] w-[600px] h-[600px] bg-emerald-500/6 rounded-full blur-[120px] pointer-events-none animate-glow-pulse'
+        className='absolute top-[-10%] right-[5%] w-[600px] h-[600px] bg-lime-500/10 rounded-full blur-[120px] pointer-events-none animate-glow-pulse'
       />
 
       {/* Orb 2 — cyan */}
       <motion.div
         style={{ x: orb2X, y: orb2Y }}
-        className='absolute bottom-[-5%] left-[-5%] w-[500px] h-[500px] bg-cyan-500/5 rounded-full blur-[100px] pointer-events-none animate-float-slow'
+        className='absolute bottom-[-5%] left-[-5%] w-[500px] h-[500px] bg-cyan-500/10 rounded-full blur-[100px] pointer-events-none animate-float-slow'
       />
 
       {/* Partículas de luz */}
@@ -147,7 +147,7 @@ export function DynamicHero () {
         {PARTICLES.map((p) => (
           <motion.div
             key={p.id}
-            className='absolute rounded-full bg-emerald-400'
+            className='absolute rounded-full bg-lime-400'
             style={{
               left: p.left,
               top: p.top,
@@ -162,10 +162,11 @@ export function DynamicHero () {
       </div>
 
       {/* Línea horizontal de acento */}
-      <div className='absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-emerald-500/40 to-transparent' />
+      <div className='absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-lime-500/30 to-transparent' />
+      </div>
 
       {/* ---- CONTENIDO ---- */}
-      <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full pt-24 pb-16'>
+      <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full mb-4 lg:mb-6'>
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -178,9 +179,9 @@ export function DynamicHero () {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
           >
-            <span className='inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-bold tracking-widest uppercase mb-8'>
+            <span className='inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-lime-500/10 border border-lime-500/20 text-lime-400 text-xs font-bold tracking-widest uppercase mb-8 shadow-glow-lime'>
               <motion.span
-                className='w-1.5 h-1.5 bg-emerald-400 rounded-full'
+                className='w-1.5 h-1.5 bg-lime-400 rounded-full'
                 animate={{ opacity: [1, 0.3, 1], scale: [1, 0.8, 1] }}
                 transition={{ duration: 2, repeat: Infinity }}
               />
@@ -194,20 +195,20 @@ export function DynamicHero () {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.2 }}
-            className='text-4xl md:text-6xl lg:text-7xl font-black text-white mb-6 tracking-tighter leading-[1.05]'
+            className='text-4xl md:text-5xl lg:text-7xl font-medium text-white mb-6 tracking-tight leading-[1.1] min-h-[160px] lg:min-h-[240px]'
           >
             Desarrollamos soluciones
             <br />
             avanzadas para{' '}
-            <span className='relative inline-block'>
-              <span className='bg-clip-text text-transparent bg-gradient-to-r from-emerald-400 via-green-400 to-cyan-400 animate-gradient-shift'>
+            <span className='relative inline-block font-semibold'>
+              <span className='text-lime-400'>
                 {text}
               </span>
               {/* Cursor parpadeante */}
               <motion.span
                 animate={{ opacity: [1, 0, 1] }}
                 transition={{ duration: 0.75, repeat: Infinity }}
-                className='inline-block w-[3px] h-[0.8em] bg-emerald-400 ml-1.5 align-middle shadow-[0_0_12px_rgba(52,211,153,0.8)]'
+                className='inline-block w-[2px] h-[0.9em] bg-lime-400 ml-1.5 align-middle shadow-[0_0_12px_rgba(163,230,53,0.5)]'
               />
             </span>
           </motion.h1>
@@ -217,9 +218,9 @@ export function DynamicHero () {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.35 }}
-            className='text-lg md:text-xl text-slate-400 mb-10 leading-relaxed max-w-2xl font-light'
+            className='text-lg md:text-xl text-slate-300 mb-10 leading-relaxed max-w-2xl font-light'
           >
-            En <strong className='text-slate-200 font-semibold'>NOVIS Software</strong> transformamos ideas en plataformas robustas,
+            En <strong className='text-white font-medium'>NOVIS Software</strong> transformamos ideas en plataformas robustas,
             escalables y orientadas a resultados. Más de 25 años de experiencia en proyectos de alto impacto.
           </motion.p>
 
@@ -228,14 +229,14 @@ export function DynamicHero () {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.5 }}
-            className='flex flex-col sm:flex-row gap-4 mb-16'
+            className='flex flex-col sm:flex-row gap-4 mb-8'
           >
             {/* CTA primario */}
             <Link
               to='/contacto'
-              className='relative inline-flex items-center justify-center px-8 py-4 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold rounded-2xl transition-all duration-300 text-base overflow-hidden group shadow-lg shadow-emerald-500/25 hover:shadow-emerald-500/40 hover:-translate-y-0.5'
+              className='relative inline-flex items-center justify-center px-8 py-4 bg-lime-400 hover:bg-lime-300 text-slate-950 font-bold rounded-2xl transition-all duration-300 text-base overflow-hidden group shadow-lg shadow-lime-500/25 hover:shadow-lime-500/40 hover:-translate-y-0.5'
             >
-              <span className='absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-200%] group-hover:translate-x-[200%] transition-transform duration-700 skew-x-12' />
+              <span className='absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent translate-x-[-200%] group-hover:translate-x-[200%] transition-transform duration-700 skew-x-12' />
               <span className='relative'>Inicia tu proyecto</span>
               <ArrowRight className='ml-2.5 w-5 h-5 relative group-hover:translate-x-1 transition-transform' />
             </Link>
@@ -243,7 +244,7 @@ export function DynamicHero () {
             {/* CTA secundario */}
             <Link
               to='/servicios'
-              className='inline-flex items-center justify-center px-8 py-4 bg-white/5 hover:bg-white/10 text-white font-semibold rounded-2xl border border-white/10 hover:border-emerald-500/40 transition-all duration-300 text-base backdrop-blur-sm hover:-translate-y-0.5'
+              className='inline-flex items-center justify-center px-8 py-4 bg-transparent hover:bg-white/5 text-white font-semibold rounded-2xl border border-white/20 hover:border-lime-500/50 transition-all duration-300 text-base shadow-sm hover:shadow hover:-translate-y-0.5'
             >
               Ver servicios
               <ArrowRight className='ml-2 w-4 h-4 opacity-60' />
@@ -255,39 +256,28 @@ export function DynamicHero () {
             initial={{ scaleX: 0, opacity: 0 }}
             animate={{ scaleX: 1, opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.65 }}
-            className='h-px bg-gradient-to-r from-emerald-500/30 via-white/5 to-transparent mb-12 origin-left'
+            className='h-px bg-gradient-to-r from-lime-500/30 via-white/10 to-transparent mb-16 origin-left hidden md:block'
           />
+        </motion.div>
+      </div>
 
-          {/* Estadísticas con contador */}
+      {/* Estadísticas con contador - Posicionadas absolutas abajo para solapar */}
+      <div className='absolute bottom-0 left-0 w-full translate-y-1/2 z-20 px-4 sm:px-6 lg:px-8'>
+        <div className='max-w-7xl mx-auto'>
           <motion.div
             ref={statsRef}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.75 }}
-            className='flex flex-col sm:flex-row gap-8 sm:gap-16'
+            className='grid grid-cols-1 sm:grid-cols-3 gap-6'
           >
             {STATS.map((stat) => (
               <StatItem key={stat.label} {...stat} start={statsVisible} />
             ))}
           </motion.div>
-        </motion.div>
+        </div>
       </div>
 
-      {/* Scroll indicator */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.2 }}
-        className='absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 z-10'
-      >
-        <span className='text-slate-600 text-xs tracking-widest uppercase'>Scroll</span>
-        <motion.div
-          animate={{ y: [0, 6, 0] }}
-          transition={{ duration: 1.8, repeat: Infinity, ease: 'easeInOut' }}
-        >
-          <ChevronDown className='w-5 h-5 text-emerald-500/50' />
-        </motion.div>
-      </motion.div>
     </section>
   )
 }

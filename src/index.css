@@ -12,9 +12,9 @@
   --color-green-800: #48722c;
   --color-green-900: #355520;
 
-  --color-background: #020617;
-  --color-foreground: #f8fafc;
-  --color-border: #1e293b;
+  --color-background: #f8fafc;
+  --color-foreground: #0f172a;
+  --color-border: #e2e8f0;
 
   --font-sans: 'Inter', system-ui, sans-serif;
   --font-heading: 'Outfit', system-ui, sans-serif;
@@ -26,7 +26,7 @@
   }
 
   body {
-    background-color: #020617;
+    background-color: #f8fafc;
     color: var(--color-foreground);
     font-family: var(--font-sans);
     overflow-x: hidden;
@@ -41,29 +41,29 @@
   html::-webkit-scrollbar-track,
   body::-webkit-scrollbar-track,
   *::-webkit-scrollbar-track {
-    background: #0f172a;
+    background: #f1f5f9;
   }
   html::-webkit-scrollbar-thumb,
   body::-webkit-scrollbar-thumb,
   *::-webkit-scrollbar-thumb {
-    background: linear-gradient(to bottom, #10b981, #34d399);
+    background: linear-gradient(to bottom, #84cc16, #a3e635);
     border-radius: 9999px;
-    box-shadow: 0 0 8px rgba(16, 185, 129, 0.8), 0 0 16px rgba(16, 185, 129, 0.4);
+    box-shadow: 0 0 8px rgba(132, 204, 22, 0.8), 0 0 16px rgba(132, 204, 22, 0.4);
   }
   html::-webkit-scrollbar-thumb:hover,
   body::-webkit-scrollbar-thumb:hover,
   *::-webkit-scrollbar-thumb:hover {
-    background: linear-gradient(to bottom, #34d399, #6ee7b7);
-    box-shadow: 0 0 12px rgba(52, 211, 153, 1), 0 0 24px rgba(52, 211, 153, 0.6);
+    background: linear-gradient(to bottom, #a3e635, #bef264);
+    box-shadow: 0 0 12px rgba(163, 230, 53, 1), 0 0 24px rgba(163, 230, 53, 0.6);
   }
 
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-heading);
   }
 
-  /* Selección de texto emerald */
+  /* Selección de texto lime */
   ::selection {
-    background: rgba(16, 185, 129, 0.3);
+    background: rgba(132, 204, 22, 0.3);
     color: #ffffff;
   }
 }
@@ -169,33 +169,33 @@
     animation: word-enter 0.6s ease forwards;
   }
 
-  /* Utlities de glassmorphism */
-  .glass-dark {
-    background: rgba(255, 255, 255, 0.04);
+  /* Utlities de glassmorphism light */
+  .glass-light {
+    background: rgba(255, 255, 255, 0.7);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(0, 0, 0, 0.05);
   }
 
-  .glass-dark-hover:hover {
-    background: rgba(255, 255, 255, 0.08);
-    border-color: rgba(16, 185, 129, 0.3);
+  .glass-light-hover:hover {
+    background: rgba(255, 255, 255, 0.95);
+    border-color: rgba(132, 204, 22, 0.3);
   }
 
-  /* Glow text emerald */
-  .text-glow-emerald {
-    text-shadow: 0 0 30px rgba(16, 185, 129, 0.5), 0 0 60px rgba(16, 185, 129, 0.2);
+  /* Glow text lime */
+  .text-glow-lime {
+    text-shadow: 0 0 30px rgba(132, 204, 22, 0.5), 0 0 60px rgba(132, 204, 22, 0.2);
   }
 
-  /* Glow box emerald */
-  .shadow-glow-emerald {
-    box-shadow: 0 0 30px rgba(16, 185, 129, 0.2), 0 0 60px rgba(16, 185, 129, 0.1);
+  /* Glow box lime */
+  .shadow-glow-lime {
+    box-shadow: 0 0 30px rgba(132, 204, 22, 0.2), 0 0 60px rgba(132, 204, 22, 0.1);
   }
 
-  /* Neon border emerald */
-  .border-neon-emerald {
-    border-color: rgba(16, 185, 129, 0.6);
-    box-shadow: 0 0 8px rgba(16, 185, 129, 0.3), inset 0 0 8px rgba(16, 185, 129, 0.05);
+  /* Neon border lime */
+  .border-neon-lime {
+    border-color: rgba(132, 204, 22, 0.6);
+    box-shadow: 0 0 8px rgba(132, 204, 22, 0.3), inset 0 0 8px rgba(132, 204, 22, 0.05);
   }
 
   /* Ocultar scrollbar en carruseles */
@@ -207,17 +207,31 @@
     display: none;
   }
 
-  /* Grid tecnológica de fondo */
+  /* Grid tecnológica de fondo light */
+  .bg-grid-light {
+    background-image:
+      linear-gradient(to right, rgba(0,0,0,0.03) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(0,0,0,0.03) 1px, transparent 1px);
+    background-size: 64px 64px;
+  }
+  
+  /* Grid tecnológica de fondo dark (gigas style) */
   .bg-grid-dark {
     background-image:
-      linear-gradient(to right, rgba(255,255,255,0.03) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(255,255,255,0.03) 1px, transparent 1px);
+      linear-gradient(to right, rgba(255,255,255,0.02) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255,255,255,0.02) 1px, transparent 1px);
     background-size: 64px 64px;
   }
 
-  /* Puntos de fondo */
+  /* Puntos de fondo light */
+  .bg-dots-light {
+    background-image: radial-gradient(rgba(0,0,0,0.06) 1px, transparent 1px);
+    background-size: 24px 24px;
+  }
+  
+  /* Puntos de fondo dark */
   .bg-dots-dark {
-    background-image: radial-gradient(rgba(255,255,255,0.06) 1px, transparent 1px);
+    background-image: radial-gradient(rgba(255,255,255,0.05) 1px, transparent 1px);
     background-size: 24px 24px;
   }
 }

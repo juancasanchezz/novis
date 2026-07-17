@@ -23,7 +23,7 @@ function App() {
     // Envolvemos toda la aplicación en el <Router>
     <Router>
       <ScrollToTop />
-      <div className='min-h-screen flex flex-col font-sans bg-slate-950 text-slate-50 selection:bg-emerald-500/30'>
+      <div className='min-h-screen bg-slate-50 text-slate-900 font-sans selection:bg-emerald-500/30 selection:text-emerald-900 flex flex-col'>
         {/* El Header se mostrará en todas las páginas */}
         <Header />
 

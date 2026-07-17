@@ -53,30 +53,30 @@ export function Footer() {
   ]
 
   return (
-    <footer className='relative bg-slate-950 pt-20 pb-10 overflow-hidden'>
+    <footer className='relative bg-slate-50 pt-20 pb-10 overflow-hidden'>
       {/* Línea decorativa superior neon */}
-      <div className='absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-emerald-500/50 to-transparent' />
+      <div className='absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-lime-500/20 to-transparent' />
 
       {/* Orb de fondo */}
-      <div className='absolute bottom-0 left-1/2 -translate-x-1/2 w-[800px] h-48 bg-emerald-500/4 blur-[100px] rounded-full pointer-events-none' />
+      <div className='absolute bottom-0 left-1/2 -translate-x-1/2 w-[800px] h-48 bg-lime-500/4 blur-[100px] rounded-full pointer-events-none' />
 
       {/* Malla de puntos */}
-      <div className='absolute inset-0 bg-dots-dark opacity-20' />
+      <div className='absolute inset-0 bg-dots-light opacity-60' />
 
       <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10'>
         {/* CTA superior */}
-        <div className='glass-dark rounded-3xl p-8 md:p-10 mb-16 flex flex-col md:flex-row items-start md:items-center justify-between gap-6'>
+        <div className='bg-white border border-slate-200 rounded-3xl p-8 md:p-10 mb-16 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 shadow-sm'>
           <div>
-            <h3 className='text-2xl md:text-3xl font-black text-white mb-2 tracking-tight'>
+            <h3 className='text-2xl md:text-3xl font-black text-slate-900 mb-2 tracking-tight'>
               ¿Tienes un proyecto en mente?
             </h3>
-            <p className='text-slate-400 font-light'>
+            <p className='text-slate-600 font-light'>
               Nuestros consultores están disponibles para ayudarte.
             </p>
           </div>
           <Link
             to='/contacto'
-            className='flex-shrink-0 inline-flex items-center px-7 py-3.5 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold rounded-2xl transition-all duration-300 group shadow-lg shadow-emerald-500/20 hover:-translate-y-0.5'
+            className='flex-shrink-0 inline-flex items-center px-7 py-3.5 bg-lime-600 hover:bg-lime-500 text-white font-bold rounded-2xl transition-all duration-300 group shadow-lg shadow-lime-500/20 hover:-translate-y-0.5'
           >
             Hablar con un experto
             <ArrowRight className='ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform' />
@@ -104,7 +104,7 @@ export function Footer() {
                     target='_blank'
                     rel='noopener noreferrer'
                     aria-label={s.label}
-                    className='w-9 h-9 flex items-center justify-center rounded-xl glass-dark hover:border-emerald-500/30 hover:bg-emerald-500/10 text-slate-500 hover:text-emerald-400 transition-all duration-300'
+                    className='w-9 h-9 flex items-center justify-center rounded-xl bg-white border border-slate-200 hover:border-lime-300 hover:bg-lime-50 text-slate-500 hover:text-lime-600 transition-all duration-300 shadow-sm'
                   >
                     <s.icon className='w-4 h-4' />
                   </a>
@@ -113,7 +113,7 @@ export function Footer() {
                     key={s.label}
                     onClick={(e) => handleExternalLink(e, s.platform!, s.url!)}
                     aria-label={s.label}
-                    className='w-9 h-9 flex items-center justify-center rounded-xl glass-dark hover:border-emerald-500/30 hover:bg-emerald-500/10 text-slate-500 hover:text-emerald-400 transition-all duration-300'
+                    className='w-9 h-9 flex items-center justify-center rounded-xl bg-white border border-slate-200 hover:border-lime-300 hover:bg-lime-50 text-slate-500 hover:text-lime-600 transition-all duration-300 shadow-sm'
                   >
                     <s.icon className='w-4 h-4' />
                   </button>
@@ -124,7 +124,7 @@ export function Footer() {
 
           {/* Columna 2: Enlaces */}
           <div>
-            <h3 className='text-slate-200 text-sm font-bold tracking-widest uppercase mb-7'>
+            <h3 className='text-slate-900 text-sm font-bold tracking-widest uppercase mb-7'>
               Navegación
             </h3>
             <ul className='space-y-3.5'>
@@ -140,9 +140,9 @@ export function Footer() {
                   <Link
                     to={link.path}
                     state={link.state}
-                    className='text-slate-500 hover:text-emerald-400 transition-colors text-sm font-medium flex items-center gap-2 group/link'
+                    className='text-slate-600 hover:text-lime-600 transition-colors text-sm font-medium flex items-center gap-2 group/link'
                   >
-                    <span className='w-0 group-hover/link:w-3 h-px bg-emerald-500 transition-all duration-300 rounded-full' />
+                    <span className='w-0 group-hover/link:w-3 h-px bg-lime-500 transition-all duration-300 rounded-full' />
                     {link.name}
                   </Link>
                 </li>
@@ -152,13 +152,13 @@ export function Footer() {
 
           {/* Columna 3: Contacto */}
           <div>
-            <h3 className='text-slate-200 text-sm font-bold tracking-widest uppercase mb-7'>
+            <h3 className='text-slate-900 text-sm font-bold tracking-widest uppercase mb-7'>
               Contacto
             </h3>
             <ul className='space-y-5'>
               <li className='flex items-start gap-4'>
-                <div className='w-8 h-8 rounded-lg bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center shrink-0 mt-0.5'>
-                  <MapPin className='w-4 h-4 text-emerald-500' strokeWidth={1.5} />
+                <div className='w-8 h-8 rounded-lg bg-lime-50 border border-lime-200 flex items-center justify-center shrink-0 mt-0.5'>
+                  <MapPin className='w-4 h-4 text-lime-600' strokeWidth={1.5} />
                 </div>
                 <span className='text-slate-500 text-sm font-medium leading-relaxed'>
                   Calle Hernando de Soto, 10, Local 1<br />
@@ -166,18 +166,18 @@ export function Footer() {
                 </span>
               </li>
               <li className='flex items-center gap-4'>
-                <div className='w-8 h-8 rounded-lg bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center shrink-0'>
-                  <Phone className='w-4 h-4 text-emerald-500' strokeWidth={1.5} />
+                <div className='w-8 h-8 rounded-lg bg-lime-50 border border-lime-200 flex items-center justify-center shrink-0'>
+                  <Phone className='w-4 h-4 text-lime-600' strokeWidth={1.5} />
                 </div>
-                <a href='tel:927222778' className='text-slate-500 hover:text-emerald-400 transition-colors text-sm font-medium'>
+                <a href='tel:927222778' className='text-slate-600 hover:text-lime-600 transition-colors text-sm font-medium'>
                   927 22 27 78
                 </a>
               </li>
               <li className='flex items-center gap-4'>
-                <div className='w-8 h-8 rounded-lg bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center shrink-0'>
-                  <Mail className='w-4 h-4 text-emerald-500' strokeWidth={1.5} />
+                <div className='w-8 h-8 rounded-lg bg-lime-50 border border-lime-200 flex items-center justify-center shrink-0'>
+                  <Mail className='w-4 h-4 text-lime-600' strokeWidth={1.5} />
                 </div>
-                <a href='mailto:soporte@novis.es' className='text-slate-500 hover:text-emerald-400 transition-colors text-sm font-medium'>
+                <a href='mailto:soporte@novis.es' className='text-slate-600 hover:text-lime-600 transition-colors text-sm font-medium'>
                   soporte@novis.es
                 </a>
               </li>
@@ -186,12 +186,12 @@ export function Footer() {
         </div>
 
         {/* Copyright */}
-        <div className='border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs font-medium text-slate-600'>
+        <div className='border-t border-slate-200 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs font-medium text-slate-500'>
           <p>© {currentYear} Novis Software. Todos los derechos reservados.</p>
           <div className='flex items-center gap-6'>
-            <a href='#' className='hover:text-emerald-400 transition-colors'>Aviso Legal</a>
-            <a href='#' className='hover:text-emerald-400 transition-colors'>Política de Privacidad</a>
-            <a href='#' className='hover:text-emerald-400 transition-colors'>Cookies</a>
+            <a href='#' className='hover:text-lime-600 transition-colors'>Aviso Legal</a>
+            <a href='#' className='hover:text-lime-600 transition-colors'>Política de Privacidad</a>
+            <a href='#' className='hover:text-lime-600 transition-colors'>Cookies</a>
           </div>
         </div>
       </div>

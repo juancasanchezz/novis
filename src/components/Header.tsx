@@ -58,18 +58,18 @@ export function Header() {
   const navLinkClasses = ({ isActive }: { isActive: boolean }) =>
     `relative px-3 py-2 font-medium transition-all duration-300 uppercase text-xs tracking-widest group/link ${
       isActive
-        ? 'text-emerald-400'
+        ? 'text-lime-400'
         : 'text-slate-300 hover:text-white'
     }`
 
   const mobileMainLinkClasses = ({ isActive }: { isActive: boolean }) =>
     `text-3xl font-black uppercase tracking-wider transition-all duration-300 ${
-      isActive ? 'text-emerald-400 text-glow-emerald' : 'text-slate-100 hover:text-emerald-400'
+      isActive ? 'text-lime-400 text-glow-lime' : 'text-slate-900 hover:text-lime-500'
     }`
 
   const mobileSubLinkClasses = ({ isActive }: { isActive: boolean }) =>
     `text-lg font-medium transition-colors ${
-      isActive ? 'text-emerald-400' : 'text-slate-400 hover:text-emerald-400'
+      isActive ? 'text-lime-500' : 'text-slate-600 hover:text-lime-500'
     }`
 
   return (
@@ -83,20 +83,20 @@ export function Header() {
         transition={{ duration: 0.35, ease: 'easeInOut' }}
         className='w-full z-50 fixed top-0'
       >
-        {/* Gradiente oscuro permanente — garantiza legibilidad sobre cualquier fondo */}
-        <div className='absolute inset-0 bg-gradient-to-b from-black/50 via-black/20 to-transparent pointer-events-none z-0' />
+        {/* Gradiente oscuro permanente */}
+        <div className='absolute inset-0 bg-slate-950 pointer-events-none z-0' />
 
         {/* MAIN NAV — Glass adaptativo */}
         <motion.div
           animate={scrolled ? 'scrolled' : 'top'}
           variants={{
             top: {
-              backgroundColor: 'rgba(2, 6, 23, 0.1)',
+              backgroundColor: 'rgba(2, 6, 23, 0.4)',
               borderBottomColor: 'rgba(255,255,255,0)',
               backdropFilter: 'blur(0px)',
             },
             scrolled: {
-              backgroundColor: 'rgba(2, 6, 23, 0.90)',
+              backgroundColor: 'rgba(2, 6, 23, 0.95)',
               borderBottomColor: 'rgba(255,255,255,0.06)',
               backdropFilter: 'blur(24px)',
             },
@@ -126,7 +126,7 @@ export function Header() {
                   {({ isActive }) => (
                     <>
                       Inicio
-                      <span className={`absolute -bottom-0.5 left-0 h-[2px] bg-emerald-400 rounded-full transition-all duration-300 ${isActive ? 'w-full shadow-glow-emerald' : 'w-0 group-hover/link:w-full'}`} />
+                      <span className={`absolute -bottom-0.5 left-0 h-[2px] bg-lime-400 rounded-full transition-all duration-300 ${isActive ? 'w-full shadow-glow-lime' : 'w-0 group-hover/link:w-full'}`} />
                     </>
                   )}
                 </NavLink>
@@ -135,7 +135,7 @@ export function Header() {
                   {({ isActive }) => (
                     <>
                       NOVIS
-                      <span className={`absolute -bottom-0.5 left-0 h-[2px] bg-emerald-400 rounded-full transition-all duration-300 ${isActive ? 'w-full' : 'w-0 group-hover/link:w-full'}`} />
+                      <span className={`absolute -bottom-0.5 left-0 h-[2px] bg-lime-400 rounded-full transition-all duration-300 ${isActive ? 'w-full' : 'w-0 group-hover/link:w-full'}`} />
                     </>
                   )}
                 </NavLink>
@@ -145,7 +145,7 @@ export function Header() {
                   <div
                     className={`flex items-center font-medium transition-all duration-300 uppercase text-xs tracking-widest ${
                       location.pathname.startsWith('/clientes')
-                        ? 'text-emerald-400'
+                        ? 'text-lime-400'
                         : 'text-slate-300 group-hover/dropdown:text-white'
                     }`}
                   >
@@ -155,9 +155,9 @@ export function Header() {
 
                   {/* Dropdown panel */}
                   <div className='absolute top-full left-1/2 -translate-x-1/2 mt-0 w-72 opacity-0 invisible group-hover/dropdown:opacity-100 group-hover/dropdown:visible transition-all duration-300 transform translate-y-3 group-hover/dropdown:translate-y-0 z-50'>
-                    <div className='bg-slate-900/95 backdrop-blur-2xl shadow-2xl shadow-black/50 rounded-2xl overflow-hidden border border-white/8'>
+                    <div className='bg-slate-900/95 backdrop-blur-2xl shadow-2xl shadow-black/50 rounded-2xl overflow-hidden border border-white/10'>
                       {/* Línea superior neon */}
-                      <div className='h-px bg-gradient-to-r from-transparent via-emerald-500 to-transparent' />
+                      <div className='h-px bg-gradient-to-r from-transparent via-lime-400 to-transparent' />
                       <div className='p-2 flex flex-col gap-1'>
                         {[
                           { to: '/clientes', icon: Users, label: 'Todos los Clientes', desc: 'Vista general de clientes' },
@@ -169,12 +169,12 @@ export function Header() {
                             to={item.to}
                             className='flex items-center px-3 py-3 rounded-xl hover:bg-white/5 transition-all duration-200 group/item'
                           >
-                            <div className='w-9 h-9 rounded-lg bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center mr-3 group-hover/item:bg-emerald-500/20 transition-colors'>
-                              <item.icon className='w-4 h-4 text-emerald-400' />
+                            <div className='w-9 h-9 rounded-lg bg-lime-400/10 border border-lime-400/20 flex items-center justify-center mr-3 group-hover/item:bg-lime-400/20 transition-colors'>
+                              <item.icon className='w-4 h-4 text-lime-400' />
                             </div>
                             <div>
-                              <div className='text-sm font-semibold text-slate-200 group-hover/item:text-white transition-colors'>{item.label}</div>
-                              <div className='text-xs text-slate-500'>{item.desc}</div>
+                              <div className='text-sm font-semibold text-white group-hover/item:text-lime-300 transition-colors'>{item.label}</div>
+                              <div className='text-xs text-slate-400'>{item.desc}</div>
                             </div>
                           </Link>
                         ))}
@@ -187,7 +187,7 @@ export function Header() {
                   {({ isActive }) => (
                     <>
                       Servicios
-                      <span className={`absolute -bottom-0.5 left-0 h-[2px] bg-emerald-400 rounded-full transition-all duration-300 ${isActive ? 'w-full' : 'w-0 group-hover/link:w-full'}`} />
+                      <span className={`absolute -bottom-0.5 left-0 h-[2px] bg-lime-400 rounded-full transition-all duration-300 ${isActive ? 'w-full' : 'w-0 group-hover/link:w-full'}`} />
                     </>
                   )}
                 </NavLink>
@@ -196,7 +196,7 @@ export function Header() {
                   {({ isActive }) => (
                     <>
                       Casos de Éxito
-                      <span className={`absolute -bottom-0.5 left-0 h-[2px] bg-emerald-400 rounded-full transition-all duration-300 ${isActive ? 'w-full' : 'w-0 group-hover/link:w-full'}`} />
+                      <span className={`absolute -bottom-0.5 left-0 h-[2px] bg-lime-400 rounded-full transition-all duration-300 ${isActive ? 'w-full' : 'w-0 group-hover/link:w-full'}`} />
                     </>
                   )}
                 </NavLink>
@@ -205,7 +205,7 @@ export function Header() {
                   {({ isActive }) => (
                     <>
                       Actualidad
-                      <span className={`absolute -bottom-0.5 left-0 h-[2px] bg-emerald-400 rounded-full transition-all duration-300 ${isActive ? 'w-full' : 'w-0 group-hover/link:w-full'}`} />
+                      <span className={`absolute -bottom-0.5 left-0 h-[2px] bg-lime-400 rounded-full transition-all duration-300 ${isActive ? 'w-full' : 'w-0 group-hover/link:w-full'}`} />
                     </>
                   )}
                 </NavLink>
@@ -214,10 +214,10 @@ export function Header() {
                 <div className='pl-4 ml-2'>
                   <Link
                     to='/contacto'
-                    className='relative inline-flex items-center justify-center px-5 py-2 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold rounded-full transition-all duration-300 text-xs tracking-widest overflow-hidden group/cta shadow-lg shadow-emerald-500/25 hover:shadow-emerald-500/40'
+                    className='relative inline-flex items-center justify-center px-5 py-2 bg-lime-400 hover:bg-lime-300 text-slate-950 font-bold rounded-full transition-all duration-300 text-xs tracking-widest overflow-hidden group/cta shadow-lg shadow-lime-500/25 hover:shadow-lime-500/40'
                   >
                     {/* Shimmer sweep */}
-                    <span className='absolute inset-0 -top-1 bg-gradient-to-r from-transparent via-white/30 to-transparent translate-x-[-200%] group-hover/cta:translate-x-[200%] transition-transform duration-700 ease-in-out skew-x-12' />
+                    <span className='absolute inset-0 -top-1 bg-gradient-to-r from-transparent via-white/40 to-transparent translate-x-[-200%] group-hover/cta:translate-x-[200%] transition-transform duration-700 ease-in-out skew-x-12' />
                     <span className='relative'>CONTACTAR</span>
                     <ArrowRight className='ml-1.5 w-3 h-3 relative group-hover/cta:translate-x-0.5 transition-transform' />
                   </Link>
@@ -228,7 +228,7 @@ export function Header() {
               <div className='md:hidden flex items-center'>
                 <button
                   onClick={() => setIsMobileMenuOpen(true)}
-                  className='text-slate-300 p-2 rounded-lg hover:bg-white/5 focus:outline-none transition-colors'
+                  className='text-white p-2 rounded-lg hover:bg-white/10 focus:outline-none transition-colors'
                   aria-label='Abrir menú'
                 >
                   <Menu className='w-7 h-7' />
@@ -239,7 +239,7 @@ export function Header() {
         </motion.div>
       </motion.header>
 
-      {/* MENÚ MÓVIL — Full screen dark */}
+      {/* MENÚ MÓVIL — Full screen light */}
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
@@ -247,22 +247,22 @@ export function Header() {
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: '100%' }}
             transition={{ type: 'spring', damping: 28, stiffness: 220 }}
-            className='fixed inset-0 w-full h-[100dvh] bg-slate-950/98 backdrop-blur-3xl z-[100] flex flex-col overflow-y-auto'
+            className='fixed inset-0 w-full h-[100dvh] bg-white/98 backdrop-blur-3xl z-[100] flex flex-col overflow-y-auto'
           >
             {/* Orbes decorativos de fondo */}
-            <div className='absolute top-0 right-0 w-80 h-80 bg-emerald-500/5 rounded-full blur-3xl pointer-events-none' />
-            <div className='absolute bottom-0 left-0 w-64 h-64 bg-emerald-400/5 rounded-full blur-3xl pointer-events-none' />
+            <div className='absolute top-0 right-0 w-80 h-80 bg-lime-400/5 rounded-full blur-3xl pointer-events-none' />
+            <div className='absolute bottom-0 left-0 w-64 h-64 bg-lime-300/5 rounded-full blur-3xl pointer-events-none' />
 
             {/* Cabecera del menú móvil */}
-            <div className='flex justify-between items-center p-6 sm:p-8 shrink-0 border-b border-white/5'>
+            <div className='flex justify-between items-center p-6 sm:p-8 shrink-0 border-b border-slate-200'>
               <img
-                src={logoNovisAlta}
+                src={logoNovis}
                 alt='NOVIS Logo'
                 className='h-10 sm:h-12 w-auto object-contain'
               />
               <button
                 onClick={closeMobileMenu}
-                className='p-2.5 text-slate-400 hover:text-white bg-white/5 hover:bg-white/10 rounded-full transition-all border border-white/5'
+                className='p-2.5 text-slate-500 hover:text-slate-900 bg-slate-100 hover:bg-slate-200 rounded-full transition-all border border-slate-200'
                 aria-label='Cerrar menú'
               >
                 <X className='w-6 h-6' />
@@ -309,7 +309,7 @@ export function Header() {
                 >
                   Clientes
                 </NavLink>
-                <div className='mt-5 flex flex-col items-center space-y-4 bg-white/3 backdrop-blur-sm w-full max-w-[300px] py-5 rounded-2xl border border-white/6'>
+                <div className='mt-5 flex flex-col items-center space-y-4 bg-slate-50 backdrop-blur-sm w-full max-w-[300px] py-5 rounded-2xl border border-slate-200 shadow-sm'>
                   <NavLink
                     to='/clientes/instituciones'
                     className={mobileSubLinkClasses}
@@ -317,7 +317,7 @@ export function Header() {
                   >
                     Instituciones Públicas
                   </NavLink>
-                  <div className='w-16 h-px bg-white/10' />
+                  <div className='w-16 h-px bg-slate-200' />
                   <NavLink
                     to='/clientes/privados'
                     className={mobileSubLinkClasses}
@@ -334,12 +334,12 @@ export function Header() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 }}
-              className='p-6 sm:p-8 pb-10 shrink-0 border-t border-white/5'
+              className='p-6 sm:p-8 pb-10 shrink-0 border-t border-slate-200'
             >
               <Link
                 to='/contacto'
                 onClick={closeMobileMenu}
-                className='w-full flex items-center justify-center py-4 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold rounded-2xl transition-all text-base tracking-wider mb-6 shadow-lg shadow-emerald-500/25'
+                className='w-full flex items-center justify-center py-4 bg-lime-400 hover:bg-lime-300 text-slate-950 font-bold rounded-2xl transition-all text-base tracking-wider mb-6 shadow-lg shadow-lime-500/25'
               >
                 CONTACTAR AHORA
                 <ArrowRight className='ml-2 w-4 h-4' />
@@ -347,16 +347,16 @@ export function Header() {
               <div className='flex flex-col items-center space-y-3'>
                 <a
                   href='mailto:soporte@novis.es'
-                  className='flex items-center text-slate-400 text-sm hover:text-emerald-400 transition-colors'
+                  className='flex items-center text-slate-500 text-sm hover:text-lime-500 transition-colors'
                 >
-                  <Mail className='w-4 h-4 mr-2 text-emerald-500/60' />
+                  <Mail className='w-4 h-4 mr-2 text-lime-500' />
                   soporte@novis.es
                 </a>
                 <a
                   href='tel:927222778'
-                  className='flex items-center text-slate-400 text-sm hover:text-emerald-400 transition-colors'
+                  className='flex items-center text-slate-500 text-sm hover:text-lime-500 transition-colors'
                 >
-                  <Phone className='w-4 h-4 mr-2 text-emerald-500/60' />
+                  <Phone className='w-4 h-4 mr-2 text-lime-500' />
                   927 22 27 78
                 </a>
               </div>
