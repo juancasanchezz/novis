@@ -1,42 +1,75 @@
 @import 'tailwindcss';
 
 @theme {
-  /* Al definir variables --color-green-*, Tailwind v4 sobrescribe 
-     automáticamente TODAS nuestras clases bg-green-*, text-green-*, etc. */
   --color-green-50: #f0f5ec;
   --color-green-100: #e8f2e1;
   --color-green-200: #d4e3cc;
   --color-green-300: #afd991;
   --color-green-400: #8cc26b;
   --color-green-500: #6ba641;
-  --color-green-600: #6ba641; /* Este es el primary que usamos en botones */
-  --color-green-700: #5a8c37; /* Este es el hover que usamos */
+  --color-green-600: #6ba641;
+  --color-green-700: #5a8c37;
   --color-green-800: #48722c;
   --color-green-900: #355520;
 
-  /* Mantenemos las variables base que ella configuró */
-  --color-background: #ffffff;
-  --color-foreground: #0d0d0d;
-  --color-border: #d4e3cc;
+  --color-background: #020617;
+  --color-foreground: #f8fafc;
+  --color-border: #1e293b;
 
-  /* Fuentes modernas */
   --font-sans: 'Inter', system-ui, sans-serif;
   --font-heading: 'Outfit', system-ui, sans-serif;
 }
 
 @layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
-    background-color: var(--color-background);
+    background-color: #020617;
     color: var(--color-foreground);
     font-family: var(--font-sans);
+    overflow-x: hidden;
   }
-  
+
+  /* Scrollbar personalizado dark con brillo esmeralda */
+  html::-webkit-scrollbar,
+  body::-webkit-scrollbar,
+  *::-webkit-scrollbar {
+    width: 6px;
+  }
+  html::-webkit-scrollbar-track,
+  body::-webkit-scrollbar-track,
+  *::-webkit-scrollbar-track {
+    background: #0f172a;
+  }
+  html::-webkit-scrollbar-thumb,
+  body::-webkit-scrollbar-thumb,
+  *::-webkit-scrollbar-thumb {
+    background: linear-gradient(to bottom, #10b981, #34d399);
+    border-radius: 9999px;
+    box-shadow: 0 0 8px rgba(16, 185, 129, 0.8), 0 0 16px rgba(16, 185, 129, 0.4);
+  }
+  html::-webkit-scrollbar-thumb:hover,
+  body::-webkit-scrollbar-thumb:hover,
+  *::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(to bottom, #34d399, #6ee7b7);
+    box-shadow: 0 0 12px rgba(52, 211, 153, 1), 0 0 24px rgba(52, 211, 153, 0.6);
+  }
+
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-heading);
+  }
+
+  /* Selección de texto emerald */
+  ::selection {
+    background: rgba(16, 185, 129, 0.3);
+    color: #ffffff;
   }
 }
 
 @layer utilities {
+  /* Marquee para carrusel de logos */
   @keyframes marquee {
     0% { transform: translateX(0%); }
     100% { transform: translateX(-50%); }
@@ -46,5 +79,145 @@
   }
   .animate-marquee:hover {
     animation-play-state: paused;
+  }
+
+  /* Float suave para partículas */
+  @keyframes float {
+    0%, 100% { transform: translateY(0px) translateX(0px); }
+    25% { transform: translateY(-15px) translateX(5px); }
+    50% { transform: translateY(-8px) translateX(-5px); }
+    75% { transform: translateY(-20px) translateX(3px); }
+  }
+  .animate-float {
+    animation: float 8s ease-in-out infinite;
+  }
+
+  /* Float con delay */
+  @keyframes float-slow {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-25px); }
+  }
+  .animate-float-slow {
+    animation: float-slow 12s ease-in-out infinite;
+  }
+
+  /* Pulso de brillo (glow) */
+  @keyframes glow-pulse {
+    0%, 100% { opacity: 0.4; transform: scale(1); }
+    50% { opacity: 0.8; transform: scale(1.1); }
+  }
+  .animate-glow-pulse {
+    animation: glow-pulse 4s ease-in-out infinite;
+  }
+
+  /* Shimmer (brillo que pasa) */
+  @keyframes shimmer {
+    0% { transform: translateX(-100%) skewX(-12deg); }
+    100% { transform: translateX(200%) skewX(-12deg); }
+  }
+  .animate-shimmer {
+    animation: shimmer 2.5s ease-in-out infinite;
+  }
+
+  /* Gradiente que se desplaza */
+  @keyframes gradient-shift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+  .animate-gradient-shift {
+    background-size: 200% 200%;
+    animation: gradient-shift 6s ease infinite;
+  }
+
+  /* Rotación lenta para anillos orbitales */
+  @keyframes spin-slow {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+  .animate-spin-slow {
+    animation: spin-slow 20s linear infinite;
+  }
+  .animate-spin-reverse {
+    animation: spin-slow 15s linear infinite reverse;
+  }
+
+  /* Bounce suave para el scroll indicator */
+  @keyframes bounce-gentle {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(8px); }
+  }
+  .animate-bounce-gentle {
+    animation: bounce-gentle 2s ease-in-out infinite;
+  }
+
+  /* Parpadeo de cursor typewriter */
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+  }
+  .animate-blink {
+    animation: blink 0.8s ease-in-out infinite;
+  }
+
+  /* Entrada de texto por palabras */
+  @keyframes word-enter {
+    from { opacity: 0; transform: translateY(20px); filter: blur(4px); }
+    to { opacity: 1; transform: translateY(0); filter: blur(0); }
+  }
+  .animate-word-enter {
+    animation: word-enter 0.6s ease forwards;
+  }
+
+  /* Utlities de glassmorphism */
+  .glass-dark {
+    background: rgba(255, 255, 255, 0.04);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .glass-dark-hover:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(16, 185, 129, 0.3);
+  }
+
+  /* Glow text emerald */
+  .text-glow-emerald {
+    text-shadow: 0 0 30px rgba(16, 185, 129, 0.5), 0 0 60px rgba(16, 185, 129, 0.2);
+  }
+
+  /* Glow box emerald */
+  .shadow-glow-emerald {
+    box-shadow: 0 0 30px rgba(16, 185, 129, 0.2), 0 0 60px rgba(16, 185, 129, 0.1);
+  }
+
+  /* Neon border emerald */
+  .border-neon-emerald {
+    border-color: rgba(16, 185, 129, 0.6);
+    box-shadow: 0 0 8px rgba(16, 185, 129, 0.3), inset 0 0 8px rgba(16, 185, 129, 0.05);
+  }
+
+  /* Ocultar scrollbar en carruseles */
+  .hide-scrollbar {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Grid tecnológica de fondo */
+  .bg-grid-dark {
+    background-image:
+      linear-gradient(to right, rgba(255,255,255,0.03) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255,255,255,0.03) 1px, transparent 1px);
+    background-size: 64px 64px;
+  }
+
+  /* Puntos de fondo */
+  .bg-dots-dark {
+    background-image: radial-gradient(rgba(255,255,255,0.06) 1px, transparent 1px);
+    background-size: 24px 24px;
   }
 }

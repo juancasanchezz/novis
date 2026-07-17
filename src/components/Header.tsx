@@ -9,6 +9,7 @@ import {
   Building2,
   UserLock,
   Users,
+  ArrowRight,
 } from 'lucide-react'
 import { Link, NavLink, useLocation } from 'react-router-dom'
 
@@ -18,12 +19,15 @@ import logoNovisAlta from '../assets/logo-novis-alta.png'
 export function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [hidden, setHidden] = useState(false)
+  const [scrolled, setScrolled] = useState(false)
   const { scrollY } = useScroll()
   const location = useLocation()
 
-  useMotionValueEvent(scrollY, "change", (latest) => {
+  useMotionValueEvent(scrollY, 'change', (latest) => {
     const previous = scrollY.getPrevious()
     if (previous === undefined) return
+
+    // Ocultar al bajar rápido
     if (latest > previous && latest > 150) {
       setHidden(true)
       document.documentElement.classList.add('header-hidden')
@@ -31,9 +35,12 @@ export function Header() {
       setHidden(false)
       document.documentElement.classList.remove('header-hidden')
     }
+
+    // Cambiar estilo al hacer scroll
+    setScrolled(latest > 60)
   })
 
-  // Bloquear el scroll del body cuando el menú móvil está abierto
+  // Bloquear scroll del body cuando el menú móvil está abierto
   useEffect(() => {
     if (isMobileMenuOpen) {
       document.body.style.overflow = 'hidden'
@@ -47,149 +54,181 @@ export function Header() {
 
   const closeMobileMenu = () => setIsMobileMenuOpen(false)
 
-  // Clases refinadas para el Navbar B2B Light Sky Blue + Green
+  // Clases del link de navegación desktop con indicador animado
   const navLinkClasses = ({ isActive }: { isActive: boolean }) =>
-    `px-4 py-2 font-medium transition-colors uppercase text-xs tracking-widest ${isActive ? 'text-emerald-700 font-bold' : 'text-slate-700 hover:text-emerald-600'}`
+    `relative px-3 py-2 font-medium transition-all duration-300 uppercase text-xs tracking-widest group/link ${
+      isActive
+        ? 'text-emerald-400'
+        : 'text-slate-300 hover:text-white'
+    }`
 
   const mobileMainLinkClasses = ({ isActive }: { isActive: boolean }) =>
-    `text-2xl font-black uppercase tracking-wider transition-colors ${isActive ? 'text-emerald-600' : 'text-slate-800 hover:text-emerald-600'}`
+    `text-3xl font-black uppercase tracking-wider transition-all duration-300 ${
+      isActive ? 'text-emerald-400 text-glow-emerald' : 'text-slate-100 hover:text-emerald-400'
+    }`
 
   const mobileSubLinkClasses = ({ isActive }: { isActive: boolean }) =>
-    `text-lg font-medium transition-colors ${isActive ? 'text-emerald-600' : 'text-slate-500 hover:text-emerald-600'}`
+    `text-lg font-medium transition-colors ${
+      isActive ? 'text-emerald-400' : 'text-slate-400 hover:text-emerald-400'
+    }`
 
   return (
     <>
       <motion.header
         variants={{
           visible: { y: 0 },
-          hidden: { y: "-100%" },
+          hidden: { y: '-100%' },
         }}
-        animate={hidden ? "hidden" : "visible"}
-        transition={{ duration: 0.35, ease: "easeInOut" }}
-        className='w-full flex flex-col z-50 fixed top-0'
+        animate={hidden ? 'hidden' : 'visible'}
+        transition={{ duration: 0.35, ease: 'easeInOut' }}
+        className='w-full z-50 fixed top-0'
       >
-        {/* 1. TOP BAR (Enterprise Mode - Color Corporativo) */}
-        <div className='bg-gradient-to-r from-emerald-100 via-emerald-50 to-emerald-100 border-b border-emerald-200/50 text-slate-700 py-1.5 hidden md:block'>
-          <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center text-xs font-medium tracking-wide'>
-            <div className='flex items-center space-x-6'>
-              <a
-                href='tel:927222778'
-                className='flex items-center hover:text-emerald-100 transition-colors'
-              >
-                <Phone className='w-3.5 h-3.5 mr-2 text-emerald-600' />
-                <span className='hover:text-emerald-700 transition-colors'>927 22 27 78</span>
-              </a>
-              <a
-                href='mailto:soporte@novis.es'
-                className='flex items-center hover:text-emerald-100 transition-colors'
-              >
-                <Mail className='w-3.5 h-3.5 mr-2 text-emerald-600' />
-                <span className='hover:text-emerald-700 transition-colors'>soporte@novis.es</span>
-              </a>
-            </div>
-            <div className='text-emerald-800/70 uppercase tracking-widest text-[10px] font-bold'>
-              Consultoría Tecnológica de Élite
-            </div>
-          </div>
-        </div>
+        {/* Gradiente oscuro permanente — garantiza legibilidad sobre cualquier fondo */}
+        <div className='absolute inset-0 bg-gradient-to-b from-black/50 via-black/20 to-transparent pointer-events-none z-0' />
 
-        {/* 2. MAIN NAV (Fondo claro formal sin ser blanco puro) */}
-        <div className='relative z-50 bg-gradient-to-r from-emerald-100/95 via-emerald-50/95 to-emerald-100/95 backdrop-blur-xl border-b border-emerald-200/50 shadow-sm'>
+        {/* MAIN NAV — Glass adaptativo */}
+        <motion.div
+          animate={scrolled ? 'scrolled' : 'top'}
+          variants={{
+            top: {
+              backgroundColor: 'rgba(2, 6, 23, 0.1)',
+              borderBottomColor: 'rgba(255,255,255,0)',
+              backdropFilter: 'blur(0px)',
+            },
+            scrolled: {
+              backgroundColor: 'rgba(2, 6, 23, 0.90)',
+              borderBottomColor: 'rgba(255,255,255,0.06)',
+              backdropFilter: 'blur(24px)',
+            },
+          }}
+          transition={{ duration: 0.4 }}
+          className='relative border-b z-10'
+        >
           <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
             <div className='flex justify-between items-center h-20'>
+              {/* Logo */}
               <Link
                 to='/'
-                className='flex-shrink-0 flex items-center'
+                className='flex-shrink-0 flex items-center group'
                 onClick={closeMobileMenu}
               >
-                <img
+                <motion.img
                   src={logoNovis}
                   alt='NOVIS Logo'
-                  className='h-12 w-auto'
+                  className='h-11 w-auto transition-all duration-300'
+                  whileHover={{ scale: 1.05 }}
                 />
               </Link>
 
               {/* Navegación Desktop */}
-              <nav className='hidden md:flex space-x-2 items-center'>
-                <NavLink to='/' className={navLinkClasses}>
-                  Inicio
+              <nav className='hidden md:flex items-center space-x-1'>
+                <NavLink to='/' className={navLinkClasses} end>
+                  {({ isActive }) => (
+                    <>
+                      Inicio
+                      <span className={`absolute -bottom-0.5 left-0 h-[2px] bg-emerald-400 rounded-full transition-all duration-300 ${isActive ? 'w-full shadow-glow-emerald' : 'w-0 group-hover/link:w-full'}`} />
+                    </>
+                  )}
                 </NavLink>
 
                 <NavLink to='/novis' className={navLinkClasses}>
-                  NOVIS
+                  {({ isActive }) => (
+                    <>
+                      NOVIS
+                      <span className={`absolute -bottom-0.5 left-0 h-[2px] bg-emerald-400 rounded-full transition-all duration-300 ${isActive ? 'w-full' : 'w-0 group-hover/link:w-full'}`} />
+                    </>
+                  )}
                 </NavLink>
 
-                {/* DROPDOWN CLIENTES MEGA MENU */}
-                <div className='relative group px-2 py-6'>
-                  <Link
-                    to='/clientes'
-                    className={`flex items-center font-medium transition-colors uppercase text-xs tracking-widest ${location.pathname.startsWith('/clientes') ? 'text-emerald-700 font-bold' : 'text-slate-700 group-hover:text-emerald-600'}`}
+                {/* DROPDOWN CLIENTES */}
+                <div className='relative group/dropdown px-3 py-6 cursor-pointer'>
+                  <div
+                    className={`flex items-center font-medium transition-all duration-300 uppercase text-xs tracking-widest ${
+                      location.pathname.startsWith('/clientes')
+                        ? 'text-emerald-400'
+                        : 'text-slate-300 group-hover/dropdown:text-white'
+                    }`}
                   >
                     Clientes
-                    <ChevronDown className='w-4 h-4 ml-1 group-hover:rotate-180 transition-transform duration-300 text-emerald-600/50' />
-                  </Link>
+                    <ChevronDown className='w-3.5 h-3.5 ml-1.5 group-hover/dropdown:rotate-180 transition-transform duration-300 opacity-60' />
+                  </div>
 
-                  <div className='absolute top-full left-1/2 -translate-x-1/2 mt-0 w-80 bg-white/95 backdrop-blur-xl shadow-xl shadow-emerald-900/5 rounded-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform origin-top translate-y-4 group-hover:translate-y-0 overflow-hidden border border-slate-100 z-50'>
-                    <div className='h-1 bg-gradient-to-r from-emerald-500 to-green-400 w-full'></div>
-                    <div className='p-2 flex flex-col gap-1'>
-                      <Link
-                        to='/clientes'
-                        className='flex items-center px-4 py-4 text-sm font-semibold text-slate-700 hover:bg-emerald-50 hover:text-emerald-600 transition-colors rounded-xl group/item'
-                      >
-                        <div className='w-10 h-10 rounded-lg bg-emerald-50 flex items-center justify-center mr-4 group-hover/item:bg-emerald-100 transition-colors'>
-                          <Users className='w-5 h-5 text-emerald-500' />
-                        </div>
-                        Todos los Clientes
-                      </Link>
-
-                      <Link
-                        to='/clientes/instituciones'
-                        className='flex items-center px-4 py-4 text-sm font-semibold text-slate-700 hover:bg-emerald-50 hover:text-emerald-600 transition-colors rounded-xl group/item'
-                      >
-                        <div className='w-10 h-10 rounded-lg bg-emerald-50 flex items-center justify-center mr-4 group-hover/item:bg-emerald-100 transition-colors'>
-                          <Building2 className='w-5 h-5 text-emerald-500' />
-                        </div>
-                        Instituciones Públicas
-                      </Link>
-                      <Link
-                        to='/clientes/privados'
-                        className='flex items-center px-4 py-4 text-sm font-semibold text-slate-700 hover:bg-emerald-50 hover:text-emerald-600 transition-colors rounded-xl group/item'
-                      >
-                        <div className='w-10 h-10 rounded-lg bg-emerald-50 flex items-center justify-center mr-4 group-hover/item:bg-emerald-100 transition-colors'>
-                          <UserLock className='w-5 h-5 text-emerald-500' />
-                        </div>
-                        Empresas Privadas
-                      </Link>
+                  {/* Dropdown panel */}
+                  <div className='absolute top-full left-1/2 -translate-x-1/2 mt-0 w-72 opacity-0 invisible group-hover/dropdown:opacity-100 group-hover/dropdown:visible transition-all duration-300 transform translate-y-3 group-hover/dropdown:translate-y-0 z-50'>
+                    <div className='bg-slate-900/95 backdrop-blur-2xl shadow-2xl shadow-black/50 rounded-2xl overflow-hidden border border-white/8'>
+                      {/* Línea superior neon */}
+                      <div className='h-px bg-gradient-to-r from-transparent via-emerald-500 to-transparent' />
+                      <div className='p-2 flex flex-col gap-1'>
+                        {[
+                          { to: '/clientes', icon: Users, label: 'Todos los Clientes', desc: 'Vista general de clientes' },
+                          { to: '/clientes/instituciones', icon: Building2, label: 'Instituciones Públicas', desc: 'Administraciones y organismos' },
+                          { to: '/clientes/privados', icon: UserLock, label: 'Empresas Privadas', desc: 'Sector corporativo' },
+                        ].map((item) => (
+                          <Link
+                            key={item.to}
+                            to={item.to}
+                            className='flex items-center px-3 py-3 rounded-xl hover:bg-white/5 transition-all duration-200 group/item'
+                          >
+                            <div className='w-9 h-9 rounded-lg bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center mr-3 group-hover/item:bg-emerald-500/20 transition-colors'>
+                              <item.icon className='w-4 h-4 text-emerald-400' />
+                            </div>
+                            <div>
+                              <div className='text-sm font-semibold text-slate-200 group-hover/item:text-white transition-colors'>{item.label}</div>
+                              <div className='text-xs text-slate-500'>{item.desc}</div>
+                            </div>
+                          </Link>
+                        ))}
+                      </div>
                     </div>
                   </div>
                 </div>
 
                 <NavLink to='/servicios' className={navLinkClasses}>
-                  Servicios
+                  {({ isActive }) => (
+                    <>
+                      Servicios
+                      <span className={`absolute -bottom-0.5 left-0 h-[2px] bg-emerald-400 rounded-full transition-all duration-300 ${isActive ? 'w-full' : 'w-0 group-hover/link:w-full'}`} />
+                    </>
+                  )}
                 </NavLink>
 
                 <NavLink to='/casos-de-exito' className={navLinkClasses}>
-                  Casos de Éxito
+                  {({ isActive }) => (
+                    <>
+                      Casos de Éxito
+                      <span className={`absolute -bottom-0.5 left-0 h-[2px] bg-emerald-400 rounded-full transition-all duration-300 ${isActive ? 'w-full' : 'w-0 group-hover/link:w-full'}`} />
+                    </>
+                  )}
                 </NavLink>
 
                 <NavLink to='/actualidad' className={navLinkClasses}>
-                  Actualidad
+                  {({ isActive }) => (
+                    <>
+                      Actualidad
+                      <span className={`absolute -bottom-0.5 left-0 h-[2px] bg-emerald-400 rounded-full transition-all duration-300 ${isActive ? 'w-full' : 'w-0 group-hover/link:w-full'}`} />
+                    </>
+                  )}
                 </NavLink>
 
-                <div className='pl-6 ml-2'>
+                {/* CTA Button con shimmer */}
+                <div className='pl-4 ml-2'>
                   <Link
                     to='/contacto'
-                    className='inline-flex items-center justify-center px-6 py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded-full transition-all duration-300 shadow-md hover:shadow-lg text-xs tracking-widest'
+                    className='relative inline-flex items-center justify-center px-5 py-2 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold rounded-full transition-all duration-300 text-xs tracking-widest overflow-hidden group/cta shadow-lg shadow-emerald-500/25 hover:shadow-emerald-500/40'
                   >
-                    CONTACTAR
+                    {/* Shimmer sweep */}
+                    <span className='absolute inset-0 -top-1 bg-gradient-to-r from-transparent via-white/30 to-transparent translate-x-[-200%] group-hover/cta:translate-x-[200%] transition-transform duration-700 ease-in-out skew-x-12' />
+                    <span className='relative'>CONTACTAR</span>
+                    <ArrowRight className='ml-1.5 w-3 h-3 relative group-hover/cta:translate-x-0.5 transition-transform' />
                   </Link>
                 </div>
               </nav>
 
+              {/* Hamburguesa móvil */}
               <div className='md:hidden flex items-center'>
                 <button
                   onClick={() => setIsMobileMenuOpen(true)}
-                  className='text-slate-800 p-2 rounded-lg hover:bg-emerald-100 focus:outline-none transition-colors'
+                  className='text-slate-300 p-2 rounded-lg hover:bg-white/5 focus:outline-none transition-colors'
                   aria-label='Abrir menú'
                 >
                   <Menu className='w-7 h-7' />
@@ -197,56 +236,72 @@ export function Header() {
               </div>
             </div>
           </div>
-        </div>
+        </motion.div>
       </motion.header>
 
-      {/* 3. MENÚ MÓVIL (LIGHT MODE) */}
+      {/* MENÚ MÓVIL — Full screen dark */}
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
             initial={{ opacity: 0, x: '100%' }}
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: '100%' }}
-            transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-            className='fixed inset-0 w-full h-[100dvh] bg-slate-50/95 backdrop-blur-2xl z-[100] flex flex-col overflow-y-auto'
+            transition={{ type: 'spring', damping: 28, stiffness: 220 }}
+            className='fixed inset-0 w-full h-[100dvh] bg-slate-950/98 backdrop-blur-3xl z-[100] flex flex-col overflow-y-auto'
           >
-            {/* Cabecera del Menú Móvil */}
-            <div className='flex justify-between items-center p-6 sm:p-8 shrink-0'>
-              <div className='w-12'></div>
+            {/* Orbes decorativos de fondo */}
+            <div className='absolute top-0 right-0 w-80 h-80 bg-emerald-500/5 rounded-full blur-3xl pointer-events-none' />
+            <div className='absolute bottom-0 left-0 w-64 h-64 bg-emerald-400/5 rounded-full blur-3xl pointer-events-none' />
+
+            {/* Cabecera del menú móvil */}
+            <div className='flex justify-between items-center p-6 sm:p-8 shrink-0 border-b border-white/5'>
               <img
                 src={logoNovisAlta}
                 alt='NOVIS Logo'
-                className='h-12 sm:h-14 w-auto object-contain'
+                className='h-10 sm:h-12 w-auto object-contain'
               />
               <button
                 onClick={closeMobileMenu}
-                className='p-2 text-slate-500 hover:text-slate-800 hover:bg-slate-200 rounded-full transition-all'
+                className='p-2.5 text-slate-400 hover:text-white bg-white/5 hover:bg-white/10 rounded-full transition-all border border-white/5'
                 aria-label='Cerrar menú'
               >
-                <X className='w-8 h-8 stroke-[2]' />
+                <X className='w-6 h-6' />
               </button>
             </div>
 
-            {/* Enlaces Principales Centrados */}
-            <nav className='flex flex-col items-center justify-center flex-grow space-y-7 my-4 px-6'>
-              <NavLink
-                to='/'
-                className={mobileMainLinkClasses}
-                onClick={closeMobileMenu}
-              >
-                Inicio
-              </NavLink>
+            {/* Links principales */}
+            <nav className='flex flex-col items-center justify-center flex-grow space-y-8 my-6 px-6'>
+              {[
+                { to: '/', label: 'Inicio', end: true },
+                { to: '/novis', label: 'NOVIS' },
+                { to: '/servicios', label: 'Servicios' },
+                { to: '/casos-de-exito', label: 'Casos de Éxito' },
+                { to: '/actualidad', label: 'Actualidad' },
+              ].map((item, i) => (
+                <motion.div
+                  key={item.to}
+                  initial={{ opacity: 0, x: 40 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: i * 0.06 + 0.1 }}
+                >
+                  <NavLink
+                    to={item.to}
+                    end={item.end}
+                    className={mobileMainLinkClasses}
+                    onClick={closeMobileMenu}
+                  >
+                    {item.label}
+                  </NavLink>
+                </motion.div>
+              ))}
 
-              <NavLink
-                to='/novis'
-                className={mobileMainLinkClasses}
-                onClick={closeMobileMenu}
+              {/* Grupo Clientes */}
+              <motion.div
+                initial={{ opacity: 0, x: 40 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.08 }}
+                className='flex flex-col items-center w-full'
               >
-                NOVIS
-              </NavLink>
-
-              {/* Grupo Clientes con bloque estilizado */}
-              <div className='flex flex-col items-center w-full py-2'>
                 <NavLink
                   to='/clientes'
                   className={mobileMainLinkClasses}
@@ -254,9 +309,7 @@ export function Header() {
                 >
                   Clientes
                 </NavLink>
-
-                {/* Caja sutil para los sub-enlaces para agruparlos visualmente */}
-                <div className='flex flex-col items-center mt-6 space-y-5 bg-white w-full max-w-[280px] py-6 rounded-3xl border border-slate-200 shadow-sm'>
+                <div className='mt-5 flex flex-col items-center space-y-4 bg-white/3 backdrop-blur-sm w-full max-w-[300px] py-5 rounded-2xl border border-white/6'>
                   <NavLink
                     to='/clientes/instituciones'
                     className={mobileSubLinkClasses}
@@ -264,7 +317,7 @@ export function Header() {
                   >
                     Instituciones Públicas
                   </NavLink>
-                  <div className='w-12 h-[1px] bg-slate-200'></div>
+                  <div className='w-16 h-px bg-white/10' />
                   <NavLink
                     to='/clientes/privados'
                     className={mobileSubLinkClasses}
@@ -273,65 +326,41 @@ export function Header() {
                     Empresas Privadas
                   </NavLink>
                 </div>
-              </div>
-
-              <NavLink
-                to='/servicios'
-                className={mobileMainLinkClasses}
-                onClick={closeMobileMenu}
-              >
-                Servicios
-              </NavLink>
-
-              <NavLink
-                to='/casos-de-exito'
-                className={mobileMainLinkClasses}
-                onClick={closeMobileMenu}
-              >
-                Casos de Éxito
-              </NavLink>
-
-              <NavLink
-                to='/actualidad'
-                className={mobileMainLinkClasses}
-                onClick={closeMobileMenu}
-              >
-                Actualidad
-              </NavLink>
-
-              <NavLink
-                to='/contacto'
-                className={mobileMainLinkClasses}
-                onClick={closeMobileMenu}
-              >
-                Contacto
-              </NavLink>
+              </motion.div>
             </nav>
 
-            {/* Footer del Menú Móvil (Datos de Contacto Refinados) */}
-            <div className='p-8 text-center pb-12 shrink-0 bg-white/50 border-t border-slate-200 mt-4'>
-              <p className='text-emerald-600 mb-5 text-sm font-bold uppercase tracking-[0.2em]'>
-                Contacta con nosotros
-              </p>
-
-              <div className='space-y-4 flex flex-col items-center'>
+            {/* Footer del menú móvil */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3 }}
+              className='p-6 sm:p-8 pb-10 shrink-0 border-t border-white/5'
+            >
+              <Link
+                to='/contacto'
+                onClick={closeMobileMenu}
+                className='w-full flex items-center justify-center py-4 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold rounded-2xl transition-all text-base tracking-wider mb-6 shadow-lg shadow-emerald-500/25'
+              >
+                CONTACTAR AHORA
+                <ArrowRight className='ml-2 w-4 h-4' />
+              </Link>
+              <div className='flex flex-col items-center space-y-3'>
                 <a
                   href='mailto:soporte@novis.es'
-                  className='flex items-center text-slate-700 text-lg font-medium hover:text-emerald-600 transition-colors'
+                  className='flex items-center text-slate-400 text-sm hover:text-emerald-400 transition-colors'
                 >
-                  <Mail className='w-5 h-5 mr-3 text-emerald-500' />
+                  <Mail className='w-4 h-4 mr-2 text-emerald-500/60' />
                   soporte@novis.es
                 </a>
-
                 <a
                   href='tel:927222778'
-                  className='flex items-center text-slate-700 text-lg font-medium hover:text-emerald-600 transition-colors'
+                  className='flex items-center text-slate-400 text-sm hover:text-emerald-400 transition-colors'
                 >
-                  <Phone className='w-5 h-5 mr-3 text-emerald-500' />
+                  <Phone className='w-4 h-4 mr-2 text-emerald-500/60' />
                   927 22 27 78
                 </a>
               </div>
-            </div>
+            </motion.div>
           </motion.div>
         )}
       </AnimatePresence>

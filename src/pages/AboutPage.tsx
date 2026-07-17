@@ -52,7 +52,7 @@ export function AboutPage() {
           content='Novis, Desarrollo de Software, Sobre Nosotros'
         />
       </Helmet>
-      <div className='bg-white flex flex-col w-full overflow-hidden'>
+      <div className='flex flex-col w-full'>
         {/* 1. HERO DE COMPAÑÍA */}
         <section className='relative bg-slate-950 pt-32 pb-24 md:pt-40 md:pb-32 overflow-hidden border-b border-slate-800'>
           <div className='absolute inset-0 z-0 bg-[radial-gradient(ellipse_at_top_left,_var(--tw-gradient-stops))] from-emerald-900/20 via-slate-950 to-slate-950'></div>

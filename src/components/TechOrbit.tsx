@@ -1,45 +1,44 @@
 import { motion } from 'framer-motion'
-import logoNovis from '../assets/logo-novis-52px.png' // Usamos el logo más limpio para dark mode
+import logoNovis from '../assets/logo-novis-52px.png'
 
-export function TechOrbit () {
+export function TechOrbit() {
   const technologies = [
-    {
-      name: 'React',
-      url: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg',
-    },
-    {
-      name: 'Node.js',
-      url: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg',
-    },
-    {
-      name: 'TypeScript',
-      url: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg',
-    },
-    {
-      name: 'AWS',
-      url: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original-wordmark.svg',
-    },
-    {
-      name: 'PostgreSQL',
-      url: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg',
-    },
-    {
-      name: 'Docker',
-      url: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg',
-    },
-    {
-      name: 'Git',
-      url: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg',
-    },
+    { name: 'React', url: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg', ring: 1, angle: 0 },
+    { name: 'TypeScript', url: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg', ring: 1, angle: 72 },
+    { name: 'Node.js', url: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg', ring: 1, angle: 144 },
+    { name: 'PostgreSQL', url: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg', ring: 1, angle: 216 },
+    { name: 'Docker', url: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg', ring: 1, angle: 288 },
+    { name: 'AWS', url: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original-wordmark.svg', ring: 2, angle: 36 },
+    { name: 'Git', url: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg', ring: 2, angle: 120 },
+    { name: 'Python', url: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg', ring: 2, angle: 204 },
+    { name: 'Redis', url: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redis/redis-original.svg', ring: 2, angle: 288 },
   ]
 
+  const ring1Radius = 130
+  const ring2Radius = 200
+
+  const getPosition = (angle: number, radius: number) => {
+    const rad = (angle * Math.PI) / 180
+    return {
+      x: Math.cos(rad) * radius,
+      y: Math.sin(rad) * radius,
+    }
+  }
+
   return (
-    <section className='py-32 bg-slate-900 relative overflow-hidden border-y border-slate-800'>
-      {/* Fondo de cuadrícula tecnológica (Grid) */}
-      <div className='absolute inset-0 bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)]'></div>
+    <section className='relative py-24 md:py-32 bg-slate-950 overflow-hidden'>
+      {/* Malla de cuadrícula */}
+      <div className='absolute inset-0 bg-grid-dark opacity-60 [mask-image:radial-gradient(ellipse_70%_70%_at_50%_50%,#000_50%,transparent_100%)]' />
+
+      {/* Orb de fondo */}
+      <div className='absolute right-0 top-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-emerald-500/5 rounded-full blur-[120px] pointer-events-none' />
+
+      {/* Línea superior */}
+      <div className='absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/8 to-transparent' />
 
       <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10'>
         <div className='grid lg:grid-cols-2 gap-16 lg:gap-24 items-center'>
+
           {/* Textos */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
@@ -47,97 +46,169 @@ export function TechOrbit () {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <span className='inline-flex items-center px-3 py-1 rounded-full bg-emerald-950/50 border border-emerald-800/50 text-emerald-400 text-xs font-semibold tracking-widest uppercase mb-6 shadow-sm'>
+            <span className='inline-flex items-center px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-semibold tracking-widest uppercase mb-6'>
               Arquitectura Enterprise
             </span>
-            <h2 className='text-4xl md:text-5xl lg:text-6xl font-black text-white mb-6 tracking-tighter leading-tight drop-shadow-sm'>
-              Stack tecnológico de <span className='bg-clip-text text-transparent bg-gradient-to-r from-emerald-500 to-green-500'>vanguardia</span>
+
+            <h2 className='text-4xl md:text-5xl lg:text-6xl font-black text-white mb-6 tracking-tighter leading-tight'>
+              Stack tecnológico de{' '}
+              <span className='bg-clip-text text-transparent bg-gradient-to-r from-emerald-400 to-cyan-400'>
+                vanguardia
+              </span>
             </h2>
-            <p className='text-lg md:text-xl text-slate-300 leading-relaxed font-light mb-10'>
-              Implementamos arquitecturas modernas, seguras y altamente escalables. Seleccionamos cuidadosamente las herramientas que garantizan el mejor rendimiento y la máxima fiabilidad para entornos críticos.
+
+            <p className='text-lg md:text-xl text-slate-400 leading-relaxed font-light mb-10'>
+              Implementamos arquitecturas modernas, seguras y altamente escalables. Seleccionamos las herramientas que garantizan el mejor rendimiento para entornos críticos.
             </p>
 
-            <div className='grid grid-cols-1 sm:grid-cols-2 gap-4'>
+            <div className='grid grid-cols-1 sm:grid-cols-2 gap-3'>
               {[
                 'Arquitecturas Cloud Nativas',
                 'Microservicios y APIs REST',
                 'Bases de Datos Escalables',
-                'Integración y Despliegue Continuo (CI/CD)',
-                'Seguridad y Cumplimiento',
+                'CI/CD y DevOps',
+                'Seguridad y Cumplimiento ENS',
                 'E-Learning Avanzado (Moodle)',
               ].map((item, i) => (
-                <div
-                  key={i}
-                  className='flex items-center text-slate-300 font-medium bg-slate-950 p-4 rounded-xl border border-slate-800 hover:border-emerald-500 hover:bg-emerald-950/20 transition-colors shadow-sm hover:shadow-md'
+                <motion.div
+                  key={item}
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.08 }}
+                  className='flex items-center glass-dark rounded-xl px-4 py-3 group hover:border-emerald-500/30 transition-all duration-300'
                 >
-                  <div className='w-2 h-2 bg-emerald-500 rounded-full mr-4 shadow-sm'></div>{' '}
-                  <span className='text-sm'>{item}</span>
-                </div>
+                  <div className='w-1.5 h-1.5 bg-emerald-500 rounded-full mr-3 group-hover:shadow-[0_0_6px_rgba(16,185,129,0.8)] transition-shadow' />
+                  <span className='text-sm text-slate-400 group-hover:text-slate-200 transition-colors'>{item}</span>
+                </motion.div>
               ))}
             </div>
           </motion.div>
 
-          {/* Ecosistema Visual Flotante */}
+          {/* Ecosistema orbital */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
+            initial={{ opacity: 0, scale: 0.8 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            transition={{ duration: 1 }}
-            className='relative flex justify-center items-center h-[400px] lg:h-[500px]'
+            transition={{ duration: 1, ease: 'easeOut' }}
+            className='relative flex justify-center items-center h-[480px] lg:h-[520px]'
           >
-            {/* Círculo de fondo brillante */}
-            <div className='absolute w-64 h-64 bg-emerald-500/10 rounded-full blur-3xl'></div>
+            {/* SVG con anillos que rotan */}
+            <div className='absolute inset-0 flex items-center justify-center'>
+              <svg
+                viewBox='0 0 500 500'
+                className='w-full h-full'
+              >
+                {/* Anillo interior — rota hacia adelante */}
+                <motion.circle
+                  cx='250' cy='250' r='130'
+                  fill='none'
+                  stroke='url(#ring1Gradient)'
+                  strokeWidth='1'
+                  strokeDasharray='6 10'
+                  animate={{ rotate: 360 }}
+                  transition={{ duration: 25, repeat: Infinity, ease: 'linear' }}
+                  style={{ transformOrigin: '250px 250px' }}
+                />
 
-            {/* Centro de gravedad */}
-            <div className='absolute z-30 w-32 h-32 bg-slate-950 rounded-2xl shadow-xl flex items-center justify-center border border-slate-800 rotate-12 hover:rotate-0 transition-transform duration-700 backdrop-blur-xl'>
-              <img src={logoNovis} alt='NOVIS' className='w-16 h-auto drop-shadow-sm' />
+                {/* Anillo exterior — rota en sentido contrario */}
+                <motion.circle
+                  cx='250' cy='250' r='200'
+                  fill='none'
+                  stroke='url(#ring2Gradient)'
+                  strokeWidth='1'
+                  strokeDasharray='4 14'
+                  animate={{ rotate: -360 }}
+                  transition={{ duration: 40, repeat: Infinity, ease: 'linear' }}
+                  style={{ transformOrigin: '250px 250px' }}
+                />
+
+                {/* Anillo de resplandor central */}
+                <circle cx='250' cy='250' r='55' fill='none' stroke='rgba(16,185,129,0.15)' strokeWidth='30' />
+
+                <defs>
+                  <linearGradient id='ring1Gradient' x1='0%' y1='0%' x2='100%' y2='100%'>
+                    <stop offset='0%' stopColor='rgba(16,185,129,0.6)' />
+                    <stop offset='50%' stopColor='rgba(52,211,153,0.2)' />
+                    <stop offset='100%' stopColor='rgba(16,185,129,0.6)' />
+                  </linearGradient>
+                  <linearGradient id='ring2Gradient' x1='0%' y1='0%' x2='100%' y2='100%'>
+                    <stop offset='0%' stopColor='rgba(34,211,238,0.4)' />
+                    <stop offset='50%' stopColor='rgba(34,211,238,0.1)' />
+                    <stop offset='100%' stopColor='rgba(34,211,238,0.4)' />
+                  </linearGradient>
+                </defs>
+              </svg>
             </div>
 
-            {/* Nodos Tecnológicos Flotantes */}
-            {technologies.map((tech, index) => {
-              // Posicionamiento aleatorio controlado
-              const angle = (index / technologies.length) * Math.PI * 2;
-              const radius = 160 + (index % 2) * 40; // Alternar radios
-              const x = Math.cos(angle) * radius;
-              const y = Math.sin(angle) * radius;
+            {/* Centro — Logo NOVIS */}
+            <motion.div
+              animate={{ scale: [1, 1.04, 1] }}
+              transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
+              className='absolute z-30 w-28 h-28 glass-dark rounded-2xl shadow-2xl flex items-center justify-center border border-emerald-500/20'
+              style={{ boxShadow: '0 0 40px rgba(16,185,129,0.15), 0 0 80px rgba(16,185,129,0.05)' }}
+            >
+              <img src={logoNovis} alt='NOVIS' className='w-16 h-auto' />
+            </motion.div>
 
+            {/* Nodos — Ring 1 */}
+            {technologies.filter(t => t.ring === 1).map((tech, index) => {
+              const pos = getPosition(tech.angle, ring1Radius)
               return (
                 <motion.div
-                  key={index}
-                  animate={{
-                    y: [0, -15, 0],
-                    x: [0, (index % 2 === 0 ? 10 : -10), 0],
-                  }}
-                  transition={{
-                    duration: 4 + (index % 3),
-                    repeat: Infinity,
-                    ease: "easeInOut",
-                    delay: index * 0.5,
-                  }}
-                  className='absolute z-20 w-16 h-16 bg-slate-950 rounded-2xl shadow-2xl border border-slate-800 flex items-center justify-center p-3 hover:scale-125 transition-transform cursor-pointer'
+                  key={tech.name}
+                  className='absolute z-20 w-14 h-14 glass-dark rounded-xl shadow-lg flex items-center justify-center p-2.5 hover:scale-125 hover:border-emerald-500/40 transition-all duration-300 cursor-pointer group/tech'
                   style={{
-                    transform: `translate(${x}px, ${y}px)`,
+                    left: `calc(50% + ${pos.x}px - 28px)`,
+                    top: `calc(50% + ${pos.y}px - 28px)`,
+                  }}
+                  animate={{ y: [0, -8, 0] }}
+                  transition={{
+                    duration: 4 + index * 0.7,
+                    repeat: Infinity,
+                    ease: 'easeInOut',
+                    delay: index * 0.4,
                   }}
                   title={tech.name}
                 >
-                  <img
-                    src={tech.url}
-                    alt={tech.name}
-                    className='w-full h-full object-contain'
-                  />
+                  <img src={tech.url} alt={tech.name} className='w-full h-full object-contain' />
+                  <span className='absolute -bottom-6 left-1/2 -translate-x-1/2 text-[10px] text-slate-500 whitespace-nowrap opacity-0 group-hover/tech:opacity-100 transition-opacity'>
+                    {tech.name}
+                  </span>
                 </motion.div>
               )
             })}
 
-            {/* Líneas de conexión abstractas (SVG) */}
-            <svg className="absolute inset-0 w-full h-full z-10 pointer-events-none opacity-20" viewBox="0 0 500 500">
-              <circle cx="250" cy="250" r="160" fill="none" stroke="currentColor" className="text-emerald-500" strokeWidth="1" strokeDasharray="4 8" />
-              <circle cx="250" cy="250" r="200" fill="none" stroke="currentColor" className="text-emerald-500" strokeWidth="1" strokeDasharray="2 12" />
-            </svg>
+            {/* Nodos — Ring 2 */}
+            {technologies.filter(t => t.ring === 2).map((tech, index) => {
+              const pos = getPosition(tech.angle, ring2Radius)
+              return (
+                <motion.div
+                  key={tech.name}
+                  className='absolute z-20 w-12 h-12 glass-dark rounded-xl shadow-lg flex items-center justify-center p-2 hover:scale-125 hover:border-emerald-500/40 transition-all duration-300 cursor-pointer group/tech'
+                  style={{
+                    left: `calc(50% + ${pos.x}px - 24px)`,
+                    top: `calc(50% + ${pos.y}px - 24px)`,
+                  }}
+                  animate={{ y: [0, 10, 0] }}
+                  transition={{
+                    duration: 5 + index * 0.6,
+                    repeat: Infinity,
+                    ease: 'easeInOut',
+                    delay: index * 0.5,
+                  }}
+                  title={tech.name}
+                >
+                  <img src={tech.url} alt={tech.name} className='w-full h-full object-contain' />
+                  <span className='absolute -bottom-6 left-1/2 -translate-x-1/2 text-[10px] text-slate-500 whitespace-nowrap opacity-0 group-hover/tech:opacity-100 transition-opacity'>
+                    {tech.name}
+                  </span>
+                </motion.div>
+              )
+            })}
           </motion.div>
         </div>
       </div>
     </section>
   )
 }
-
