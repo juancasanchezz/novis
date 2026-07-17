@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 
 // Importación de logos
-import logo1 from '../assets/logo_EAP.png'
+import logo1 from '../assets/Logo_EAP.png'
 import logo2 from '../assets/dipcc.png'
 import logo3 from '../assets/logo-incual-3.jpg'
 import logo4 from '../assets/junta-extremadura.png'
