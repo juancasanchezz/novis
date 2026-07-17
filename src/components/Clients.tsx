@@ -67,7 +67,6 @@ export function Clients () {
           {/* Fondo con malla de puntos interna a la card */}
           <div className='absolute inset-0 bg-dots-light opacity-50' />
 
-          {/* Orb de fondo */}
           <div className='absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-sky-400/10 rounded-full blur-[100px] pointer-events-none' />
 
           <div className='relative z-10 mb-12'>
