@@ -3,22 +3,26 @@ import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 
 // Importación de logos
-import logo1 from '../assets/logo1-150x150.png'
-import logo2 from '../assets/logo2-1.jpg'
-import logo3 from '../assets/logo3-150x150.png'
-import logo4 from '../assets/logo4-150x150.png'
-import logo5 from '../assets/logo-infoex.png'
+import logo1 from '../assets/logo_EAP.png'
+import logo2 from '../assets/dipcc.png'
+import logo3 from '../assets/logo-incual-3.jpg'
+import logo4 from '../assets/junta-extremadura.png'
+import logo5 from '../assets/LOGOTIPO_INFOEX.png'
 import logo6 from '../assets/transformacion.png'
 import logo7 from '../assets/logo avanza blanco.png'
+import logo8 from '../assets/logotipo-Ayuntamiento-842x321.png'
+import logo9 from '../assets/logo_diputacion_color_001.svg'
 
 const institutions = [
-  { id: 1, src: logo4, alt: 'Junta de Extremadura', link: '/clientes/instituciones/junta-de-extremadura' },
-  { id: 2, src: logo3, alt: 'INCUAL', link: '/clientes/instituciones/instituto-nacional-de-las-cualificaciones' },
-  { id: 3, src: logo2, alt: 'Diputación de Cáceres', link: '/clientes/instituciones/diputacion-de-caceres' },
-  { id: 4, src: logo1, alt: 'Escuela de Administración Pública de Extremadura', link: '/clientes/instituciones/escuela-de-administracion-publica' },
+  { id: 1, src: logo1, alt: 'Escuela de Administración Pública de Extremadura', link: '/clientes/instituciones/escuela-de-administracion-publica' },
+  { id: 2, src: logo2, alt: 'Diputación de Cáceres', link: '/clientes/instituciones/diputacion-de-caceres' },
+  { id: 3, src: logo3, alt: 'INCUAL', link: '/clientes/instituciones/instituto-nacional-de-las-cualificaciones' },
+  { id: 4, src: logo4, alt: 'Junta de Extremadura', link: '/clientes/instituciones/junta-de-extremadura' },
   { id: 5, src: logo5, alt: 'INFOEX', link: '/clientes/instituciones/infoex' },
   { id: 6, src: logo6, alt: 'Trans-Formación', link: '/clientes/empresas/cistus' },
   { id: 7, src: logo7, alt: 'Avanza', link: '/clientes/empresas/avanza' },
+  { id: 8, src: logo8, alt: 'Ayuntamiento de Cáceres', link: '/clientes/instituciones/ayuntamiento-de-caceres' },
+  { id: 9, src: logo9, alt: 'Diputación de Badajoz', link: '/clientes/instituciones/diputacion-de-badajoz' },
 ]
 
 export function Clients () {
