@@ -123,9 +123,8 @@ export function Clients () {
               style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
             >
               {infiniteLogos.map((logo, index) => (
-                <Link
+                <div
                   key={`${logo.id}-${index}`}
-                  to={logo.link}
                   className='flex-shrink-0 w-74 md:w-56 h-24 md:h-28 relative flex items-center justify-center rounded-2xl transition-all duration-500 p-3 md:p-5 group/logo'
                   title={`Ver proyecto de ${logo.alt}`}
                 >
@@ -134,7 +133,7 @@ export function Clients () {
                     alt={logo.alt}
                     className='max-h-full max-w-full object-contain scale-[1.1] group-hover/logo:scale-[1.2] transition-transform duration-500 filter grayscale opacity-60 group-hover/logo:grayscale-0 group-hover/logo:opacity-100 mix-blend-multiply'
                   />
-                </Link>
+                </div>
               ))}
             </div>
           </div>

@@ -16,7 +16,7 @@ import { Link, NavLink, useLocation } from 'react-router-dom'
 import logoNovis from '../assets/logo-novis-52px.png'
 import logoNovisAlta from '../assets/logo-novis-alta.png'
 
-export function Header() {
+export function Header () {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [hidden, setHidden] = useState(false)
   const [scrolled, setScrolled] = useState(false)
@@ -56,20 +56,17 @@ export function Header() {
 
   // Clases del link de navegación desktop con indicador animado
   const navLinkClasses = ({ isActive }: { isActive: boolean }) =>
-    `relative px-3 py-2 font-medium transition-all duration-300 uppercase text-xs tracking-widest group/link ${
-      isActive
-        ? 'text-lime-400'
-        : 'text-slate-300 hover:text-white'
+    `relative px-3 py-2 font-medium transition-all duration-300 uppercase text-xs tracking-widest group/link ${isActive
+      ? 'text-lime-400'
+      : 'text-slate-300 hover:text-white'
     }`
 
   const mobileMainLinkClasses = ({ isActive }: { isActive: boolean }) =>
-    `text-3xl font-black uppercase tracking-wider transition-all duration-300 ${
-      isActive ? 'text-lime-400 text-glow-lime' : 'text-slate-900 hover:text-lime-500'
+    `text-3xl font-black uppercase tracking-wider transition-all duration-300 ${isActive ? 'text-lime-400 text-glow-lime' : 'text-slate-900 hover:text-lime-500'
     }`
 
   const mobileSubLinkClasses = ({ isActive }: { isActive: boolean }) =>
-    `text-lg font-medium transition-colors ${
-      isActive ? 'text-lime-500' : 'text-slate-600 hover:text-lime-500'
+    `text-lg font-medium transition-colors ${isActive ? 'text-lime-500' : 'text-slate-600 hover:text-lime-500'
     }`
 
   return (
@@ -143,11 +140,10 @@ export function Header() {
                 {/* DROPDOWN CLIENTES */}
                 <div className='relative group/dropdown px-3 py-6 cursor-pointer'>
                   <div
-                    className={`flex items-center font-medium transition-all duration-300 uppercase text-xs tracking-widest ${
-                      location.pathname.startsWith('/clientes')
+                    className={`flex items-center font-medium transition-all duration-300 uppercase text-xs tracking-widest ${location.pathname.startsWith('/clientes')
                         ? 'text-lime-400'
                         : 'text-slate-300 group-hover/dropdown:text-white'
-                    }`}
+                      }`}
                   >
                     Clientes
                     <ChevronDown className='w-3.5 h-3.5 ml-1.5 group-hover/dropdown:rotate-180 transition-transform duration-300 opacity-60' />
@@ -160,7 +156,7 @@ export function Header() {
                       <div className='h-px bg-gradient-to-r from-transparent via-lime-400 to-transparent' />
                       <div className='p-2 flex flex-col gap-1'>
                         {[
-                          { to: '/clientes', icon: Users, label: 'Todos los Clientes', desc: 'Vista general de clientes' },
+                          /* { to: '/clientes', icon: Users, label: 'Todos los Clientes', desc: 'Vista general de clientes' }, */
                           { to: '/clientes/instituciones', icon: Building2, label: 'Instituciones Públicas', desc: 'Administraciones y organismos' },
                           { to: '/clientes/privados', icon: UserLock, label: 'Empresas Privadas', desc: 'Sector corporativo' },
                         ].map((item) => (
