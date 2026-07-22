@@ -1,12 +1,12 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Calendar, ArrowRight, User, Search } from 'lucide-react'
-import { Link } from 'react-router-dom'
+import { Calendar, ArrowRight, User, Search, X } from 'lucide-react'
 import { newsArticles } from '../data/news'
 import { Helmet } from 'react-helmet-async'
 
 export function SuccessCasesPage() {
   const [searchTerm, setSearchTerm] = useState('')
+  const [selectedArticle, setSelectedArticle] = useState<any>(null)
 
   // Filtrar solo artículos de la categoría "Casos de Éxito"
   const successCases = newsArticles.filter(
@@ -120,9 +120,12 @@ export function SuccessCasesPage() {
                           isFeatured ? 'md:col-span-2' : 'col-span-1'
                         }`}
                       >
-                        <Link to={`/actualidad/${article.slug}`} className='absolute inset-0 z-20'>
+                        <button 
+                          onClick={() => setSelectedArticle(article)}
+                          className='absolute inset-0 z-20 w-full h-full text-left focus:outline-none focus:ring-4 focus:ring-emerald-500/50 rounded-[2rem]'
+                        >
                           <span className='sr-only'>Leer {article.title}</span>
-                        </Link>
+                        </button>
                         
                         {/* Imagen de fondo con Overlay Claro dinámico */}
                         <div className="absolute inset-0 z-0 overflow-hidden bg-slate-100">
@@ -177,6 +180,75 @@ export function SuccessCasesPage() {
           </div>
         </section>
       </div>
+
+      {/* MODAL DE DETALLE */}
+      <AnimatePresence>
+        {selectedArticle && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm overflow-y-auto"
+            onClick={() => setSelectedArticle(null)}
+          >
+            <motion.div
+              initial={{ scale: 0.95, opacity: 0, y: 20 }}
+              animate={{ scale: 1, opacity: 1, y: 0 }}
+              exit={{ scale: 0.95, opacity: 0, y: 20 }}
+              transition={{ type: "spring", duration: 0.5, bounce: 0.3 }}
+              onClick={(e) => e.stopPropagation()}
+              className="relative w-full max-w-4xl bg-white rounded-3xl overflow-hidden shadow-2xl my-auto flex flex-col max-h-[90vh]"
+            >
+              {/* Botón Cerrar */}
+              <button
+                onClick={() => setSelectedArticle(null)}
+                className="absolute top-4 right-4 z-20 p-2 bg-black/20 hover:bg-black/40 backdrop-blur-md text-white rounded-full transition-colors"
+              >
+                <X className="w-6 h-6" />
+              </button>
+
+              {/* Imagen Hero */}
+              <div className="relative h-64 md:h-80 shrink-0">
+                <img
+                  src={selectedArticle.image}
+                  alt={selectedArticle.title}
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-white via-transparent to-transparent"></div>
+              </div>
+
+              {/* Contenido */}
+              <div className="p-6 md:p-10 overflow-y-auto">
+                <div className="flex items-center gap-3 mb-6">
+                  <span className="bg-emerald-50 text-emerald-700 border border-emerald-200 text-xs font-black uppercase tracking-[0.2em] py-1.5 px-3 rounded-full">
+                    {selectedArticle.category}
+                  </span>
+                  <span className="flex items-center text-slate-500 text-sm font-bold">
+                    <Calendar className="w-4 h-4 mr-1.5 text-emerald-600" />
+                    {selectedArticle.date}
+                  </span>
+                </div>
+
+                <h2 className="text-3xl md:text-4xl font-black text-slate-900 mb-6 tracking-tight">
+                  {selectedArticle.title}
+                </h2>
+
+                <div 
+                  className="prose prose-slate prose-lg max-w-none prose-headings:font-bold prose-a:text-emerald-600 hover:prose-a:text-emerald-700 prose-img:rounded-2xl"
+                  dangerouslySetInnerHTML={{ __html: selectedArticle.content }}
+                />
+
+                <div className="mt-10 pt-6 border-t border-slate-200 flex items-center">
+                  <span className="flex items-center text-slate-500 text-sm font-bold uppercase tracking-widest">
+                    <User className="w-4 h-4 mr-2" />
+                    {selectedArticle.author}
+                  </span>
+                </div>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </>
   )
 }

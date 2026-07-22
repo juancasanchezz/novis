@@ -2,6 +2,7 @@ export const categories = [
   'Desarrollo',
   'Tecnología',
   'Noticias',
+  'Casos de Éxito',
 ]
 
 export const newsArticles = [
@@ -70,19 +71,82 @@ contador++;</code></pre>
   },
   {
     id: 2,
-    title: 'NOVIS Software desarrolla el nuevo portal de la Administración',
+    title: 'Transformación Digital en el Proyecto @vanza',
     excerpt:
-      'Un caso de éxito en la transformación digital de las entidades públicas en Extremadura, mejorando la accesibilidad ciudadana.',
+      'Desarrollo de una plataforma integral para optimizar la gestión y mejorar la eficiencia de los servicios en el marco del Proyecto @vanza.',
     content: `
-      <p>Contenido detallado del caso de éxito del portal de administración...</p>
-      <p><em>(Aquí iría el contenido completo de la noticia 2)</em></p>
+      <p>El Proyecto @vanza representa un hito crucial en la modernización de los procesos de gestión. Nuestro equipo ha desarrollado una solución a medida que garantiza...</p>
+      <p><em>(Contenido en desarrollo)</em></p>
     `,
-    date: '15 Mar 2024',
-    author: 'Dirección',
+    date: '10 Jul 2024',
+    author: 'Dirección de Proyectos',
     category: 'Casos de Éxito',
     image:
       'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=2070&auto=format&fit=crop',
-    slug: 'nuevo-portal-administracion',
+    slug: 'proyecto-avanza',
+  },
+  {
+    id: 4,
+    title: 'Modernización de los Proyectos de la Diputación de Cáceres',
+    excerpt:
+      'Implementación de soluciones tecnológicas avanzadas en múltiples áreas estratégicas de la Diputación, facilitando el acceso digital a los ciudadanos y optimizando la gestión.',
+    content: `
+      <p>En colaboración estrecha con la <strong>Diputación de Cáceres</strong>, en NOVIS hemos llevado a cabo la digitalización y el desarrollo de múltiples plataformas clave que modernizan los procesos administrativos y formativos:</p>
+      
+      <ul style="margin-top: 1rem; margin-bottom: 1rem; padding-left: 1.5rem; list-style-type: disc;">
+        <li style="margin-bottom: 0.5rem;">
+          <strong><a href="https://formacion.dip-caceres.es/" target="_blank" rel="noopener noreferrer">Catálogo Formativo</a></strong>: Aplicación integral para la consulta y gestión del catálogo de acciones formativas de la institución.
+        </li>
+        <li style="margin-bottom: 0.5rem;">
+          <strong><a href="https://dipcaceres.novis.es/" target="_blank" rel="noopener noreferrer">Moodle y Open Edx</a></strong>: Plataformas de e-learning personalizadas para la administración y gestión eficiente de todo el proceso formativo online.
+        </li>
+        <li style="margin-bottom: 0.5rem;">
+          <strong><a href="https://demo.novis.es/planificacion/" target="_blank" rel="noopener noreferrer">Gestión de Obras</a></strong>: Un completo sistema de planificación y seguimiento en tiempo real de las obras realizadas y supervisadas por la Diputación.
+        </li>
+        <li style="margin-bottom: 0.5rem;">
+          <strong><a href="https://alumnos-dipcc.novis.es/#/" target="_blank" rel="noopener noreferrer">Gestión e inscripción de Acciones Formativas</a></strong>: Portal digital que facilita a los alumnos la inscripción ágil y el seguimiento de sus cursos y expedientes.
+        </li>
+      </ul>
+
+      <p>Estas herramientas se han diseñado bajo estrictos estándares de usabilidad, seguridad y escalabilidad, consolidando así el compromiso de la Diputación con la innovación tecnológica.</p>
+    `,
+    date: '05 Jun 2024',
+    author: 'Equipo Técnico',
+    category: 'Casos de Éxito',
+    image:
+      'https://images.unsplash.com/photo-1557804506-669a67965ba0?q=80&w=2074&auto=format&fit=crop',
+    slug: 'proyectos-diputacion',
+  },
+  {
+    id: 5,
+    title: 'Gestión y Acreditación Profesional en el IECA',
+    excerpt:
+      'Plataforma tecnológica para el Instituto Extremeño de las Cualificaciones y Acreditaciones (IECA), optimizando el reconocimiento oficial de competencias profesionales.',
+    content: `
+      <p>El <strong>Instituto Extremeño de las Cualificaciones y Acreditaciones (IECA)</strong> es el organismo dependiente de la Junta de Extremadura cuya misión principal consiste en reconocer y acreditar oficialmente las competencias profesionales. Esta labor fundamental permite a los trabajadores convalidar su dilatada experiencia laboral y obtener títulos de Formación Profesional o Certificados de Profesionalidad de forma directa.</p>
+
+      <h3 style="font-size: 1.25rem; font-weight: bold; margin-top: 1.5rem; margin-bottom: 1rem;">Áreas clave de actuación</h3>
+      <ul style="margin-bottom: 1.5rem; padding-left: 1.5rem; list-style-type: disc;">
+        <li style="margin-bottom: 0.5rem;">
+          <strong>Gestión del PEAC</strong>: Coordinación exhaustiva del Procedimiento de Evaluación y Acreditación de Competencias (PEAC) a nivel autonómico, asegurando la calidad y el rigor del proceso.
+        </li>
+        <li style="margin-bottom: 0.5rem;">
+          <strong>Reconocimiento de Experiencia</strong>: Evaluación y validación formal de los conocimientos técnicos adquiridos mediante el desempeño profesional continuo o metodologías de aprendizaje no formales, eximiendo al trabajador de regresar al ámbito académico tradicional para obtener su certificación oficial.
+        </li>
+        <li style="margin-bottom: 0.5rem;">
+          <strong>Inscripción Abierta</strong>: Implementación de un modelo de trámite con período de inscripción ininterrumpido y permanente en Extremadura, garantizando la máxima accesibilidad para la ciudadanía.
+        </li>
+      </ul>
+
+      <h3 style="font-size: 1.25rem; font-weight: bold; margin-bottom: 1rem;">Público objetivo y beneficios</h3>
+      <p>Este servicio integral está diseñado específicamente para profesionales que han consolidado un alto grado de especialización práctica a lo largo de su trayectoria, pero que carecen de un documento oficial que certifique su grado de destreza. La acreditación de sus habilidades no solo avala su experiencia, sino que incrementa sustancialmente su nivel de empleabilidad y fomenta la movilidad dentro del exigente mercado laboral actual.</p>
+    `,
+    date: '20 May 2024',
+    author: 'Dirección de Proyectos',
+    category: 'Casos de Éxito',
+    image:
+      'https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop',
+    slug: 'proyecto-ieca',
   },
   {
     id: 3,

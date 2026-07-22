@@ -108,7 +108,7 @@ const institutionsData = [
     logo: logo2,
     title: 'Diputación de Cáceres',
     description: 'Herramientas de gestión territorial y administrativa para la provincia.',
-    points: ['Catálogo formativo', 'Plataformas e-learning', 'Gestión de obras'],
+    points: ['Catálogo formativo', 'Plataformas e-learning', 'Gestión de obras', 'Gestión de Acciones Formativas'],
     buttonText: 'Ver Proyecto',
     colSpan: 'md:col-span-1 lg:col-span-1',
     detail: {
@@ -118,11 +118,13 @@ const institutionsData = [
         'Aplicación para la gestión del catálogo formativo de la Diputación de Cáceres.',
         'Administración y gestión del proceso formativo en las plataformas Moodle y Open Edx.',
         'Proyecto de gestión de obras de la Diputación de Cáceres, donde se gestiona la planificación y seguimiento de las obras realizadas por la diputación.',
+        'Aplicación de inscripción y gestión de acciones formativas para alumnos de la Diputación de Cáceres.',
       ],
       buttons: [
         { text: 'Catálogo Formativo', link: 'https://formacion.dip-caceres.es/' },
         { text: 'Moodle y Open Edx', link: 'https://dipcaceres.novis.es/' },
         { text: 'Gestión de Obras', link: 'https://demo.novis.es/planificacion/' },
+        { text: 'Gestión e inscripción de Acciones Formativas', link: 'https://alumnos-dipcc.novis.es/#/' },
       ],
       gallery: [diputacion, diputacion2, diputacion3],
     } as InstitutionDetail,
@@ -147,7 +149,7 @@ const institutionsData = [
   },
 ]
 
-export function InstitutionsPage() {
+export function InstitutionsPage () {
   const [hoveredCard, setHoveredCard] = useState<number | null>(null)
   const [selectedInstitution, setSelectedInstitution] = useState<typeof institutionsData[0] | null>(null)
 
@@ -167,7 +169,7 @@ export function InstitutionsPage() {
         {/* 1. HERO LUMINOSO */}
         <section className='pt-32 pb-16 md:pt-40 md:pb-24 bg-slate-900 border-b border-slate-800 relative overflow-hidden'>
           <div className='absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-emerald-900/40 via-slate-900 to-slate-900 z-0'></div>
-          
+
           <div className='max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center'>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
